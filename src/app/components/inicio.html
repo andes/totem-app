@@ -1,7 +1,14 @@
   <plex-layout main="9">
     <plex-layout-main>
       <header>
-        <h3>Titulo del panel principal</h3>
+        <h3>Prestaciones Disponibles</h3>
       </header>
+      <ul>
+        <div class="pt-2" *ngFor="let prestacion of prestaciones">
+          <plex-button type="info" (click)="selectPrestacion(prestacion)">
+            {{prestacion.term}}
+          </plex-button>
+        </div>
+      </ul>
     </plex-layout-main>
   </plex-layout>

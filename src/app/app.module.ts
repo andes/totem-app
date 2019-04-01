@@ -12,6 +12,8 @@ import { HttpModule } from '@angular/http';
 import { AuthModule } from '@andes/auth';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { ChartsModule } from 'ng2-charts';
+import { PrestacionesService } from './services/prestaciones.service';
+import { AgendasService } from './services/agendas.services';
 
 @NgModule({
   imports: [
@@ -38,7 +40,9 @@ import { ChartsModule } from 'ng2-charts';
     },
     Plex,
     Server,
-    appRoutingProviders
+    appRoutingProviders,
+    PrestacionesService,
+    AgendasService
   ],
 })
 export class AppModule { }
