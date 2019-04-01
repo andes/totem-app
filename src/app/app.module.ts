@@ -1,18 +1,45 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { AppComponent } from './app.component';
 import { InicioComponent } from './components/inicio.component';
+import { PlexModule } from '@andes/plex';
+import { Plex } from '@andes/plex';
+import { Server } from '@andes/shared';
+import { routing, appRoutingProviders } from './app.routing';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
+import { AuthModule } from '@andes/auth';
+import { ScrollingModule } from '@angular/cdk/scrolling';
+import { ChartsModule } from 'ng2-charts';
 
 @NgModule({
+  imports: [
+    BrowserModule,
+    ReactiveFormsModule,
+    FormsModule,
+    HttpClientModule,
+    HttpModule,
+    PlexModule,
+    AuthModule,
+    ScrollingModule,
+    ChartsModule,
+    routing,
+  ],
   declarations: [
     AppComponent,
     InicioComponent
   ],
-  imports: [
-    BrowserModule
+  bootstrap: [AppComponent],
+  providers: [
+    {
+      provide: LOCALE_ID,
+      useValue: 'es-AR'
+    },
+    Plex,
+    Server,
+    appRoutingProviders
   ],
-  providers: [],
-  bootstrap: [AppComponent]
 })
 export class AppModule { }
 

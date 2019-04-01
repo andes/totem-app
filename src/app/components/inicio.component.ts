@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostBinding } from '@angular/core';
 import { AppComponent } from '../app.component';
 
 @Component({
@@ -6,10 +6,12 @@ import { AppComponent } from '../app.component';
     // styleUrls: ['inicio.scss']
 })
 export class InicioComponent implements OnInit {
+    @HostBinding('class.plex-layout') layout = true;
 
     constructor( public appComponent: AppComponent) { }
 
-    ngOnInit(){
+    ngOnInit() {
+        debugger;
     }
 
 }
