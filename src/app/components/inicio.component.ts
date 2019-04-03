@@ -14,7 +14,7 @@ export class InicioComponent implements OnInit {
         private prestacionesService: PrestacionesService,
         private router: Router,
         private agendasService: AgendasService,
-        private pacienteService:PacienteService
+        private pacienteService: PacienteService
     ) { }
 
     ngOnInit() {
