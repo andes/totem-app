@@ -14,6 +14,12 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
 import { ChartsModule } from 'ng2-charts';
 import { PrestacionesService } from './services/prestaciones.service';
 import { AgendasService } from './services/agendas.services';
+import { TurnosComponent } from './components/turnos.component';
+import { registerLocaleData } from '@angular/common';
+import localeEs from '@angular/common/locales/es';
+import { ProfesionalPipe } from './pipes/profesional.pipe';
+
+registerLocaleData(localeEs, 'es');
 
 @NgModule({
   imports: [
@@ -30,7 +36,9 @@ import { AgendasService } from './services/agendas.services';
   ],
   declarations: [
     AppComponent,
-    InicioComponent
+    InicioComponent,
+    TurnosComponent,
+    ProfesionalPipe
   ],
   bootstrap: [AppComponent],
   providers: [
