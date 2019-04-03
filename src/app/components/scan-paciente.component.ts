@@ -53,12 +53,12 @@ export class ScanPacienteComponent implements OnInit {
             documento: scanParseado[formatoDocumento.grupoNumeroDocumento].replace(/\D/g, ''),
             apellido: scanParseado[formatoDocumento.grupoApellido],
             nombre: scanParseado[formatoDocumento.grupoNombre],
-            stringScan: this.scan
+            scan: this.scan
         };
         return pacienteEscaneado;
     }
 
-    private buscarPaciente(pacienteEscaneado: { sexo: string; fechaNacimiento: any; documento: string; apellido: string; nombre: string; stringScan: string; }) {
+    private buscarPaciente(pacienteEscaneado: { sexo: string; fechaNacimiento: any; documento: string; apellido: string; nombre: string; scan: string; }) {
         this.pacienteService.getScanMatch(pacienteEscaneado).subscribe(resultado => {
             if (resultado.length) {
                 console.log('Paciente encontrado: ', resultado[0]);
