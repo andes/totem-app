@@ -1,14 +1,14 @@
-  <plex-layout main="9">
-    <plex-layout-main>
-      <header>
-        <h3>Prestaciones Disponibles</h3>
-      </header>
-      <ul>
-        <div class="pt-2" *ngFor="let prestacion of prestaciones">
-          <plex-button type="info" (click)="selectPrestacion(prestacion)">
-            {{prestacion.term}}
-          </plex-button>
-        </div>
-      </ul>
-    </plex-layout-main>
-  </plex-layout>
+<plex-layout main="9">
+  <plex-layout-main>
+    <header>
+      <h3>Prestaciones Disponibles</h3>
+    </header>
+    <ul>
+      <div class="pt-2" *ngFor="let prestacion of prestaciones">
+        <button class="btn-block" type="info" (click)="selectPrestacion(prestacion)">
+          &nbsp;<br>{{prestacion.term | uppercase}}<br>&nbsp;
+        </button>
+      </div>
+    </ul>
+  </plex-layout-main>
+</plex-layout>

@@ -1,30 +1,26 @@
 import { Component, OnInit, HostBinding } from '@angular/core';
 import { PrestacionesService } from '../services/prestaciones.service';
-import { AgendasService } from '../services/agendas.services';
-
+import { Router, ActivatedRoute } from '@angular/router';
 @Component({
-    templateUrl: 'inicio.html',
-    // styleUrls: ['inicio.scss']
+    templateUrl: 'inicio.html'
 })
 export class InicioComponent implements OnInit {
     public prestaciones = [];
     constructor(
         private prestacionesService: PrestacionesService,
-        private agendasService: AgendasService
+        private router: Router,
+
     ) { }
 
     ngOnInit() {
         this.prestacionesService.getPrestaciones().subscribe(resultado => {
-            console.log('Resultado:  ', resultado);
             this.prestaciones = resultado;
         });
     }
 
     selectPrestacion(prestacion) {
-        console.log(prestacion);
-        this.agendasService.getAgendas({ prestacion: prestacion.conceptId }).subscribe(agendas => {
-            console.log("AGENDAS---->", agendas);
-        })
+        this.router.navigate(['/turnos'], { queryParams: prestacion });
     }
 
 }
+
