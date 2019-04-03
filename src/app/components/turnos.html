@@ -1,0 +1,15 @@
+<plex-layout main="9">
+    <plex-layout-main>
+        <header>
+            <h3>Turnos Disponibles de: {{prestacionSeleccionada.term}}</h3>
+        </header>
+        <ul>
+            <div class="pt-2" *ngFor="let turno of listadoTurnos">
+                <button class="btn-block" type="info" (click)="selectTurno(turno)">
+                    {{turno.turno.horaInicio | date:"dd/MM/yyyy - HH:mm "}}<br>
+                    {{turno.profesional | profesional}}
+                </button>
+            </div>
+        </ul>
+    </plex-layout-main>
+</plex-layout>
