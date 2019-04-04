@@ -1,7 +1,7 @@
-import { Component, OnInit } from "@angular/core";
-import { DocumentoEscaneados } from "./documento-scaneado.const";
-import { PacienteService } from "../services/paciente.service";
-import { Router } from "@angular/router";
+import { Component, OnInit } from '@angular/core';
+import { DocumentoEscaneados } from './documento-scaneado.const';
+import { PacienteService } from '../services/paciente.service';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'scan-paciente',
@@ -61,9 +61,8 @@ export class ScanPacienteComponent implements OnInit {
     private buscarPaciente(pacienteEscaneado: { sexo: string; fechaNacimiento: any; documento: string; apellido: string; nombre: string; scan: string; }) {
         this.pacienteService.getScanMatch(pacienteEscaneado).subscribe(resultado => {
             if (resultado.length) {
-                console.log('Paciente encontrado: ', resultado[0]);
                 this.pacienteService.setPaciente(resultado[0].paciente);
-                this.router.navigate(['inicio']);
+                this.router.navigate(['confirmar-telefono']);
             } else {
                 // Notificar error
             }
