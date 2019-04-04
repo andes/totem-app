@@ -4,6 +4,8 @@ import { environment } from './../environments/environment';
 import { Component } from '@angular/core';
 import { Plex } from '@andes/plex';
 import { Server } from '@andes/shared';
+import { Auth } from '@andes/auth';
+import { ANDES_KEY } from '../config.private';
 
 // import { RxSocket } from 'rx-socket.io-client';
 
@@ -28,10 +30,10 @@ export class AppComponent {
     }
   }
 
-  constructor(public plex: Plex, public server: Server) {
+  constructor(public plex: Plex, public server: Server, private auth: Auth) {
     // Configura server. Debería hacerse desde un provider (http://stackoverflow.com/questions/39033835/angularjs2-preload-server-configuration-before-the-application-starts)
     server.setBaseURL(environment.API);
-
+    window.sessionStorage.setItem('jwt', ANDES_KEY);
 
     // Inicializa la vista
     this.plex.updateTitle('ANDES | Apps Neuquinas de Salud');
