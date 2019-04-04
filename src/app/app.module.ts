@@ -20,7 +20,8 @@ import { registerLocaleData } from '@angular/common';
 import localeEs from '@angular/common/locales/es';
 import { ProfesionalPipe } from './pipes/profesional.pipe';
 import { TurnosService } from './services/turnos.service';
-
+import { ScanPacienteComponent } from './components/scan-paciente.component';
+import { PacienteService } from './services/paciente.service';
 registerLocaleData(localeEs, 'es');
 
 @NgModule({
@@ -40,7 +41,8 @@ registerLocaleData(localeEs, 'es');
     AppComponent,
     InicioComponent,
     TurnosComponent,
-    ProfesionalPipe
+    ProfesionalPipe,
+    ScanPacienteComponent,
   ],
   bootstrap: [AppComponent],
   providers: [
@@ -53,7 +55,8 @@ registerLocaleData(localeEs, 'es');
     appRoutingProviders,
     PrestacionesService,
     AgendasService,
-    TurnosService
+    TurnosService,
+    PacienteService
   ],
 })
 export class AppModule { }
