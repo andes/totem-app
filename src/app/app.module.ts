@@ -14,10 +14,12 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
 import { ChartsModule } from 'ng2-charts';
 import { PrestacionesService } from './services/prestaciones.service';
 import { AgendasService } from './services/agendas.services';
+
 import { TurnosComponent } from './components/turnos.component';
 import { registerLocaleData } from '@angular/common';
 import localeEs from '@angular/common/locales/es';
 import { ProfesionalPipe } from './pipes/profesional.pipe';
+import { TurnosService } from './services/turnos.service';
 
 registerLocaleData(localeEs, 'es');
 
@@ -50,7 +52,8 @@ registerLocaleData(localeEs, 'es');
     Server,
     appRoutingProviders,
     PrestacionesService,
-    AgendasService
+    AgendasService,
+    TurnosService
   ],
 })
 export class AppModule { }
