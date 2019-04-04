@@ -1,0 +1,31 @@
+<plex-layout>
+  <plex-layout-main>
+    <header>
+      {{paciente?.nombre}}
+      {{paciente?.apellido}}
+      {{paciente?.documento}}
+      <h3>Por favor, confirme su número telefónico</h3>
+    </header>
+    <div class="row mt-4 d-flex justify-content-center">
+      <div class="col-4 ">
+        <plex-text [(ngModel)]="telefono" name='telefono' [autoFocus]="autoFocus" placeholder="Ingrese su número telefónico">
+        </plex-text>
+      </div>
+    </div>
+    <div class="row mt-2 d-flex justify-content-center">
+      <div class="col-5">
+        Ingrese el código de área sin cero y su número sin el 15 (Ej. 2996000000)
+      </div>
+    </div>
+    <div class="row mt-2 d-flex justify-content-center">
+
+      <div class=' col-6 container'>
+        <div class="simple-keyboard"></div>
+      </div>
+    </div>
+  </plex-layout-main>
+  <plex-layout-footer>
+    <plex-button position="left" label="Salir" type="danger" (click)='salir()'></plex-button>
+    <plex-button position="right" label="Confirmar" type="success" (click)='confirmar()'></plex-button>
+  </plex-layout-footer>
+</plex-layout>
