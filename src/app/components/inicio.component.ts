@@ -7,7 +7,7 @@ import { PacienteService } from '../services/paciente.service';
 @Component({
     templateUrl: 'inicio.html'
 })
-export class InicioComponent implements OnInit {
+export class SeleccionarPrestacionComponent implements OnInit {
     public prestaciones = [];
     public paciente;
     constructor(

@@ -14,16 +14,16 @@ import { Routes, RouterModule } from '@angular/router';
 import { ModuleWithProviders } from '@angular/core';
 
 // Global
-import { InicioComponent } from './components/inicio.component';
 import { TurnosComponent } from './components/turnos.component';
 import { ScanPacienteComponent } from './components/scan-paciente.component';
 import { ConfirmarTelefonoComponent } from './components/confirmar-telefono.component';
+import { SeleccionarPrestacionComponent } from './components/seleccionar-prestacion.component';
 
 
 // import { HomeComponent } from './modules/estadisticas/components/home.component';
 
 const appRoutes: Routes = [
-    { path: 'inicio', component: InicioComponent },
+    { path: 'inicio', component: SeleccionarPrestacionComponent },
     { path: 'turnos', component: TurnosComponent },
     { path: 'buscar', component: ScanPacienteComponent },
     { path: 'confirmar-telefono', component: ConfirmarTelefonoComponent },
