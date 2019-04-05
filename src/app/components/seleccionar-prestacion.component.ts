@@ -5,7 +5,7 @@ import { AgendasService } from '../services/agendas.services';
 import { PacienteService } from '../services/paciente.service';
 
 @Component({
-    templateUrl: 'inicio.html'
+    templateUrl: 'seleccionar-prestacion.html'
 })
 export class SeleccionarPrestacionComponent implements OnInit {
     public prestaciones = [];
@@ -19,6 +19,9 @@ export class SeleccionarPrestacionComponent implements OnInit {
 
     ngOnInit() {
         this.paciente = this.pacienteService.getPacienteValor();
+        if (!this.paciente) {
+            this.router.navigate(['buscar']);
+        }
         this.prestacionesService.getPrestaciones().subscribe(resultado => {
             this.prestaciones = resultado;
         });

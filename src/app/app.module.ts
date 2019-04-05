@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, LOCALE_ID } from '@angular/core';
 import { AppComponent } from './app.component';
-import { InicioComponent } from './components/inicio.component';
 import { PlexModule } from '@andes/plex';
 import { Plex } from '@andes/plex';
 import { Server } from '@andes/shared';
@@ -23,6 +22,7 @@ import { TurnosService } from './services/turnos.service';
 import { ScanPacienteComponent } from './components/scan-paciente.component';
 import { PacienteService } from './services/paciente.service';
 import { ConfirmarTelefonoComponent } from './components/confirmar-telefono.component';
+import { SeleccionarPrestacionComponent } from './components/seleccionar-prestacion.component';
 registerLocaleData(localeEs, 'es');
 
 @NgModule({
@@ -40,8 +40,8 @@ registerLocaleData(localeEs, 'es');
   ],
   declarations: [
     AppComponent,
-    InicioComponent,
     TurnosComponent,
+    SeleccionarPrestacionComponent,
     ProfesionalPipe,
     ScanPacienteComponent,
     ConfirmarTelefonoComponent,
