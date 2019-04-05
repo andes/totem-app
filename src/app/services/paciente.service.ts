@@ -6,7 +6,7 @@ import { BehaviorSubject } from 'rxjs';
 @Injectable()
 export class PacienteService {
     private urlBusquedaDocumento = '/core/mpi/pacientes/buscarDocumento';  // URL to web api
-
+    private pacienteUrl = '/core/mpi/pacientes';  // URL to web api
     private pacienteCache = new BehaviorSubject<any>(null);
     constructor(private server: Server) { }
 
@@ -27,5 +27,13 @@ export class PacienteService {
 
     getPacienteValor(): any {
         return this.pacienteCache.value;
+    }
+
+    save(paciente: any): Observable<any> {
+        if (paciente.id) {
+            return this.server.put(`${this.pacienteUrl}/${paciente.id}`, paciente);
+        } else {
+            return this.server.post(this.pacienteUrl, paciente);
+        }
     }
 }

@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { AgendasService } from '../services/agendas.services';
 import { Plex } from '@andes/plex';
 import { TurnosService } from '../services/turnos.service';
+import { PacienteService } from '../services/paciente.service';
 
 
 
@@ -14,13 +15,21 @@ export class TurnosComponent implements OnInit {
     private prestacionSeleccionada;
     private agendas = [];
     private listadoTurnos = [];
+    private paciente;
     constructor(
         private agendasService: AgendasService,
         private turnosService: TurnosService,
         private route: ActivatedRoute,
-        private plex: Plex) { }
+        private plex: Plex,
+        private pacienteService: PacienteService,
+        private router: Router,
+    ) { }
 
     ngOnInit() {
+        this.paciente = this.pacienteService.getPacienteValor();
+        if (!this.paciente) {
+            this.router.navigate(['buscar']);
+        }
         this.route.queryParams.subscribe(params => {
             this.prestacionSeleccionada = params;
             if (this.prestacionSeleccionada && this.prestacionSeleccionada.conceptId) {
@@ -50,10 +59,15 @@ export class TurnosComponent implements OnInit {
     }
 
     selectTurno(turno) {
-        this.turnosService.save(turno, { showError: false }).subscribe((resultado) => {
+        if (!this.paciente) {
+            this.plex.info('danger', 'Paciente no encontrado', 'Error');
+        }
+        this.turnosService.save(turno, this.paciente, { showError: false }).subscribe((resultado) => {
             this.plex.info('success', 'El turno se asignó correctamente');
+            this.router.navigate(['buscar']);
         }, (error) => {
-            console.log('error ', error);
+            this.plex.info('danger', 'Turno no asignado', 'Error');
+            this.router.navigate(['buscar']);
         });
     }
 }
