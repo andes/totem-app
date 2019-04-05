@@ -1,14 +1,15 @@
 <plex-layout>
   <plex-layout-main>
     <header>
-      {{paciente?.nombre}}
-      {{paciente?.apellido}}
-      {{paciente?.documento}}
+      <h2>HOLA  <strong class='colorPaciente'> {{paciente?.nombre}}
+          {{paciente?.apellido}}
+         </strong></h2>
       <h3>Por favor, confirme su número telefónico</h3>
     </header>
     <div class="row mt-4 d-flex justify-content-center">
       <div class="col-4 ">
-        <plex-text [(ngModel)]="telefono" name='telefono' [autoFocus]="autoFocus" placeholder="Ingrese su número telefónico">
+        <plex-text [(ngModel)]="telefono" name='telefono' [autoFocus]="autoFocus"
+          placeholder="Ingrese su número telefónico">
         </plex-text>
       </div>
     </div>
