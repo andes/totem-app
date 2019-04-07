@@ -7,8 +7,8 @@ let _package = require('../../package.json');
 
 export const environment = {
     production: false,
-    environmentName: 'localhost',
-    API: 'http://localhost:3002/api',
+    environmentName: 'demo',
+    API: 'https://demo.andes.gob.ar/api',
     APIStatusCheck: true,
     version: _package.version
 };

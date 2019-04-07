@@ -11,9 +11,9 @@ import { TurnosService } from '../services/turnos.service';
 })
 export class TurnosComponent implements OnInit {
 
-    private prestacionSeleccionada;
+    public prestacionSeleccionada;
     private agendas = [];
-    private listadoTurnos = [];
+    public listadoTurnos = [];
     constructor(
         private agendasService: AgendasService,
         private turnosService: TurnosService,
