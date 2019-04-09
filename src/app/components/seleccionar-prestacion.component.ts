@@ -5,7 +5,8 @@ import { AgendasService } from '../services/agendas.services';
 import { PacienteService } from '../services/paciente.service';
 
 @Component({
-    templateUrl: 'seleccionar-prestacion.html'
+    templateUrl: 'seleccionar-prestacion.html',
+    
 })
 export class SeleccionarPrestacionComponent implements OnInit {
     public prestaciones = [];

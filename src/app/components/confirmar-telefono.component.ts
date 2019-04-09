@@ -77,7 +77,7 @@ export class ConfirmarTelefonoComponent implements OnInit {
                 'ranking': 0,
                 'ultimaActualizacion': new Date()
             });
-            this.router.navigate(['buscar']);
+            this.router.navigate(['inicio']);
         } else {
             this.plex.info('info', 'Número de celular incorrecto', 'Atención');
         }
