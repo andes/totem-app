@@ -17,7 +17,10 @@ export class PacienteService {
      */
     getScanMatch(params: any): Observable<any[]> {
         return this.server.get(this.urlBusquedaDocumento, { params: params, showError: true }).map((value) => {
-            return value.map((i) => ({ paciente: i, id: i.id, match: 100 }));
+            console.log(value);
+            // return value.map((i) => ({ paciente: i, id: i.id, match: 100 }));
+            return value.paciente;
+
         });
     }
 
@@ -36,4 +39,10 @@ export class PacienteService {
             return this.server.post(this.pacienteUrl, paciente);
         }
     }
+
+
+    patch(id: String, cambios: any, options: any = {}): Observable<any> {
+        return this.server.patch(`${this.pacienteUrl}/${id}`, cambios);
+    }
+
 }

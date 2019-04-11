@@ -1,0 +1,27 @@
+.cardTurno{
+    padding: 2% 5% 3% 5%;
+    box-shadow: 5px 3px 20px #0000009e;
+}
+
+.prestacion{
+    color: #00a8e0;
+    font-weight: 500;
+}
+
+.profesional{
+    color: #7b398d;
+    font-size: 29px;
+    font-weight: 600;
+}
+
+.btnConfirmTurno{
+    width: 100%;
+    padding: 25px;
+}
+
+.btnTurnos{
+    color: white;
+    background-color: #002738 !important;
+    border: #00a8e0;
+    font-size: 25px;
+}

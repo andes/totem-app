@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { PacienteService } from '../services/paciente.service';
 import Keyboard from 'simple-keyboard';
 import { Router } from '@angular/router';
@@ -7,13 +7,15 @@ import { Plex } from '@andes/plex';
 @Component({
     selector: 'confirmar-telefono',
     templateUrl: 'confirmar-telefono.html',
-    styleUrls: ['confirmar-telefono.css']
+    encapsulation: ViewEncapsulation.None,
+    styleUrls: ['../../../node_modules/simple-keyboard/build/css/index.css',
+        'confirmar-telefono.css']
 })
 export class ConfirmarTelefonoComponent implements OnInit {
     public paciente;
     public autoFocus = 0;
     public indiceTelefono;
-    public telefono: string;
+    public telefono = '';
     constructor(
         private pacienteService: PacienteService,
         private router: Router,
@@ -23,6 +25,10 @@ export class ConfirmarTelefonoComponent implements OnInit {
     ngOnInit() {
         this.autoFocus++;
         this.paciente = this.pacienteService.getPacienteValor();
+        console.log(this.paciente);
+        if (!this.paciente) {
+            this.router.navigate(['buscar']);
+        }
         if (!this.paciente.contacto) {
             this.paciente.contacto = [];
         }
@@ -31,6 +37,7 @@ export class ConfirmarTelefonoComponent implements OnInit {
             if (index >= 0) {
                 this.indiceTelefono = index;
                 this.telefono = this.paciente.contacto[this.indiceTelefono].valor;
+                // this.onChange( this.telefono);
             }
         }
         let keyboard = new Keyboard({
@@ -51,6 +58,7 @@ export class ConfirmarTelefonoComponent implements OnInit {
                 '{bksp}': 'Borrar'
             }
         });
+        keyboard.setInput(this.telefono);
 
     }
 
@@ -66,21 +74,37 @@ export class ConfirmarTelefonoComponent implements OnInit {
     }
 
     confirmar() {
-        if (this.telefono.length === 10) {
-            if (this.indiceTelefono) {
-                this.paciente.contacto[this.indiceTelefono].valor = this.telefono;
-            }
-            this.paciente.contacto.push({
-                'activo': true,
-                'tipo': 'celular',
-                'valor': this.telefono,
-                'ranking': 0,
-                'ultimaActualizacion': new Date()
-            });
-            this.router.navigate(['inicio']);
+        if (this.telefono.length === 0) {
+            this.plex.info('info', 'Debe ingresar su número de celular', 'Atención');
         } else {
-            this.plex.info('info', 'Número de celular incorrecto', 'Atención');
+            if (this.telefono.length === 10) {
+                if (this.indiceTelefono) {
+                    console.log(this.paciente);
+                    this.paciente.contacto[this.indiceTelefono].valor = this.telefono;
+                }
+                this.paciente.contacto.push({
+                    'activo': true,
+                    'tipo': 'celular',
+                    'valor': this.telefono,
+                    'ranking': 0,
+                    'ultimaActualizacion': new Date()
+                });
+                let cambios = {
+                    'op': 'updateContactos',
+                    'contacto': this.paciente.contacto
+                };
+
+                this.pacienteService.patch(this.paciente.id, cambios).subscribe(resultado => {
+                    console.log(resultado);
+                    this.router.navigate(['prestaciones']);
+
+                });
+
+            } else {
+                this.plex.info('info', 'Número de celular incorrecto', 'Atención');
+            }
         }
+
     }
 
 }

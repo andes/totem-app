@@ -23,6 +23,8 @@ import { ScanPacienteComponent } from './components/scan-paciente.component';
 import { PacienteService } from './services/paciente.service';
 import { ConfirmarTelefonoComponent } from './components/confirmar-telefono.component';
 import { SeleccionarPrestacionComponent } from './components/seleccionar-prestacion.component';
+import { HeaderComponent } from './components/header.component';
+import { PublicidadComponent } from './components/publicidad.component';
 registerLocaleData(localeEs, 'es');
 
 @NgModule({
@@ -42,6 +44,8 @@ registerLocaleData(localeEs, 'es');
     AppComponent,
     TurnosComponent,
     SeleccionarPrestacionComponent,
+    HeaderComponent,
+    PublicidadComponent,
     ProfesionalPipe,
     ScanPacienteComponent,
     ConfirmarTelefonoComponent,

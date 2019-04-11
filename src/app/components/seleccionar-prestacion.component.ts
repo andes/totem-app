@@ -6,7 +6,9 @@ import { PacienteService } from '../services/paciente.service';
 
 @Component({
     templateUrl: 'seleccionar-prestacion.html',
-    
+    styles: ['.btnPrestacion { font-size:25px }']
+
+
 })
 export class SeleccionarPrestacionComponent implements OnInit {
     public prestaciones = [];
@@ -25,6 +27,7 @@ export class SeleccionarPrestacionComponent implements OnInit {
         }
         this.prestacionesService.getPrestaciones().subscribe(resultado => {
             this.prestaciones = resultado;
+            console.log(this.prestaciones);
         });
     }
 
@@ -33,6 +36,10 @@ export class SeleccionarPrestacionComponent implements OnInit {
         console.log(prestacion);
         this.agendasService.getAgendas({ prestacion: prestacion.conceptId }).subscribe(agendas => {
         });
+    }
+
+    salir() {
+        this.router.navigate(['confirmar-telefono']);
     }
 
 }

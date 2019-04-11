@@ -8,7 +8,8 @@ import { PacienteService } from '../services/paciente.service';
 
 
 @Component({
-    templateUrl: 'turnos.html'
+    templateUrl: 'turnos.html',
+    styleUrls: ['turno.css']
 })
 export class TurnosComponent implements OnInit {
 
@@ -16,6 +17,8 @@ export class TurnosComponent implements OnInit {
     private agendas = [];
     private listadoTurnos = [];
     private paciente;
+    public confirmarTurno = false;
+    public turnoSeleccionado;
     constructor(
         private agendasService: AgendasService,
         private turnosService: TurnosService,
@@ -46,7 +49,7 @@ export class TurnosComponent implements OnInit {
 
     parsearTurnos(agendas) {
         let agendasParseadas = agendas.map(agenda => {
-            let turnos = agenda.bloques.turnos.filter(turno => turno.estado === 'disponible');
+            let turnos = agenda.bloques.turnos.filter(turno => turno.estado === 'disponible' && turno.horaInicio >= new Date());
             return {
                 idAgenda: agenda._id,
                 idBloque: agenda.bloques._id,
@@ -59,16 +62,27 @@ export class TurnosComponent implements OnInit {
     }
 
     selectTurno(turno) {
+        console.log(turno);
+        this.turnoSeleccionado = turno;
         if (!this.paciente) {
             this.plex.info('danger', 'Paciente no encontrado', 'Error');
         }
-        this.turnosService.save(turno, this.paciente, { showError: false }).subscribe((resultado) => {
+
+    }
+
+    guardar() {
+        console.log(this.turnoSeleccionado);
+                this.turnosService.save(this.turnoSeleccionado, this.paciente, { showError: false }).subscribe((resultado) => {
             this.plex.info('success', 'El turno se asignó correctamente');
             this.router.navigate(['buscar']);
         }, (error) => {
             this.plex.info('danger', 'Turno no asignado', 'Error');
             this.router.navigate(['buscar']);
         });
+    }
+
+    salir() {
+        this.router.navigate(['buscar']);
     }
 }
 

@@ -1,16 +1,17 @@
 <plex-layout main="12">
   <plex-layout-main>
-     <header>
-       <h2>HOLA <strong class='colorPaciente'> {{paciente?.nombre}}
-           {{paciente?.apellido}}
-         </strong></h2>
-     </header>
-    <ul>
-      <div class="pt-2" *ngFor="let prestacion of prestaciones">
-        <button class="btn-block" type="info" (click)="selectPrestacion(prestacion)">
+    <header>
+
+      <header-component></header-component>
+    </header>
+    <div class='row'>
+      <div class="col-6 mt-1" *ngFor="let prestacion of prestaciones">
+
+        <button class="btn btn-primary w-100 btnPrestacion" type="info" (click)="selectPrestacion(prestacion)">
           &nbsp;<br>{{prestacion.term | uppercase}}<br>&nbsp;
         </button>
       </div>
-    </ul>
+    </div>
   </plex-layout-main>
+
 </plex-layout>

@@ -60,8 +60,9 @@ export class ScanPacienteComponent implements OnInit {
 
     private buscarPaciente(pacienteEscaneado: { sexo: string; fechaNacimiento: any; documento: string; apellido: string; nombre: string; scan: string; }) {
         this.pacienteService.getScanMatch(pacienteEscaneado).subscribe(resultado => {
-            if (resultado.length) {
-                this.pacienteService.setPaciente(resultado[0].paciente);
+            if (resultado) {
+                console.log(resultado);
+                this.pacienteService.setPaciente(resultado);
                 this.router.navigate(['confirmar-telefono']);
             } else {
                 // Notificar error

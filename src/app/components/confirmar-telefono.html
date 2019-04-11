@@ -1,32 +1,35 @@
 <plex-layout>
   <plex-layout-main>
     <header>
-      <h2>HOLA  <strong class='colorPaciente'> {{paciente?.nombre}}
-          {{paciente?.apellido}}
-         </strong></h2>
-      <h3>Por favor, confirme su número telefónico</h3>
+
+      <header-component></header-component>
     </header>
-    <div class="row mt-4 d-flex justify-content-center">
-      <div class="col-4 ">
-        <plex-text [(ngModel)]="telefono" name='telefono' [autoFocus]="autoFocus"
-          placeholder="Ingrese su número telefónico">
-        </plex-text>
+    <div class="row  d-flex justify-content-center">
+      <div class="col-6 text-center ">
+        <div>
+          <h2>Por favor, confirme su número telefónico</h2>
+          <p>Ingrese el código de área sin cero y su número sin el 15 (Ej. 2996000000)</p>
+        </div>
+        <h1>{{telefono}}</h1>
+        <!-- <plex-text [(ngModel)]="telefono" name='telefono' [autoFocus]="autoFocus" placeholder="Ingrese su número telefónico">
+          </plex-text> -->
       </div>
     </div>
     <div class="row mt-2 d-flex justify-content-center">
       <div class="col-5">
-        Ingrese el código de área sin cero y su número sin el 15 (Ej. 2996000000)
+
       </div>
     </div>
     <div class="row mt-2 d-flex justify-content-center">
 
-      <div class=' col-6 container'>
+      <div class=' col-6 container text-center'>
         <div class="simple-keyboard"></div>
+        <button label="Confirmar" class='btn btn-success btnConfirm mt-1'  (click)='confirmar()'>Confirmar</button>
+
+        <!-- <plex-button label="Confirmar" type="success" (click)='confirmar()'></plex-button> -->
+
       </div>
     </div>
   </plex-layout-main>
-  <plex-layout-footer>
-    <plex-button position="right" label="Confirmar" type="success" (click)='confirmar()'></plex-button>
-    <plex-button position="left" label="Salir" type="danger" (click)='salir()'></plex-button>
-  </plex-layout-footer>
+
 </plex-layout>

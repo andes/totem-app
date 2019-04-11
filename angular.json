@@ -27,8 +27,7 @@
               }
             ],
             "styles": [
-              "src/styles.scss",
-              "node_modules/simple-keyboard/build/css/index.css"
+              "src/styles.scss"
             ],
             "scripts": [
               "node_modules/intro.js/intro.js"

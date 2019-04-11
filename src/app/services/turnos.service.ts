@@ -11,8 +11,8 @@ export class TurnosService {
 
     constructor(private server: Server) { }
 
-    save(turno: any, paciente:any, options: any = {}): Observable<any> {
-       
+    save(turno: any, paciente: any, options: any = {}): Observable<any> {
+
         // Datos del Turno
         let datosTurno = {
             idAgenda: turno.idAgenda,
