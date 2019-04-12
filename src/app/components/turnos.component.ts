@@ -62,7 +62,6 @@ export class TurnosComponent implements OnInit {
     }
 
     selectTurno(turno) {
-        console.log(turno);
         this.turnoSeleccionado = turno;
         if (!this.paciente) {
             this.plex.info('danger', 'Paciente no encontrado', 'Error');
@@ -71,14 +70,17 @@ export class TurnosComponent implements OnInit {
     }
 
     guardar() {
-        console.log(this.turnoSeleccionado);
-                this.turnosService.save(this.turnoSeleccionado, this.paciente, { showError: false }).subscribe((resultado) => {
-            this.plex.info('success', 'El turno se asignó correctamente');
-            this.router.navigate(['buscar']);
-        }, (error) => {
-            this.plex.info('danger', 'Turno no asignado', 'Error');
-            this.router.navigate(['buscar']);
-        });
+        // this.router.navigate(['publicidad']);
+
+        this.router.navigate(['/publicidad'], { queryParams: { textoTurno: true } });
+        //         this.turnosService.save(this.turnoSeleccionado, this.paciente, { showError: false }).subscribe((resultado) => {
+        //     this.plex.info('success', 'El turno se asignó correctamente');
+        //     this.router.navigate(['publicidad']);
+        // }, (error) => {
+        //     console.log(error);
+        //     this.plex.info('danger', 'Turno no asignado', 'Error');
+        //     this.router.navigate(['buscar']);
+        // });
     }
 
     salir() {

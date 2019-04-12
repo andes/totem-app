@@ -19,6 +19,7 @@ export class PublicidadComponent implements OnInit {
     private agendas = [];
     private listadoTurnos = [];
     private paciente;
+    public mensajeSuccess = true;
     constructor(
         private agendasService: AgendasService,
         private turnosService: TurnosService,
@@ -30,13 +31,27 @@ export class PublicidadComponent implements OnInit {
     ) { }
 
     ngOnInit() {
-        this.paciente = this.pacienteService.getPacienteValor();
 
+        this.route.queryParams.subscribe(params => {
+            console.log(params);
+            if (params.textoTurno === 'false') {
+                this.mensajeSuccess = false;
+            } else {
+                this.mensajeSuccess = true;
+            }
+        });
+        // setTimeout(() => {
+        //     this.router.navigate(['buscar']);
+
+        // }, 3000);
     }
 
 
-    volver() {
-        this.location.back();
+
+
+    salir() {
+        // this.router.navigate(['buscar']);
+
     }
 
 }

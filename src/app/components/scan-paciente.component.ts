@@ -16,6 +16,7 @@ export class ScanPacienteComponent implements OnInit {
     ) { }
 
     ngOnInit() {
+        console.log(this.autoFocus);
         this.autoFocus++;
     }
 
@@ -33,6 +34,7 @@ export class ScanPacienteComponent implements OnInit {
                 // TODO: DOCUMENTO INVÁLIDO, rechazar entrada y blanquear input
             }
             let pacienteEscaneado = this.parseData(formatoDocumento);
+            console.log(pacienteEscaneado);
             this.buscarPaciente(pacienteEscaneado);
         }
     }
@@ -61,7 +63,6 @@ export class ScanPacienteComponent implements OnInit {
     private buscarPaciente(pacienteEscaneado: { sexo: string; fechaNacimiento: any; documento: string; apellido: string; nombre: string; scan: string; }) {
         this.pacienteService.getScanMatch(pacienteEscaneado).subscribe(resultado => {
             if (resultado) {
-                console.log(resultado);
                 this.pacienteService.setPaciente(resultado);
                 this.router.navigate(['confirmar-telefono']);
             } else {

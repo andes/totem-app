@@ -1,18 +1,61 @@
-<div class='container'>
-    <div class='row'>
-        <div class='col-12'>
-         <h1>¡¡Su turno fue asignado correctamente!!</h1>   
+<div class='container publicidad' (click)='salir()'>
+    <div class='row' *ngIf='mensajeSuccess'>
+        <div class='col-12 mensajeSuccess'>
+
+
+            <div class="swal2-icon swal2-success swal2-animate-success-icon" style="display: flex;">
+                <span class="swal2-success-line-tip"></span> <span class="swal2-success-line-long"></span>
+                <div class="swal2-success-ring"></div>
+            </div><img class="swal2-image" style="display: none;">
+
+            <h1>Su turno fue asignado correctamente</h1>
         </div>
+    </div>
+    <div class='row' [ngClass]="{ 'mt-5': !mensajeSuccess}">
+        <div class='col-12 texto'>
+            <h1>Recuerde que usted puede descargar la aplicación Andes Neuquén para recibir notificaciones, gestionar
+                sus turnos, ver sus
+                laboratorios y vacunas.</h1>
+        </div>
+
+
     </div>
     <div class='row'>
         <div class='col-6'>
-            <h1>Descargue la aplicación Andes Neuquén para recibir notificaciones, gestionar sus turnos, ver sus
-                laboratorios y vacunas.</h1>
-        </div>
-        <div class='col-6 '>
-            <!-- <button class='btn btn-danger btnBack' (click)='volver()'>Atras</button> -->
-        </div>
+            <div class='row'>
+                <div class='col-4'>
 
+                    <img src="https://www.andes.gob.ar/images/a_dni.svg" width='100%' alt="">
+                </div>
+                <div class='col-8 mt-5'>
+                    <h1 class='colorTextoPasos'> <span class='colorPasos'>PASO 1 :</span> Acercate a un punto de
+                        acreditación ANDES</h1>
+                    <p class='textoPasos'> Una vez validada tu identidad a partir de tu DNI; te enviaremos un
+                        código de
+                        activac3ión
+                        que
+                        deberás ingresar al registrarte en la app</p>
+                </div>
+
+            </div>
+        </div>
+        <div class='col-6'>
+
+            <div class='row'>
+                <div class='col-4'>
+
+                    <img src="https://www.andes.gob.ar/images/codigo.svg" width='100%' alt="">
+                </div>
+                <div class='col-8 mt-5'>
+                    <h1 class='colorTextoPasos'> <span class='colorPasos'>PASO 2 :</span> Descargá la app de ANDES en
+                        tu celular</h1>
+                    <p class='textoPasos'> Encontrala en Google Play Store. Una vez instalada en tu dispositivo,
+                        ingresá el código que te enviamos al acreditarte en ANDES.</p>
+                </div>
+
+            </div>
+        </div>
     </div>
 </div>
+
 <!-- <span class='datosSecundarios'>Genero:Masculino</span> <span class='datosSecundarios'>Fecha de nacimiento:19/10/1995</span> -->

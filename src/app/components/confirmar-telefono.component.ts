@@ -25,7 +25,6 @@ export class ConfirmarTelefonoComponent implements OnInit {
     ngOnInit() {
         this.autoFocus++;
         this.paciente = this.pacienteService.getPacienteValor();
-        console.log(this.paciente);
         if (!this.paciente) {
             this.router.navigate(['buscar']);
         }
@@ -79,7 +78,6 @@ export class ConfirmarTelefonoComponent implements OnInit {
         } else {
             if (this.telefono.length === 10) {
                 if (this.indiceTelefono) {
-                    console.log(this.paciente);
                     this.paciente.contacto[this.indiceTelefono].valor = this.telefono;
                 }
                 this.paciente.contacto.push({
@@ -95,7 +93,6 @@ export class ConfirmarTelefonoComponent implements OnInit {
                 };
 
                 this.pacienteService.patch(this.paciente.id, cambios).subscribe(resultado => {
-                    console.log(resultado);
                     this.router.navigate(['prestaciones']);
 
                 });

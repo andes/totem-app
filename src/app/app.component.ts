@@ -1,11 +1,13 @@
 
 import { finalize } from 'rxjs/operators';
 import { environment } from './../environments/environment';
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { Plex } from '@andes/plex';
 import { Server } from '@andes/shared';
 import { Auth } from '@andes/auth';
 import { ANDES_KEY } from '../config.private';
+import { Subject } from 'rxjs';
+import { Router } from '@angular/router';
 
 // import { RxSocket } from 'rx-socket.io-client';
 
@@ -28,9 +30,14 @@ export class AppComponent {
     } else {
       this.plex.updateAppStatus({ API: 'OK' });
     }
-  }
 
-  constructor(public plex: Plex, public server: Server, private auth: Auth) {
+
+
+  }
+  userActivity;
+  userInactive: Subject<any> = new Subject();
+
+  constructor(public plex: Plex, public server: Server, private auth: Auth, private router: Router, ) {
     // Configura server. Debería hacerse desde un provider (http://stackoverflow.com/questions/39033835/angularjs2-preload-server-configuration-before-the-application-starts)
     server.setBaseURL(environment.API);
     window.sessionStorage.setItem('jwt', ANDES_KEY);
@@ -40,7 +47,18 @@ export class AppComponent {
 
     // Inicializa el chequeo de conectividad
     this.initStatusCheck();
+    this.setTimeout();
+    this.userInactive.subscribe(() => this.router.navigate(['/publicidad'], { queryParams: { textoTurno: false } }));
+
   }
 
+  setTimeout() {
+    // this.userActivity = setTimeout(() => this.userInactive.next(undefined), 5000);
 
+  }
+
+  @HostListener('window:mousemove') refreshUserState() {
+    clearTimeout(this.userActivity);
+    this.setTimeout();
+  }
 }

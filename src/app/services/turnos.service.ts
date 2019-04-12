@@ -12,7 +12,7 @@ export class TurnosService {
     constructor(private server: Server) { }
 
     save(turno: any, paciente: any, options: any = {}): Observable<any> {
-
+        console.log(turno);
         // Datos del Turno
         let datosTurno = {
             idAgenda: turno.idAgenda,
@@ -20,12 +20,11 @@ export class TurnosService {
             idBloque: turno.idBloque,
             paciente,
             tipoPrestacion: turno.prestacion,
-            tipoTurno: 'programado',
+            tipoTurno:  moment(turno.turno.horaInicio).format('DD/MM/YYYY') === moment(new Date()).format('DD/MM/YYYY') ? 'delDia' : 'programado',
             emitidoPor: 'totem',
             nota: 'Turno pedido desde totem',
             motivoConsulta: ''
         };
-
         if (turno.idAgenda) {
             return this.server.patch(this.turnosUrl + '/turno/' + turno.turno._id + '/bloque/' + turno.idBloque + '/agenda/' + turno.idAgenda, datosTurno, options);
         }
