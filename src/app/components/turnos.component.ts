@@ -13,7 +13,7 @@ import { PacienteService } from '../services/paciente.service';
 })
 export class TurnosComponent implements OnInit {
 
-    private prestacionSeleccionada;
+    public prestacionSeleccionada;
     private agendas = [];
     private listadoTurnos = [];
     private paciente;
