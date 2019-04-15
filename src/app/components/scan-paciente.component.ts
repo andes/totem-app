@@ -16,7 +16,6 @@ export class ScanPacienteComponent implements OnInit {
     ) { }
 
     ngOnInit() {
-        console.log(this.autoFocus);
         this.autoFocus++;
     }
 
@@ -34,7 +33,6 @@ export class ScanPacienteComponent implements OnInit {
                 // TODO: DOCUMENTO INVÁLIDO, rechazar entrada y blanquear input
             }
             let pacienteEscaneado = this.parseData(formatoDocumento);
-            console.log(pacienteEscaneado);
             this.buscarPaciente(pacienteEscaneado);
         }
     }

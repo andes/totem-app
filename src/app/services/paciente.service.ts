@@ -16,10 +16,8 @@ export class PacienteService {
      * @memberof PacienteService
      */
     getScanMatch(params: any): Observable<any[]> {
-        console.log(params);
         return this.server.get(this.urlBusquedaDocumento, { params: params, showError: true }).map((value) => {
             // return value.map((i) => ({ paciente: i, id: i.id, match: 100 }));
-            console.log(value);
             return value;
 
         });

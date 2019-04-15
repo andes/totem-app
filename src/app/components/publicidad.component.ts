@@ -33,7 +33,6 @@ export class PublicidadComponent implements OnInit {
     ngOnInit() {
 
         this.route.queryParams.subscribe(params => {
-            console.log(params);
             if (params.textoTurno === 'false') {
                 this.mensajeSuccess = false;
             } else {
