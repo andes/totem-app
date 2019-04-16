@@ -5,7 +5,7 @@ import { Server } from '@andes/shared';
 @Injectable()
 export class PrestacionesService {
     // URL to web api
-    private prestacionesUrl = '/modules/totem/prestacionesDisponibles';
+    private prestacionesUrl = '/modules/turnos/prestacionesDisponibles';
 
     constructor(private server: Server) { }
 
