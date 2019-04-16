@@ -42,14 +42,14 @@ export class PublicidadComponent implements OnInit {
         // setTimeout(() => {
         //     this.router.navigate(['buscar']);
 
-        // }, 3000);
+        // }, 4000);
     }
 
 
 
 
     salir() {
-        // this.router.navigate(['buscar']);
+        this.router.navigate(['buscar']);
 
     }
 

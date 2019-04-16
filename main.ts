@@ -1,12 +1,12 @@
-import { app, BrowserWindow } from 'electron';
+import { app, BrowserWindow, webFrame } from 'electron';
 import * as path from 'path';
 import * as url from 'url';
 
 let win;
 
 function createWindow() {
-    win = new BrowserWindow({ width: 800, height: 600 });
-
+    win = new BrowserWindow({ width: 1500, height: 900, fullscreen: true, webPreferences: { zoomFactor: 1 } });
+    // webFrame.setZoomFactor(2);
     // load the dist folder from Angular
     win.loadURL(
         url.format({
