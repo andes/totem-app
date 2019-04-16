@@ -17,15 +17,18 @@
         </ul> -->
 
         <div class='row'>
-            <div class="col-4 mt-1"  *ngFor="let turno of listadoTurnos">
+            <div class="col-4 mt-1" *ngFor="let turno of listadoTurnos">
                 <div class="pt-2">
                     <button class="btn btnTurnos w-100" type="info" (click)="selectTurno(turno)">
                         {{turno.turno.horaInicio | date:"dd/MM/yyyy - HH:mm "}} hs<br>
-                        {{turno.profesional | profesional}}
+                        <span *ngIf='turno.profesional'> {{turno.profesional | profesional}}</span>
+                        <span *ngIf='!turno.profesional'>Profesional no
+                            asignado</span>
+
                     </button>
                 </div>
             </div>
-          </div>
+        </div>
     </plex-layout-main>
     <plex-layout-main *ngIf='turnoSeleccionado'>
         <header>
@@ -42,11 +45,14 @@
                     <h1 class='prestacion'>{{turnoSeleccionado.prestacion.term | uppercase}} </h1>
                     <h3>Dia: <strong> {{turnoSeleccionado.turno.horaInicio| date: "dd/MM/yyyy"}}</strong></h3>
                     <h3>Hora:<strong>{{turnoSeleccionado.turno.horaInicio| date: " HH:mm "}}hs</strong></h3>
-                    <span class='profesional'>{{turnoSeleccionado.profesional.apellido}}
+                    <span class='profesional' *ngIf='turnoSeleccionado.profesional'>{{turnoSeleccionado.profesional.apellido}}
                         {{turnoSeleccionado.profesional.nombre}}</span>
+                    <span class='profesional' *ngIf='!turnoSeleccionado.profesional'>Profesional no
+                        asignado</span>
                     <div class='mt-5'>
                         <button label="Confirmar" class='btn btn-success btnConfirmTurno' (click)='guardar()'>Confirmar</button>
-                        <button class='btn btn-warning btnConfirmTurno mt-2' (click)='salir()'>Salir sin confirmar turno</button>
+                        <button class='btn btn-warning btnConfirmTurno mt-2' (click)='salir()'>Salir sin confirmar
+                            turno</button>
 
                     </div>
                 </div>

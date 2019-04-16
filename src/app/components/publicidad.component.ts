@@ -49,7 +49,7 @@ export class PublicidadComponent implements OnInit {
 
 
     salir() {
-        this.router.navigate(['buscar']);
+        // this.router.navigate(['buscar']);
 
     }
 

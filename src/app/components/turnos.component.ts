@@ -38,6 +38,7 @@ export class TurnosComponent implements OnInit {
             if (this.prestacionSeleccionada && this.prestacionSeleccionada.conceptId) {
                 this.agendasService.getAgendas({ prestacion: this.prestacionSeleccionada.conceptId }).subscribe((agendas) => {
                     this.agendas = agendas;
+                    console.log(this.agendas);
                     this.listadoTurnos = this.parsearTurnos(agendas);
                 }, (error) => {
                     this.plex.info('danger', error, 'Error');
