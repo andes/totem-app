@@ -5,7 +5,7 @@ import { Server } from '@andes/shared';
 @Injectable()
 export class AgendasService {
     // URL to web api
-    private agendasUrl = '/modules/totem/agendasDisponibles';
+    private agendasUrl = '/modules/turnos/agendasDisponibles';
 
     constructor(private server: Server) { }
 
