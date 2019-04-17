@@ -5,7 +5,7 @@ var path = require("path");
 var url = require("url");
 var win;
 function createWindow() {
-    win = new electron_1.BrowserWindow({ width: 1500, height: 900, fullscreen: true, webPreferences: { zoomFactor: 0.9, session: { clearCache: true } } });
+    win = new electron_1.BrowserWindow({ width: 1500, height: 900, fullscreen: true, webPreferences: { zoomFactor: 0.8, session: { clearCache: true } } });
     // webFrame.setZoomFactor(2);
     // load the dist folder from Angular
     // const ses = win.webContents.session.clearCache(function () {
@@ -16,7 +16,7 @@ function createWindow() {
         slashes: true
     }));
     // The following is optional and will open the DevTools:
-    win.webContents.openDevTools()
+    // win.webContents.openDevTools()
     win.on('closed', function () {
         win = null;
     });

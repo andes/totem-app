@@ -50,8 +50,8 @@
                     <span class='profesional' *ngIf='!turnoSeleccionado.profesional'>Profesional no
                         asignado</span>
                     <div class='mt-5'>
-                        <button label="Confirmar" class='btn btn-success btnConfirmTurno' (click)='guardar()'>Confirmar</button>
-                        <button class='btn btn-warning btnConfirmTurno mt-2' (click)='salir()'>Salir sin confirmar
+                        <button label="Confirmar" [disabled]='disabled' class='btn btn-success btnConfirmTurno' (click)='guardar()'>Confirmar</button>
+                        <button class='btn btn-warning btnConfirmTurno mt-2' [disabled]='disabled' (click)='salir()'>Salir sin confirmar
                             turno</button>
 
                     </div>

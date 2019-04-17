@@ -37,12 +37,13 @@ export class PublicidadComponent implements OnInit {
                 this.mensajeSuccess = false;
             } else {
                 this.mensajeSuccess = true;
+                setTimeout(() => {
+                    this.router.navigate(['buscar']);
+
+                }, 4000);
             }
         });
-        setTimeout(() => {
-            this.router.navigate(['buscar']);
 
-        }, 4000);
     }
 
 

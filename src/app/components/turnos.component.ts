@@ -19,6 +19,7 @@ export class TurnosComponent implements OnInit {
     private paciente;
     public confirmarTurno = false;
     public turnoSeleccionado;
+    public disabled = false;
     constructor(
         private agendasService: AgendasService,
         private turnosService: TurnosService,
@@ -71,17 +72,18 @@ export class TurnosComponent implements OnInit {
 
     guardar() {
         // this.router.navigate(['publicidad']);
-
+        this.disabled = true;
         this.turnosService.save(this.turnoSeleccionado, this.paciente, { showError: false }).subscribe((resultado) => {
-            this.plex.info('success', 'El turno se asignó correctamente');
+            // this.plex.info('success', 'El turno se asignó correctamente');
             this.router.navigate(['/publicidad'], { queryParams: { textoTurno: true } });
         }, (error) => {
-            this.plex.info('danger', 'Turno no asignado', 'Error');
+            // this.plex.info('danger', 'Turno no asignado', 'Error');
             this.router.navigate(['buscar']);
         });
     }
 
     salir() {
+        this.disabled = true;
         this.router.navigate(['buscar']);
     }
 }
