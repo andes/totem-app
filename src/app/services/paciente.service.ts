@@ -5,7 +5,6 @@ import { BehaviorSubject } from 'rxjs';
 
 @Injectable()
 export class PacienteService {
-    private urlBusquedaDocumento = '/core/mpi/pacientes/buscarDocumento';  // URL to web api
     private pacienteUrl = '/core/mpi/pacientes';  // URL to web api
     private pacienteCache = new BehaviorSubject<any>(null);
     constructor(private server: Server) { }
@@ -15,16 +14,15 @@ export class PacienteService {
      * @returns {Observable<IPacienteMatch[]>}
      * @memberof PacienteService
      */
-    getScanMatch(params: any): Observable<any[]> {
-        return this.server.get(this.urlBusquedaDocumento, { params: params, showError: true }).map((value) => {
-            // return value.map((i) => ({ paciente: i, id: i.id, match: 100 }));
-            return value;
-
-        });
+    get(params: any): Observable<any[]> {
+        return this.server.get(this.pacienteUrl, { params: params, showError: true });
     }
 
     setPaciente(paciente: any) {
         this.pacienteCache.next(paciente);
+    }
+    clearPaciente() {
+        this.pacienteCache.next({});
     }
 
     getPacienteValor(): any {
@@ -44,4 +42,11 @@ export class PacienteService {
         return this.server.patch(`${this.pacienteUrl}/${id}`, cambios);
     }
 
+    /**
+     * Metodo getById. Trae un objeto paciente por su Id.
+     * @param {String} id Busca por Id
+     */
+    getById(id: String): Observable<any> {
+        return this.server.get(`${this.pacienteUrl}/${id}`, null);
+    }
 }

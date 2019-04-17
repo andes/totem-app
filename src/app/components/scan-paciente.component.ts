@@ -16,6 +16,7 @@ export class ScanPacienteComponent implements OnInit {
     ) { }
 
     ngOnInit() {
+        this.pacienteService.clearPaciente();
         this.autoFocus++;
     }
 
@@ -47,27 +48,35 @@ export class ScanPacienteComponent implements OnInit {
         if (formatoDocumento.grupoFechaNacimiento) {
             fechaNacimiento = moment(scanParseado[formatoDocumento.grupoFechaNacimiento], 'DD/MM/YYY');
         }
-        let pacienteEscaneado = {
+        return {
             sexo,
             fechaNacimiento,
             documento: scanParseado[formatoDocumento.grupoNumeroDocumento].replace(/\D/g, ''),
             apellido: scanParseado[formatoDocumento.grupoApellido],
             nombre: scanParseado[formatoDocumento.grupoNombre],
-            scan: this.scan
+            scan: this.scan,
+            estado: 'validado',
+            genero: sexo
         };
-        return pacienteEscaneado;
     }
 
-    private buscarPaciente(pacienteEscaneado: { sexo: string; fechaNacimiento: any; documento: string; apellido: string; nombre: string; scan: string; }) {
-        this.pacienteService.getScanMatch(pacienteEscaneado).subscribe(resultado => {
-            if (resultado) {
-                this.pacienteService.setPaciente(resultado);
-                this.router.navigate(['confirmar-telefono']);
-            } else {
-                // Notificar error
-            }
-        }, () => {
-        });
+    private buscarPaciente(pacienteEscaneado) {
+        let queryObject = pacienteEscaneado;
+        queryObject.type = 'simplequery';
+        this.pacienteService.get(pacienteEscaneado).subscribe(
+            resultado => {
+                if (resultado && resultado.length) {
+                    this.pacienteService.setPaciente(resultado[0]);
+                    this.router.navigate(['confirmar-telefono']);
+                } else {
+                    delete pacienteEscaneado.type;
+                    this.pacienteService.setPaciente(pacienteEscaneado);
+                    this.router.navigate(['confirmar-telefono']);
+                }
+            },
+            () => {
+
+            });
     }
 }
 

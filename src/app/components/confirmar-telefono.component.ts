@@ -28,6 +28,17 @@ export class ConfirmarTelefonoComponent implements OnInit {
         if (!this.paciente) {
             this.router.navigate(['buscar']);
         }
+        if (this.paciente.id) {
+            this.pacienteService.getById(this.paciente.id).subscribe(result => {
+                this.paciente = result;
+                this.loadConfirmar();
+            });
+        } else {
+            this.loadConfirmar();
+        }
+    }
+
+    loadConfirmar() {
         if (!this.paciente.contacto) {
             this.paciente.contacto = [];
         }
@@ -36,7 +47,6 @@ export class ConfirmarTelefonoComponent implements OnInit {
             if (index >= 0) {
                 this.indiceTelefono = index;
                 this.telefono = this.paciente.contacto[this.indiceTelefono].valor;
-                // this.onChange( this.telefono);
             }
         }
         let keyboard = new Keyboard({
@@ -58,7 +68,6 @@ export class ConfirmarTelefonoComponent implements OnInit {
             }
         });
         keyboard.setInput(this.telefono);
-
     }
 
     onChange(input) {
@@ -77,24 +86,19 @@ export class ConfirmarTelefonoComponent implements OnInit {
             this.plex.info('info', 'Debe ingresar su número de celular', 'Atención');
         } else {
             if (this.telefono.length === 10) {
-                if (this.indiceTelefono) {
+                if (this.indiceTelefono > -1) {
                     this.paciente.contacto[this.indiceTelefono].valor = this.telefono;
+                } else {
+                    this.paciente.contacto.push({
+                        'activo': true,
+                        'tipo': 'celular',
+                        'valor': this.telefono,
+                        'ranking': 0,
+                        'ultimaActualizacion': new Date()
+                    });
                 }
-                this.paciente.contacto.push({
-                    'activo': true,
-                    'tipo': 'celular',
-                    'valor': this.telefono,
-                    'ranking': 0,
-                    'ultimaActualizacion': new Date()
-                });
-                let cambios = {
-                    'op': 'updateContactos',
-                    'contacto': this.paciente.contacto
-                };
-
-                this.pacienteService.patch(this.paciente.id, cambios).subscribe(resultado => {
+                this.pacienteService.save(this.paciente).subscribe(resultado => {
                     this.router.navigate(['prestaciones']);
-
                 });
 
             } else {
