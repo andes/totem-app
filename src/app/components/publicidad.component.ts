@@ -39,17 +39,17 @@ export class PublicidadComponent implements OnInit {
                 this.mensajeSuccess = true;
             }
         });
-        // setTimeout(() => {
-        //     this.router.navigate(['buscar']);
+        setTimeout(() => {
+            this.router.navigate(['buscar']);
 
-        // }, 4000);
+        }, 4000);
     }
 
 
 
 
     salir() {
-        // this.router.navigate(['buscar']);
+        this.router.navigate(['buscar']);
 
     }
 

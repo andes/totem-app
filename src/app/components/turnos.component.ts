@@ -38,7 +38,6 @@ export class TurnosComponent implements OnInit {
             if (this.prestacionSeleccionada && this.prestacionSeleccionada.conceptId) {
                 this.agendasService.getAgendas({ prestacion: this.prestacionSeleccionada.conceptId }).subscribe((agendas) => {
                     this.agendas = agendas;
-                    console.log(this.agendas);
                     this.listadoTurnos = this.parsearTurnos(agendas);
                 }, (error) => {
                     this.plex.info('danger', error, 'Error');
@@ -73,15 +72,13 @@ export class TurnosComponent implements OnInit {
     guardar() {
         // this.router.navigate(['publicidad']);
 
-        this.router.navigate(['/publicidad'], { queryParams: { textoTurno: true } });
-        //         this.turnosService.save(this.turnoSeleccionado, this.paciente, { showError: false }).subscribe((resultado) => {
-        //     this.plex.info('success', 'El turno se asignó correctamente');
-        //     this.router.navigate(['publicidad']);
-        // }, (error) => {
-        //     console.log(error);
-        //     this.plex.info('danger', 'Turno no asignado', 'Error');
-        //     this.router.navigate(['buscar']);
-        // });
+        this.turnosService.save(this.turnoSeleccionado, this.paciente, { showError: false }).subscribe((resultado) => {
+            this.plex.info('success', 'El turno se asignó correctamente');
+            this.router.navigate(['/publicidad'], { queryParams: { textoTurno: true } });
+        }, (error) => {
+            this.plex.info('danger', 'Turno no asignado', 'Error');
+            this.router.navigate(['buscar']);
+        });
     }
 
     salir() {
