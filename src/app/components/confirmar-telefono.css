@@ -16,11 +16,20 @@ html {
 }
 
 .prefijo {
+  color: #00a8e0;
+}
+
+.numeroBorder {
+  border: 1px solid #000000;
+  display: inline-block;
+  min-width: 180px;
   color: #000000;
 }
 
-.numero {
+.prefijoBorder {
   border: 1px solid #000000;
+  display: inline-block;
+  min-width: 90px;
   color: #000000;
 }
 

@@ -14,11 +14,15 @@
       <div class="col-4 text-center celular">
         <h1>
           <span class="prefijo mr-2"> 0</span>
-          <span *ngIf="telefono" class="numero mr-4 px-2">{{telefono.substring(0,3)}}</span>
-          <span *ngIf="!telefono" class="numero mr-4 px-2">&nbsp;&nbsp;</span>
+          <span class="prefijoBorder mr-4 px-2">
+            <span *ngIf="telefono">{{telefono.substring(0,3)}}</span>
+            <span *ngIf="!telefono">&nbsp;&nbsp;</span>
+          </span>
           <span class="prefijo mr-2">15-</span>
-          <span *ngIf="telefono.length > 3" class="numero px-2">{{telefono.substring(3,telefono.length)}}</span>
-          <span *ngIf="!(telefono.length > 3)" class="numero px-2">&nbsp;&nbsp;</span>
+          <span class="numeroBorder px-2">
+            <span *ngIf="telefono.length > 3">{{telefono.substring(3,telefono.length)}}</span>
+            <span *ngIf="!(telefono.length > 3)">&nbsp;&nbsp;</span>
+          </span>
         </h1>
       </div>
     </div>
