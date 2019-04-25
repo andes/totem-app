@@ -43,3 +43,35 @@ otro: $otro);
 // RUP
 // @andrrrl ver con @jfgabriel
 // @import './src/app/styles/turnos/turnos';
+
+:host(.plex-box) {
+    padding: 0 !important;
+}
+
+plex-app {
+    .content {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+}
+
+.plex-box {
+    padding: 0 !important;
+}
+
+.plex-box-content {
+    padding: 0 !important;
+}
+
+plex-layout {
+    &>section {
+        &>div.row {
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+    }
+}
+
+.plex-box>header {
+    border-bottom: 2px solid #00a8e0 !important;
+}
