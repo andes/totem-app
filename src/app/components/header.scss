@@ -1,0 +1,69 @@
+.botoncito {
+    font-size: 48px;
+    color: white;
+    background: #424242;
+}
+
+.colorPaciente {
+    color: #7b398d;
+}
+
+hr {
+    border: 1px solid #00a8e0;
+    width: 3%;
+    margin: 0 0 4px 2px;
+}
+
+.btnBack {
+    padding: 14% 50px;
+}
+
+header {
+    pointer-events: none;
+    -webkit-user-select: none;
+    /* Chrome all / Safari all */
+    -moz-user-select: none;
+    /* Firefox all */
+    -ms-user-select: none;
+    /* IE 10+ */
+    user-select: none;
+    /* Likely future */
+}
+
+.contenedor {
+    display: grid;
+    grid-template-columns: 1fr 380px 230px;
+    grid-column-gap: 10px;
+    height: 44px;
+
+    border-top: 2px solid #00a8e0;
+    border-bottom: 2px solid #00a8e0;
+
+    .heading {
+        height: 40px;
+
+        .principal {
+            // height: 40px;
+            font-size: 2rem;
+        }
+
+        .secundario {
+            font-size: .9rem;
+        }
+    }
+
+    .paciente {
+        height: 40px;
+    }
+
+    .fecha {
+        color: white;
+        font-weight: 800;
+        background: #006599;
+        height: 40px;
+    }
+
+    .volver {}
+
+    .totem-nav {}
+}

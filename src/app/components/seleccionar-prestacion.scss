@@ -1,0 +1,14 @@
+.btnPrestacion {
+    font-size: 25px
+}
+
+.btn-prestacion {
+    background: #c2f2ff;
+    color: black;
+    font-size: 1.25rem;
+    text-transform: lowercase;
+
+    &::first-letter {
+        text-transform: uppercase;
+    }
+}

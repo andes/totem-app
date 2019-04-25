@@ -1,0 +1,16 @@
+.hidden {
+    // z-index: -1;
+}
+
+.visible {
+    width: 100vw;
+    height: calc(100vh - 80px);
+    background: #002738;
+    // position: absolute;
+    // z-index: 2;
+
+    .text-48px {
+        font-size: 10rem;
+        color: white;
+    }
+}

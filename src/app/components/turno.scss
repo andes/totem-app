@@ -1,0 +1,63 @@
+.cardTurno {
+    padding: 2% 5% 3% 5%;
+    box-shadow: 5px 3px 20px #0000009e;
+}
+
+.prestacion {
+    color: #00a8e0;
+    font-weight: 500;
+}
+
+.profesional {
+    color: #7b398d;
+    font-size: 29px;
+    font-weight: 600;
+}
+
+.btnConfirmTurno {
+    width: 100%;
+    padding: 25px;
+    font-size: 25px;
+}
+
+.btnTurnos {
+    color: white;
+    background-color: #002738 !important;
+    border: #00a8e0;
+    font-size: 25px;
+}
+
+.btn-turno {
+    background: #c2f2ff;
+    color: black;
+    border: 2px solid #00a8e0;
+    font-size: 1.75rem;
+    text-transform: lowercase;
+
+    >span {
+        height: 40px;
+        line-height: 25px;
+    }
+
+    &::first-letter,
+    span::first-letter {
+        text-transform: uppercase;
+    }
+
+    small {
+        font-size: 1rem;
+    }
+
+    &:hover {
+        border: 4px inset #002738;
+
+    }
+}
+
+.text-uppercase-first {
+    text-transform: lowercase;
+
+    &::first-letter {
+        text-transform: uppercase;
+    }
+}
