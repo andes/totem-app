@@ -14,6 +14,9 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app',
   templateUrl: './app.component.html',
+  styleUrls: [
+    `app.component.scss`
+  ]
 })
 
 export class AppComponent {
@@ -53,7 +56,7 @@ export class AppComponent {
   }
 
   setTimeout() {
-    this.userActivity = setTimeout(() => this.userInactive.next(undefined), 40000);
+    // this.userActivity = setTimeout(() => this.userInactive.next(undefined), 40000);
 
   }
 
