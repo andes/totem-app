@@ -1,28 +1,55 @@
-.cardTurno{
-    padding: 2% 5% 3% 5%;
-    box-shadow: 5px 3px 20px #0000009e;
+.cardTurno {
+  padding: 2% 5% 3% 5%;
+  box-shadow: 5px 3px 20px #0000009e;
 }
 
-.prestacion{
-    color: #00a8e0;
-    font-weight: 500;
+.prestacion {
+  color: #00a8e0;
+  font-weight: 500;
 }
 
-.profesional{
-    color: #7b398d;
-    font-size: 29px;
-    font-weight: 600;
+.greyPrefix {
+  color: grey;
+  font-size: 2rem;
+  font-weight: 600;
 }
 
-.btnConfirmTurno{
-    width: 100%;
-    padding: 25px;
-    font-size: 25px;
+.profesional {
+  color: #000000;
+  font-size: 2rem;
+  font-weight: 600;
 }
 
-.btnTurnos{
-    color: white;
-    background-color: #002738 !important;
-    border: #00a8e0;
-    font-size: 25px;
+.btnConfirmTurno {
+  width: 40%;
+  padding: 25px;
+  font-size: 25px;
+}
+
+.btnTurnos {
+  color: white;
+  background-color: #002738 !important;
+  border: #00a8e0;
+  font-size: 25px;
+}
+
+.btnConfirm {
+  width: 100%;
+  font-size: 32px
+}
+
+.acheerre {
+  text-align: center;
+  border-bottom: 2px solid #00a8e0;
+  width: 6%;
+  margin-left: 47%;
+}
+
+.blue {
+  color: #00a8e0;
+}
+
+.info-logo {
+  color: #00a8e0;
+  font-size: 76px
 }
