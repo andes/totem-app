@@ -12,6 +12,11 @@ import { Plex } from '@andes/plex';
         'confirmar-telefono.css']
 })
 export class ConfirmarTelefonoComponent implements OnInit {
+    public heading = {
+        principal: `Ingrese su número de teléfono`,
+        secundario: `Ingresá el código de tu área sin el "0" y tu número sin el "15"`
+    };
+
     public paciente;
     public autoFocus = 0;
     public indiceTelefono;
@@ -32,6 +37,7 @@ export class ConfirmarTelefonoComponent implements OnInit {
             this.pacienteService.getById(this.paciente.id).subscribe(result => {
                 this.paciente = result;
                 this.loadConfirmar();
+
             });
         } else {
             this.loadConfirmar();
@@ -53,7 +59,7 @@ export class ConfirmarTelefonoComponent implements OnInit {
             onChange: input => this.onChange(input),
             onKeyPress: button => this.onKeyPress(button),
             layout: {
-                default: ['1 2 3', '4 5 6', '7 8 9', ' 0 ', '{bksp}'],
+                default: ['{bksp}', '1 2 3', '4 5 6', '7 8 9', ' 0 '],
                 shift: ['! / #', '$ % ^', '& * (', '{shift} ) +', '{bksp}']
             },
             theme: 'hg-theme-default hg-layout-numeric numeric-theme ',

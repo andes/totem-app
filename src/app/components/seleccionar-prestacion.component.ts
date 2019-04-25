@@ -6,13 +6,19 @@ import { PacienteService } from '../services/paciente.service';
 
 @Component({
     templateUrl: 'seleccionar-prestacion.html',
-    styles: ['.btnPrestacion { font-size:25px }']
+    styleUrls: [
+        `seleccionar-prestacion.scss`
+    ]
 
 
 })
 export class SeleccionarPrestacionComponent implements OnInit {
     public prestaciones = [];
     public paciente;
+    public heading = {
+        principal: `Seleccione una Prestación`,
+        secundario: `Seleccione alguna de las prestaciones con turnos disponibles`
+    };
     constructor(
         private prestacionesService: PrestacionesService,
         private router: Router,

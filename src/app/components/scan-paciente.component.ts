@@ -5,7 +5,8 @@ import { Router } from '@angular/router';
 
 @Component({
     selector: 'scan-paciente',
-    templateUrl: 'scan-paciente.html'
+    templateUrl: 'scan-paciente.html',
+    styleUrls: [`scan-paciente.scss`]
 })
 export class ScanPacienteComponent implements OnInit {
     public scan: string;

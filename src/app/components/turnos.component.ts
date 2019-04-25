@@ -5,18 +5,20 @@ import { Plex } from '@andes/plex';
 import { TurnosService } from '../services/turnos.service';
 import { PacienteService } from '../services/paciente.service';
 
-
-
 @Component({
     templateUrl: 'turnos.html',
-    styleUrls: ['turno.css']
+    styleUrls: ['turno.scss']
 })
 export class TurnosComponent implements OnInit {
 
-    public prestacionSeleccionada;
-    private agendas = [];
-    private listadoTurnos = [];
+    public heading = {
+        principal: `Seleccione un día y horario`,
+        secundario: `Horarios disponisbles para la `
+    };
     private paciente;
+    public prestacionSeleccionada;
+    public agendas = [];
+    public listadoTurnos = [];
     public confirmarTurno = false;
     public turnoSeleccionado;
     public disabled = false;
@@ -37,12 +39,12 @@ export class TurnosComponent implements OnInit {
         this.route.queryParams.subscribe(params => {
             this.prestacionSeleccionada = params;
             if (this.prestacionSeleccionada && this.prestacionSeleccionada.conceptId) {
+                this.heading.secundario += ` <b>${this.prestacionSeleccionada.term}</b>`;
                 this.agendasService.getAgendas({ prestacion: this.prestacionSeleccionada.conceptId }).subscribe((agendas) => {
                     this.agendas = agendas;
                     this.listadoTurnos = this.parsearTurnos(agendas);
                 }, (error) => {
                     this.plex.info('danger', error, 'Error');
-
                 });
             }
         });
@@ -70,14 +72,15 @@ export class TurnosComponent implements OnInit {
 
     }
 
+    horaInicio(horaInicio) {
+        return moment(horaInicio).calendar();
+    }
+
     guardar() {
-        // this.router.navigate(['publicidad']);
         this.disabled = true;
         this.turnosService.save(this.turnoSeleccionado, this.paciente, { showError: false }).subscribe((resultado) => {
-            // this.plex.info('success', 'El turno se asignó correctamente');
             this.router.navigate(['/publicidad'], { queryParams: { textoTurno: true } });
         }, (error) => {
-            // this.plex.info('danger', 'Turno no asignado', 'Error');
             this.router.navigate(['buscar']);
         });
     }
