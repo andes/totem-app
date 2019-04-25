@@ -25,6 +25,7 @@ import { ConfirmarTelefonoComponent } from './components/confirmar-telefono.comp
 import { SeleccionarPrestacionComponent } from './components/seleccionar-prestacion.component';
 import { HeaderComponent } from './components/header.component';
 import { PublicidadComponent } from './components/publicidad.component';
+import { PrestacionPipe } from './pipes/prestacion.pipe';
 registerLocaleData(localeEs, 'es');
 
 @NgModule({
@@ -47,6 +48,7 @@ registerLocaleData(localeEs, 'es');
     HeaderComponent,
     PublicidadComponent,
     ProfesionalPipe,
+    PrestacionPipe,
     ScanPacienteComponent,
     ConfirmarTelefonoComponent,
   ],
