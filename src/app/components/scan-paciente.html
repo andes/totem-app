@@ -1,12 +1,10 @@
-<plex-layout>
-  <plex-layout-main>
-    <form>
-      <fieldset>
-        <h1 class='text-center'>Escanee su DNI</h1>
-        <plex-text [(ngModel)]="scan" (change)="onScan()" name='buscador' [autoFocus]="autoFocus" prefix="<i class='mdi mdi-barcode-scan'></i>"
-          placeholder="Escanee un documento digital">
-        </plex-text>
-      </fieldset>
-    </form>
-  </plex-layout-main>
-</plex-layout>
+<div class="hidden">
+  <form>
+    <plex-text [(ngModel)]="scan" (change)="onScan()" name="buscador" placeholder="Escanee un documento digital"
+      autofocus>
+    </plex-text>
+  </form>
+</div>
+<div class="visible d-flex align-items-center justify-content-center">
+  <div class="text-100">TURNOS ACÁ</div>
+</div>

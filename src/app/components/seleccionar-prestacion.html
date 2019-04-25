@@ -1,16 +1,20 @@
 <plex-layout main="12">
   <plex-layout-main>
     <header>
-
-      <header-component></header-component>
+      <header-component [heading]="heading"></header-component>
     </header>
-    <div class='row'>
-      <div class="col-6 mt-1" *ngFor="let prestacion of prestaciones">
-
-        <button class="btn btn-primary w-100 btnPrestacion" type="info" (click)="selectPrestacion(prestacion)">
-          &nbsp;<br>{{prestacion.term | uppercase}}<br>&nbsp;
-        </button>
+    <div class="row">
+      <div class="col-3"></div>
+      <div class="col-6">
+        <div class="row">
+          <div class="col-6 mb-2 pr-0" *ngFor="let prestacion of prestaciones">
+            <button class="btn btn-primary btn-prestacion w-100 h-100 my-3" (click)="selectPrestacion(prestacion)">
+              <span [outerHTML]="prestacion | prestacion"></span>
+            </button>
+          </div>
+        </div>
       </div>
+      <div class="col-3"></div>
     </div>
   </plex-layout-main>
 

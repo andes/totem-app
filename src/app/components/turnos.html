@@ -3,57 +3,56 @@
         <header>
             <header>
 
-                <header-component></header-component>
+                <header-component [heading]="heading"></header-component>
             </header>
         </header>
-        <div class='text-center'>
-            <h3>Turnos Disponibles de </h3>
-            <h2><strong> {{prestacionSeleccionada.term | uppercase }}</strong></h2>
-
-        </div>
-
-        <!-- <ul>
-          
-        </ul> -->
-
-        <div class='row'>
-            <div class="col-4 mt-1" *ngFor="let turno of listadoTurnos">
-                <div class="pt-2">
-                    <button class="btn btnTurnos w-100" type="info" (click)="selectTurno(turno)">
-                        {{turno.turno.horaInicio | date:"dd/MM/yyyy - HH:mm "}} hs<br>
-                        <span *ngIf='turno.profesional'> {{turno.profesional | profesional}}</span>
-                        <span *ngIf='!turno.profesional'>Profesional no
-                            asignado</span>
-
-                    </button>
+        <div class="row">
+            <div class="col-3"></div>
+            <div class="col-6">
+                <div class="row">
+                    <div class="col-12 mb-2 pr-0" *ngFor="let turno of listadoTurnos">
+                        <button class="btn btn-turno w-100 h-100 my-3 pt-0 d-flex justify-content-between"
+                            (click)="selectTurno(turno)">
+                            <span class="text-left">
+                                {{ horaInicio(turno.turno.horaInicio) }} hs. <br>
+                                <small class="text-uppercase-first">Dr/a. </small>
+                                <small class="text-capitalize text-sm" *ngIf="turno.profesional">
+                                    {{ turno.profesional | profesional }}</small>
+                            </span>
+                            <span>
+                                <i class="mdi mdi-clock-outline mr-1"></i> {{ turno.turno.horaInicio | date: "HH:mm" }}
+                                hs.<br>
+                            </span>
+                        </button>
+                    </div>
                 </div>
             </div>
+            <div class="col-3"></div>
         </div>
     </plex-layout-main>
     <plex-layout-main *ngIf='turnoSeleccionado'>
         <header>
             <header>
-
-                <header-component></header-component>
+                <header-component [heading]="{}"></header-component>
             </header>
         </header>
-        <div class='container'>
-
-            <div class='row mt-4  d-flex justify-content-center'>
+        <div class="container">
+            <div class="row mt-4  d-flex justify-content-center">
                 <div class='col-5 text-center cardTurno'>
                     <h2>Turno Seleccionado</h2>
-                    <h1 class='prestacion'>{{turnoSeleccionado.prestacion.term | uppercase}} </h1>
-                    <h3>Dia: <strong> {{turnoSeleccionado.turno.horaInicio| date: "dd/MM/yyyy"}}</strong></h3>
+                    <h1 class="prestacion">{{ turnoSeleccionado.prestacion.term | uppercase }}</h1>
+                    <h3>Dia: {{turnoSeleccionado.turno.horaInicio| date: "dd/MM/yyyy"}}</h3>
                     <h3>Hora:<strong>{{turnoSeleccionado.turno.horaInicio| date: " HH:mm "}}hs</strong></h3>
-                    <span class='profesional' *ngIf='turnoSeleccionado.profesional'>{{turnoSeleccionado.profesional.apellido}}
+                    <span class='profesional'
+                        *ngIf='turnoSeleccionado.profesional'>{{turnoSeleccionado.profesional.apellido}}
                         {{turnoSeleccionado.profesional.nombre}}</span>
                     <span class='profesional' *ngIf='!turnoSeleccionado.profesional'>Profesional no
                         asignado</span>
                     <div class='mt-5'>
-                        <button label="Confirmar" [disabled]='disabled' class='btn btn-success btnConfirmTurno' (click)='guardar()'>Confirmar</button>
-                        <button class='btn btn-warning btnConfirmTurno mt-2' [disabled]='disabled' (click)='salir()'>Salir sin confirmar
-                            turno</button>
-
+                        <button label="Confirmar" [disabled]='disabled' class='btn btn-success btnConfirmTurno'
+                            (click)='guardar()'>Confirmar</button>
+                        <button class='btn btn-warning btnConfirmTurno mt-2' [disabled]='disabled'
+                            (click)='salir()'>Salir sin confirmar turno</button>
                     </div>
                 </div>
 

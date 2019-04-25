@@ -1,35 +1,31 @@
 <plex-layout>
-  <plex-layout-main>
-    <header>
-
-      <header-component></header-component>
-    </header>
-    <div class="row  d-flex justify-content-center">
-      <div class="col-6 text-center ">
-        <div>
-          <h2>Por favor, confirme su número telefónico</h2>
-          <p>Ingrese el código de área sin cero y su número sin el 15 (Ej. 2996000000)</p>
-        </div>
-        <h1>{{telefono}}</h1>
-        <!-- <plex-text [(ngModel)]="telefono" name='telefono' [autoFocus]="autoFocus" placeholder="Ingrese su número telefónico">
+    <plex-layout-main>
+        <header>
+            <header-component [heading]="heading"></header-component>
+        </header>
+        <div class="row d-flex justify-content-center">
+            <div class="col-6 text-center ">
+                <div>
+                    <h2>Por favor, confirme su número telefónico</h2>
+                    <p>Ingrese el código de área sin cero y su número sin el 15 (Ej. 2996000000)</p>
+                </div>
+                <h1>{{telefono}}</h1>
+                <!-- <plex-text [(ngModel)]="telefono" name='telefono' [autoFocus]="autoFocus" placeholder="Ingrese su número telefónico">
           </plex-text> -->
-      </div>
-    </div>
-    <div class="row mt-2 d-flex justify-content-center">
-      <div class="col-5">
+            </div>
+        </div>
+        <div class="row mt-2 d-flex justify-content-center">
+            <div class="col-5">
 
-      </div>
-    </div>
-    <div class="row mt-2 d-flex justify-content-center">
-
-      <div class=' col-6 container text-center'>
-        <div class="simple-keyboard"></div>
-        <button label="Confirmar" class='btn btn-success btnConfirm mt-1'  (click)='confirmar()'>Confirmar</button>
-
-        <!-- <plex-button label="Confirmar" type="success" (click)='confirmar()'></plex-button> -->
-
-      </div>
-    </div>
-  </plex-layout-main>
+            </div>
+        </div>
+        <div class="row mt-2 d-flex justify-content-center">
+            <div class="col-6 container text-center">
+                <div class="simple-keyboard"></div>
+                <button label="Confirmar" class='btn btn-success btn-lg w-100 h-25'
+                    (click)='confirmar()'>Confirmar</button>
+            </div>
+        </div>
+    </plex-layout-main>
 
 </plex-layout>
