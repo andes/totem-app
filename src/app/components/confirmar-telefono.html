@@ -1,33 +1,39 @@
 <plex-layout>
   <plex-layout-main>
     <header>
-
       <header-component></header-component>
     </header>
     <div class="row  d-flex justify-content-center">
-      <div class="col-6 text-center ">
-        <div>
-          <h2>Por favor, confirme su número telefónico</h2>
-          <p>Ingrese el código de área sin cero y su número sin el 15 (Ej. 2996000000)</p>
-        </div>
-        <h1>{{telefono}}</h1>
-        <!-- <plex-text [(ngModel)]="telefono" name='telefono' [autoFocus]="autoFocus" placeholder="Ingrese su número telefónico">
-          </plex-text> -->
+      <div class="col-10 text-center ">
+        <span *ngIf="telefonoExistente">
+          <h2>Este es el número telefónico que figura en nuestros registros</h2>
+        </span>
       </div>
     </div>
-    <div class="row mt-2 d-flex justify-content-center">
-      <div class="col-5">
-
+    <div class="row  d-flex justify-content-center mt-2">
+      <div class="col-4 text-center celular">
+        <h1>
+          <span class="prefijo mr-2"> 0</span>
+          <span *ngIf="telefono" class="numero mr-4 px-2">{{telefono.substring(0,3)}}</span>
+          <span *ngIf="!telefono" class="numero mr-4 px-2">&nbsp;&nbsp;</span>
+          <span class="prefijo mr-2">15-</span>
+          <span *ngIf="telefono.length > 3" class="numero px-2">{{telefono.substring(3,telefono.length)}}</span>
+          <span *ngIf="!(telefono.length > 3)" class="numero px-2">&nbsp;&nbsp;</span>
+        </h1>
       </div>
     </div>
-    <div class="row mt-2 d-flex justify-content-center">
-
+    <div [ngClass]="{'d-none': disableInput, 'row mt-2 d-flex justify-content-center': !disableInput}">
       <div class=' col-6 container text-center'>
         <div class="simple-keyboard"></div>
-        <button label="Confirmar" class='btn btn-success btnConfirm mt-1'  (click)='confirmar()'>Confirmar</button>
-
-        <!-- <plex-button label="Confirmar" type="success" (click)='confirmar()'></plex-button> -->
-
+      </div>
+    </div>
+    <div class="row mt-1 d-flex justify-content-center">
+      <div [ngClass]="{'d-none': !disableInput, ' col-3 d-flex justify-content-end':disableInput }">
+        <button class='btn btn-warning btnConfirm mt-1' (click)='corregir()'>Corregir</button>
+      </div>
+      <div
+        [ngClass]="{'col-3 d-flex justify-content-start': disableInput, 'col-6 d-flex justify-content-center': !disableInput }">
+        <button class='btn btn-success btnConfirm mt-1' (click)='confirmar()'>Confirmar</button>
       </div>
     </div>
   </plex-layout-main>
