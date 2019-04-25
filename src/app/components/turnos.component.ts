@@ -4,7 +4,6 @@ import { AgendasService } from '../services/agendas.services';
 import { Plex } from '@andes/plex';
 import { TurnosService } from '../services/turnos.service';
 import { PacienteService } from '../services/paciente.service';
-
 @Component({
     templateUrl: 'turnos.html',
     styleUrls: ['turno.scss']
@@ -22,6 +21,9 @@ export class TurnosComponent implements OnInit {
     public confirmarTurno = false;
     public turnoSeleccionado;
     public disabled = false;
+    public diaString = '';
+    private dias = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
+
     constructor(
         private agendasService: AgendasService,
         private turnosService: TurnosService,
@@ -65,6 +67,9 @@ export class TurnosComponent implements OnInit {
     }
 
     selectTurno(turno) {
+        let numDia = turno.turno.horaInicio.getDay();
+        let diferenciaDias = moment(turno.turno.horaInicio).diff(moment().startOf('day'), 'days');
+        this.diaString = (diferenciaDias === 0) ? 'Hoy' : (diferenciaDias === 1) ? 'Mañana' : this.dias[numDia];
         this.turnoSeleccionado = turno;
         if (!this.paciente) {
             this.plex.info('danger', 'Paciente no encontrado', 'Error');
@@ -88,6 +93,10 @@ export class TurnosComponent implements OnInit {
     salir() {
         this.disabled = true;
         this.router.navigate(['buscar']);
+    }
+
+    corregir() {
+        this.turnoSeleccionado = null;
     }
 }
 

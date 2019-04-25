@@ -5,21 +5,39 @@
 }
 
 
- html {
-   margin: unset !important;
-   padding-top: 65px  !important;
- } 
-
-
-  /* .simple-keyboard > .hg-row {
-  background: rgb(255, 0, 0, 0.7);
-  color: white;
-} */
-
-.colorPaciente{
-      color: #7b398d;
+html {
+  margin: unset !important;
+  padding-top: 65px !important;
 }
-hr{
+
+
+.celular {
+  min-height: 4em;
+}
+
+.prefijo {
+  color: #00a8e0;
+}
+
+.numeroBorder {
+  border: 1px solid #000000;
+  display: inline-block;
+  min-width: 180px;
+  color: #000000;
+}
+
+.prefijoBorder {
+  border: 1px solid #000000;
+  display: inline-block;
+  min-width: 90px;
+  color: #000000;
+}
+
+.colorPaciente {
+  color: #7b398d;
+}
+
+hr {
   border: 1px solid #00a8e0;
   width: 3%;
   /* text-align: left; */
@@ -28,7 +46,7 @@ hr{
   margin-bottom: 4px;
 }
 
-.btnBack{
+.btnBack {
   padding: 14%;
   padding-left: 50px;
   padding-right: 50px;
@@ -41,13 +59,13 @@ hr{
   font-size: 19px;
 }
 
-.btnConfirm{
+.btnConfirm {
   width: 100%;
   font-size: 32px
 }
 
 .datosSecundarios:nth-of-type(1) {
-  margin-left:0px;
+  margin-left: 0px;
 }
 
 
@@ -56,6 +74,7 @@ hr{
   border: 1px solid #00000061;
   font-size: 32px;
 }
+
 /*!
  * 
  *   simple-keyboard v2.20.3 (Non-minified build)
@@ -67,141 +86,139 @@ hr{
  *   LICENSE file in the root directory of this source tree.
  *   
  */
- /* body,
+/* body,
  html {
    margin: 0;
    padding: 0;
  } */
- 
- .simple-keyboard {
-   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue",
-     Helvetica, Arial, "Lucida Grande", sans-serif;
-   width: 100%;
-   -webkit-user-select: none;
-      -moz-user-select: none;
-       -ms-user-select: none;
-           user-select: none;
-   box-sizing: border-box;
-   overflow: hidden;
-   touch-action: manipulation;
- }
- 
- .simple-keyboard .hg-row {
-   display: -webkit-flex;
-   display: flex;
- }
- 
- .simple-keyboard .hg-row:not(:last-child) {
-   margin-bottom: 5px;
- }
- 
- .simple-keyboard .hg-row .hg-button:not(:last-child) {
-   margin-right: 5px;
- }
- 
- .simple-keyboard .hg-row .hg-button-container {
-   margin-right: 5px;
- }
- 
- .simple-keyboard .hg-row > div:last-child {
-   margin-right: 0;
- }
- 
- .simple-keyboard .hg-row .hg-button-container {
-   display: -webkit-flex;
-   display: flex;
- }
- 
- .simple-keyboard .hg-button {
-   display: inline-block;
-   -webkit-flex-grow: 1;
-           flex-grow: 1;
-   cursor: pointer;
- }
- 
- .simple-keyboard .hg-button span {
-   pointer-events: none;
- }
- 
- /**
+
+.simple-keyboard {
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue",
+    Helvetica, Arial, "Lucida Grande", sans-serif;
+  width: 100%;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  box-sizing: border-box;
+  overflow: hidden;
+  touch-action: manipulation;
+}
+
+.simple-keyboard .hg-row {
+  display: -webkit-flex;
+  display: flex;
+}
+
+.simple-keyboard .hg-row:not(:last-child) {
+  margin-bottom: 5px;
+}
+
+.simple-keyboard .hg-row .hg-button:not(:last-child) {
+  margin-right: 5px;
+}
+
+.simple-keyboard .hg-row .hg-button-container {
+  margin-right: 5px;
+}
+
+.simple-keyboard .hg-row>div:last-child {
+  margin-right: 0;
+}
+
+.simple-keyboard .hg-row .hg-button-container {
+  display: -webkit-flex;
+  display: flex;
+}
+
+.simple-keyboard .hg-button {
+  display: inline-block;
+  -webkit-flex-grow: 1;
+  flex-grow: 1;
+  cursor: pointer;
+}
+
+.simple-keyboard .hg-button span {
+  pointer-events: none;
+}
+
+/**
   * hg-theme-default theme
   */
- .simple-keyboard.hg-theme-default {
-   background-color: rgba(0, 0, 0, 0.1);
-   padding: 5px;
-   border-radius: 5px;
- }
- 
- .simple-keyboard.hg-theme-default .hg-button {
-   box-shadow: 0px 0px 3px -1px rgba(0, 0, 0, 0.3);
-   height: 40px;
-   border-radius: 5px;
-   box-sizing: border-box;
-   padding: 5px;
-   background: white;
-   border-bottom: 1px solid #b5b5b5;
-   cursor: pointer;
-   display: -webkit-flex;
-   display: flex;
-   -webkit-align-items: center;
-           align-items: center;
-   -webkit-justify-content: center;
-           justify-content: center;
- }
- 
- /* When using option "useButtonTag" */
- .simple-keyboard button.hg-button {
-   border-width: 0;
-   outline: 0;
-   font-size: inherit;
- }
- 
- .simple-keyboard.hg-theme-default:not(.hg-touch-events) .hg-button:active {
-   background: #e4e4e4;
- }
- 
- .simple-keyboard.hg-theme-default.hg-layout-numeric .hg-button {
-   width: 33.3%;
-   height: 60px;
-   -webkit-align-items: center;
-           align-items: center;
-   display: -webkit-flex;
-   display: flex;
-   -webkit-justify-content: center;
-           justify-content: center;
- }
- 
- .simple-keyboard.hg-theme-default .hg-button.hg-button-numpadadd {
-   height: 85px;
- }
- 
- .simple-keyboard.hg-theme-default .hg-button.hg-button-numpadenter {
-   height: 85px;
- }
- 
- .simple-keyboard.hg-theme-default .hg-button.hg-button-numpad0 {
-   width: 105px;
- }
- 
- .simple-keyboard.hg-theme-default .hg-button.hg-button-com {
-   max-width: 85px;
- }
- 
- .simple-keyboard.hg-theme-default .hg-button.hg-standardBtn.hg-button-at {
-   max-width: 45px;
- }
- 
- .simple-keyboard.hg-theme-default .hg-button.hg-selectedButton {
-   background: rgba(5, 25, 70, 0.53);
-   color: white;
- }
- 
- .simple-keyboard.hg-theme-default .hg-button.hg-standardBtn[data-skbtn=".com"] {
-   max-width: 82px;
- }
- 
- .simple-keyboard.hg-theme-default .hg-button.hg-standardBtn[data-skbtn="@"] {
-   max-width: 60px;
- }
- 
- 
+.simple-keyboard.hg-theme-default {
+  background-color: rgba(0, 0, 0, 0.1);
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.simple-keyboard.hg-theme-default .hg-button {
+  box-shadow: 0px 0px 3px -1px rgba(0, 0, 0, 0.3);
+  height: 40px;
+  border-radius: 5px;
+  box-sizing: border-box;
+  padding: 5px;
+  background: white;
+  border-bottom: 1px solid #b5b5b5;
+  cursor: pointer;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+
+/* When using option "useButtonTag" */
+.simple-keyboard button.hg-button {
+  border-width: 0;
+  outline: 0;
+  font-size: inherit;
+}
+
+.simple-keyboard.hg-theme-default:not(.hg-touch-events) .hg-button:active {
+  background: #e4e4e4;
+}
+
+.simple-keyboard.hg-theme-default.hg-layout-numeric .hg-button {
+  width: 33.3%;
+  height: 60px;
+  -webkit-align-items: center;
+  align-items: center;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+
+.simple-keyboard.hg-theme-default .hg-button.hg-button-numpadadd {
+  height: 85px;
+}
+
+.simple-keyboard.hg-theme-default .hg-button.hg-button-numpadenter {
+  height: 85px;
+}
+
+.simple-keyboard.hg-theme-default .hg-button.hg-button-numpad0 {
+  width: 105px;
+}
+
+.simple-keyboard.hg-theme-default .hg-button.hg-button-com {
+  max-width: 85px;
+}
+
+.simple-keyboard.hg-theme-default .hg-button.hg-standardBtn.hg-button-at {
+  max-width: 45px;
+}
+
+.simple-keyboard.hg-theme-default .hg-button.hg-selectedButton {
+  background: rgba(5, 25, 70, 0.53);
+  color: white;
+}
+
+.simple-keyboard.hg-theme-default .hg-button.hg-standardBtn[data-skbtn=".com"] {
+  max-width: 82px;
+}
+
+.simple-keyboard.hg-theme-default .hg-button.hg-standardBtn[data-skbtn="@"] {
+  max-width: 60px;
+}

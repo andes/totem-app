@@ -21,6 +21,9 @@ export class ConfirmarTelefonoComponent implements OnInit {
     public autoFocus = 0;
     public indiceTelefono;
     public telefono = '';
+    public caracteristica = '';
+    public disableInput = true;
+    public telefonoExistente = false;
     constructor(
         private pacienteService: PacienteService,
         private router: Router,
@@ -32,6 +35,7 @@ export class ConfirmarTelefonoComponent implements OnInit {
         this.paciente = this.pacienteService.getPacienteValor();
         if (!this.paciente) {
             this.router.navigate(['buscar']);
+            return;
         }
         if (this.paciente.id) {
             this.pacienteService.getById(this.paciente.id).subscribe(result => {
@@ -40,8 +44,10 @@ export class ConfirmarTelefonoComponent implements OnInit {
 
             });
         } else {
+            this.disableInput = false;
             this.loadConfirmar();
         }
+        this.loadKeyboard();
     }
 
     loadConfirmar() {
@@ -53,8 +59,14 @@ export class ConfirmarTelefonoComponent implements OnInit {
             if (index >= 0) {
                 this.indiceTelefono = index;
                 this.telefono = this.paciente.contacto[this.indiceTelefono].valor;
+                this.telefonoExistente = true;
+            } else {
+                this.disableInput = false;
             }
         }
+    }
+
+    loadKeyboard() {
         let keyboard = new Keyboard({
             onChange: input => this.onChange(input),
             onKeyPress: button => this.onKeyPress(button),
@@ -74,6 +86,12 @@ export class ConfirmarTelefonoComponent implements OnInit {
             }
         });
         keyboard.setInput(this.telefono);
+    }
+
+    corregir() {
+        this.disableInput = false;
+        this.telefonoExistente = false;
+        this.telefono = '';
     }
 
     onChange(input) {
