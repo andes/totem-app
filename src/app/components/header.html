@@ -1,21 +1,16 @@
-<div class='row'>
-    <div class='col-10'>
-        <h2>HOLA <strong class='colorPaciente'> {{paciente?.nombre}}
-                {{paciente?.apellido}}
-            </strong> <span class='badge ml-4' [ngClass]="{ 'badge-success': paciente?.estado === 'validado','badge-warning': paciente?.estado === 'temporal'}">{{paciente?.estado}}</span>
-        </h2>
-        <hr>
-        <span class='datosSecundarios'>Documento:</span> <strong> {{paciente?.documento}}</strong>
-        <span class='datosSecundarios'>Fecha de nacimiento:</span><strong> {{paciente?.fechaNacimiento | date:
-            "dd/MM/yyyy"}}</strong>
-        <span class='datosSecundarios'>Genero:</span><strong> {{paciente?.sexo | uppercase}} </strong>
-
-
+<div class="contenedor border-primary">
+    <div *ngIf="heading" class="heading d-flex align-items-center ml-3 p-3">
+        <span class="principal">{{ heading.principal }}<span class="mx-1"> | </span></span>
+        <span class="secundario" [innerHTML]="heading.secundario"></span>
     </div>
-    <div class='col-2 text-right'>
-        <button class='btn btn-danger btnBack' (click)='volver()'>Atras</button>
+    <div *ngIf="paciente" class="paciente d-flex justify-content-end align-items-center p-3">
+        <strong class="mr-1">{{ paciente?.nombre }} {{ paciente?.apellido }}<span class="mx-1"> | </span></strong>
+        <strong>{{ documento }}</strong>
     </div>
-
+    <div class="fecha d-flex justify-content-center align-items-center px-3 py-2">
+        {{ fecha }}
+    </div>
 </div>
-
-<!-- <span class='datosSecundarios'>Genero:Masculino</span> <span class='datosSecundarios'>Fecha de nacimiento:19/10/1995</span> -->
+<div class="totem-nav d-flex justify-content-end my-2 mr-2">
+    <plex-button label="Volver" type="warning" size="lg" (click)="volver()"></plex-button>
+</div>
