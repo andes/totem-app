@@ -9,8 +9,8 @@
 }
 
 .profesional {
-    color: #7b398d;
-    font-size: 29px;
+    color: #000000;
+    font-size: 2rem;
     font-weight: 600;
 }
 
@@ -60,4 +60,26 @@
     &::first-letter {
         text-transform: uppercase;
     }
+}
+
+.info-logo {
+    color: #00a8e0;
+    font-size: 76px
+}
+
+.acheerre {
+    text-align: center;
+    border-bottom: 2px solid #00a8e0;
+    width: 6%;
+    margin-left: 47%;
+}
+
+.greyPrefix {
+    color: grey;
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.blue {
+    color: #00a8e0;
 }

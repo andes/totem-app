@@ -12,7 +12,7 @@ export class TurnosComponent implements OnInit {
 
     public heading = {
         principal: `Seleccione un día y horario`,
-        secundario: `Horarios disponisbles para la `
+        secundario: `Horarios disponibles para la `
     };
     private paciente;
     public prestacionSeleccionada;
@@ -71,6 +71,12 @@ export class TurnosComponent implements OnInit {
         let diferenciaDias = moment(turno.turno.horaInicio).diff(moment().startOf('day'), 'days');
         this.diaString = (diferenciaDias === 0) ? 'Hoy' : (diferenciaDias === 1) ? 'Mañana' : this.dias[numDia];
         this.turnoSeleccionado = turno;
+
+        this.heading = {
+            principal: 'Confirmar Turno',
+            secundario: '¡No olvides anotar los datos de tu Turno!'
+        }
+
         if (!this.paciente) {
             this.plex.info('danger', 'Paciente no encontrado', 'Error');
         }
