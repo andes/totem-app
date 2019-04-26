@@ -21,6 +21,10 @@ export class ScanPacienteComponent implements OnInit {
         this.autoFocus++;
     }
 
+    focus() {
+        this.autoFocus++;
+    }
+
     onScan() {
         if (this.scan) {
             let formatoDocumento;

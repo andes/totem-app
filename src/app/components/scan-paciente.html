@@ -1,10 +1,10 @@
-<div class="hidden">
-  <form>
-    <plex-text [(ngModel)]="scan" (change)="onScan()" name="buscador" placeholder="Escanee un documento digital"
-      autofocus>
-    </plex-text>
-  </form>
-</div>
-<div class="visible d-flex align-items-center justify-content-center">
-  <div class="text-100">TURNOS ACÁ</div>
-</div>
+  <div class="hidden">
+    <form>
+      <plex-text [(ngModel)]="scan" (change)="onScan()" name="buscador" placeholder="Escanee un documento digital"
+        [autoFocus]="autoFocus">
+      </plex-text>
+    </form>
+  </div>
+  <div class="logo" (click)="focus()">
+    <img class="image" src="assets/00-A.jpg" alt="">
+  </div>
