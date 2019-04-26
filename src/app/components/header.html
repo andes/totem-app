@@ -1,10 +1,10 @@
 <div class="contenedor border-primary">
     <div *ngIf="heading" class="heading d-flex align-items-center ml-3 p-3">
-        <span class="principal">{{ heading.principal }}<span class="mx-1"> | </span></span>
+        <span class="principal">{{ heading.principal }}<span class="separador"></span></span>
         <span class="secundario" [innerHTML]="heading.secundario"></span>
     </div>
     <div *ngIf="paciente" class="paciente d-flex justify-content-end align-items-center p-3">
-        <strong class="mr-1">{{ paciente?.nombre }} {{ paciente?.apellido }}<span class="mx-1"> | </span></strong>
+        <strong class="mr-1">{{ paciente?.nombre }} {{ paciente?.apellido }}<span class="separador"></span></strong>
         <strong>{{ documento }}</strong>
     </div>
     <div class="fecha d-flex justify-content-center align-items-center px-3 py-2">

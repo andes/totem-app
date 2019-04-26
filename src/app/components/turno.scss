@@ -27,6 +27,18 @@
     font-size: 25px;
 }
 
+.turnos {
+    max-height: 510px;
+    overflow: hidden;
+}
+
+.nav-turnos {
+    .mdi-100px {
+        font-size: 100px;
+        line-height: 55px;
+    }
+}
+
 .btn-turno {
     background: #c2f2ff;
     color: black;

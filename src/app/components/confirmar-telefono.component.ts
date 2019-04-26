@@ -9,7 +9,7 @@ import { Plex } from '@andes/plex';
     templateUrl: 'confirmar-telefono.html',
     encapsulation: ViewEncapsulation.None,
     styleUrls: ['../../../node_modules/simple-keyboard/build/css/index.css',
-        'confirmar-telefono.css']
+        'confirmar-telefono.scss']
 })
 export class ConfirmarTelefonoComponent implements OnInit {
     public heading = {

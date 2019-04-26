@@ -44,7 +44,18 @@ header {
 
         .principal {
             // height: 40px;
-            font-size: 2rem;
+            font-size: 1.75rem;
+        }
+
+        .separador {
+            padding-right: 10px;
+            border-right: 2px solid black;
+            width: 2px;
+            height: 25px;
+            display: inline-block;
+            margin-right: 10px;
+            position: relative;
+            top: 2px;
         }
 
         .secundario {
@@ -54,6 +65,17 @@ header {
 
     .paciente {
         height: 40px;
+
+        .separador {
+            padding-right: 5px;
+            border-right: 2px solid black;
+            width: 2px;
+            height: 14px;
+            display: inline-block;
+            margin-right: 0px;
+            position: relative;
+            top: 2px;
+        }
     }
 
     .fecha {

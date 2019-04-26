@@ -11,15 +11,10 @@
             <h2><strong> {{prestacionSeleccionada.term | uppercase }}</strong></h2>
 
         </div>
-
-        <!-- <ul>
-          
-        </ul> -->
-
         <div class="row">
             <div class="col-3"></div>
             <div class="col-6">
-                <div class="row">
+                <div class="row turnos">
                     <div class="col-12 mb-2 pr-0" *ngFor="let turno of listadoTurnos">
                         <button class="btn btn-turno w-100 h-100 my-3 pt-0 d-flex justify-content-between"
                             (click)="selectTurno(turno)">
@@ -34,6 +29,11 @@
                                 hs.<br>
                             </span>
                         </button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="nav-turnos col-12 d-flex align-items-center justify-content-center">
+                        <i class="mdi mdi-chevron-down mdi-100px"></i>
                     </div>
                 </div>
             </div>
