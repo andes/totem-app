@@ -51,7 +51,7 @@ export class AppComponent {
     // Inicializa el chequeo de conectividad
     this.initStatusCheck();
     this.setTimeout();
-    this.userInactive.subscribe(() => this.router.navigate(['/publicidad'], { queryParams: { textoTurno: false } }));
+    this.userInactive.subscribe(() => this.router.navigate(['/buscar'], { queryParams: { textoTurno: false } }));
 
   }
 
