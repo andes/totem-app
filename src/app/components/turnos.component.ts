@@ -24,6 +24,9 @@ export class TurnosComponent implements OnInit {
     public diaString = '';
     private dias = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
 
+    scrolled = false;
+    @ViewChild('inicioTurnos')
+    inicioTurnosRef: ElementRef;
     @ViewChild('finTurnos')
     finTurnosRef: ElementRef;
 
@@ -108,9 +111,13 @@ export class TurnosComponent implements OnInit {
         this.turnoSeleccionado = null;
     }
 
-    scroll(el: HTMLElement) {
-        // el.scrollIntoView();
+    scrollTop() {
+        this.inicioTurnosRef.nativeElement.scrollIntoView();
+        this.scrolled = false;
+    }
+    scrollDown() {
         this.finTurnosRef.nativeElement.scrollIntoView();
+        this.scrolled = true;
     }
 }
 
