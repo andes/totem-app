@@ -1,45 +1,45 @@
 <plex-layout>
-    <plex-layout-main>
-        <header>
-            <header-component [heading]="heading"></header-component>
-        </header>
-        <div class="row  d-flex justify-content-center">
-            <div class="col-10 text-center ">
-                <span *ngIf="telefonoExistente">
-                    <h2>Este es el número telefónico que figura en nuestros registros</h2>
-                </span>
-            </div>
-        </div>
-        <div class="row  d-flex justify-content-center mt-2">
-            <div class="col-4 text-center celular">
-                <h1>
-                    <span class="prefijo mr-2"> 0</span>
-                    <span class="prefijoBorder mr-4 px-2">
-                        <span *ngIf="telefono">{{telefono.substring(0,3)}}</span>
-                        <span *ngIf="!telefono">&nbsp;&nbsp;</span>
-                    </span>
-                    <span class="prefijo mr-2">15-</span>
-                    <span class="numeroBorder px-2">
-                        <span *ngIf="telefono.length > 3">{{telefono.substring(3,telefono.length)}}</span>
-                        <span *ngIf="!(telefono.length > 3)">&nbsp;&nbsp;</span>
-                    </span>
-                </h1>
-            </div>
-        </div>
-        <div [ngClass]="{'d-none': disableInput, 'row mt-2 d-flex justify-content-center': !disableInput}">
-            <div class=' col-6 container text-center'>
-                <div class="simple-keyboard"></div>
-            </div>
-        </div>
-        <div class="row mt-1 d-flex justify-content-center">
-            <div [ngClass]="{'d-none': !disableInput, ' col-3 d-flex justify-content-end':disableInput }">
-                <button class='btn btn-warning btnConfirm mt-1' (click)='corregir()'>Corregir</button>
-            </div>
-            <div
-                [ngClass]="{'col-3 d-flex justify-content-start': disableInput, 'col-6 d-flex justify-content-center': !disableInput }">
-                <button class='btn btn-success btnConfirm mt-1' (click)='confirmar()'>Confirmar</button>
-            </div>
-        </div>
-    </plex-layout-main>
+  <plex-layout-main>
+    <header>
+      <header-component [heading]="heading"></header-component>
+    </header>
+    <div class="row  d-flex justify-content-center">
+      <div class="col-10 text-center ">
+        <span *ngIf="telefonoExistente">
+          <h2>Este es el número telefónico que figura en nuestros registros</h2>
+        </span>
+      </div>
+    </div>
+    <div class="row  d-flex justify-content-center mt-2">
+      <div class="col-4 text-center celular">
+        <h1>
+          <span class="prefijo mr-2"> 0</span>
+          <span class="prefijoBorder mr-4 px-2">
+            <span *ngIf="telefono">{{getCaracteristica()}}</span>
+            <span *ngIf="!telefono">&nbsp;&nbsp;</span>
+          </span>
+          <span class="prefijo mr-2">15-</span>
+          <span class="numeroBorder px-2">
+            <span *ngIf="telefono">{{getTelefono()}}</span>
+            <span *ngIf="!telefono">&nbsp;&nbsp;</span>
+          </span>
+        </h1>
+      </div>
+    </div>
+    <div [ngClass]="{'d-none': disableInput, 'row mt-2 d-flex justify-content-center': !disableInput}">
+      <div class=' col-6 container text-center'>
+        <div class="simple-keyboard"></div>
+      </div>
+    </div>
+    <div class="row mt-1 d-flex justify-content-center">
+      <div [ngClass]="{'d-none': !disableInput, ' col-3 d-flex justify-content-end':disableInput }">
+        <button class='btn btn-warning btnConfirm mt-1' (click)='corregir()'>Corregir</button>
+      </div>
+      <div
+        [ngClass]="{'col-3 d-flex justify-content-start': disableInput, 'col-6 d-flex justify-content-center': !disableInput }">
+        <button class='btn btn-success btnConfirm mt-1' (click)='confirmar()'>Confirmar</button>
+      </div>
+    </div>
+  </plex-layout-main>
 
 </plex-layout>

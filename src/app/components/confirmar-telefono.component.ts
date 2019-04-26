@@ -132,5 +132,11 @@ export class ConfirmarTelefonoComponent implements OnInit {
 
     }
 
+    getTelefono() {
+    }
+
+    getCaracteristica() {
+    }
+
 }
 

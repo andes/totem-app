@@ -17,10 +17,11 @@
 
 .logo {
   z-index: 9999 !important;
-  margin-top: -103px;
+  margin-top: -104px;
+  height: 100%;
 }
 
 .image {
-  width: 1500px;
-  height: 900px;
+  width: 100vw;
+  height: 100vh;
 }
