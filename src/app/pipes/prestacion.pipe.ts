@@ -7,10 +7,10 @@ export class PrestacionPipe implements PipeTransform {
             let term = value.term.toLocaleLowerCase();
             let consulta = term.substring(0, 'consulta de'.length);
             let prestacion = term.substring('consulta de'.length);
-            if ('consulta de'.length > -1) {
-                return `${consulta} <b>${prestacion}</b>`;
+            if (consulta === 'consulta de') {
+                return `${consulta} <b class="seleccion">${prestacion}</b>`;
             } else {
-                return value.term;
+                return `<b class="seleccion">${value.term}</b>`;
             }
         }
     }

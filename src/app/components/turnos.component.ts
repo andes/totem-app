@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AgendasService } from '../services/agendas.services';
 import { Plex } from '@andes/plex';
@@ -23,6 +23,9 @@ export class TurnosComponent implements OnInit {
     public disabled = false;
     public diaString = '';
     private dias = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
+
+    @ViewChild('finTurnos')
+    finTurnosRef: ElementRef;
 
     constructor(
         private agendasService: AgendasService,
@@ -103,6 +106,11 @@ export class TurnosComponent implements OnInit {
 
     corregir() {
         this.turnoSeleccionado = null;
+    }
+
+    scroll(el: HTMLElement) {
+        // el.scrollIntoView();
+        this.finTurnosRef.nativeElement.scrollIntoView();
     }
 }
 

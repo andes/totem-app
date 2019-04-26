@@ -13,9 +13,9 @@
         </div>
         <div class="row">
             <div class="col-3"></div>
-            <div class="col-6">
-                <div class="row turnos">
-                    <div class="col-12 mb-2 pr-0" *ngFor="let turno of listadoTurnos">
+            <div class="col-6 turnos">
+                <div class="row" *ngFor="let turno of listadoTurnos">
+                    <div class="col-12 mb-2 pr-0">
                         <button class="btn btn-turno w-100 h-100 my-3 pt-0 d-flex justify-content-between"
                             (click)="selectTurno(turno)">
                             <span class="text-left">
@@ -30,20 +30,21 @@
                             </span>
                         </button>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="nav-turnos col-12 d-flex align-items-center justify-content-center">
-                        <i class="mdi mdi-chevron-down mdi-100px"></i>
-                    </div>
+                    <div #finTurnos></div>
                 </div>
             </div>
             <div class="col-3"></div>
+        </div>
+        <div class="row" *ngIf="listadoTurnos.length > 6">
+            <div class="nav-turnos col-12 d-flex align-items-center justify-content-center hover"
+                (click)="scroll(finTurnos)">
+                <i class="mdi mdi-chevron-down mdi-100px"></i>
+            </div>
         </div>
     </plex-layout-main>
     <plex-layout-main *ngIf='turnoSeleccionado'>
         <header>
             <header>
-
                 <header-component [heading]="heading"></header-component>
             </header>
         </header>

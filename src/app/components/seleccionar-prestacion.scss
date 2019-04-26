@@ -11,4 +11,9 @@
     &::first-letter {
         text-transform: uppercase;
     }
+
 }
+        b.seleccion {
+            word-break: break-word;
+            display: block;
+        }
