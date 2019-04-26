@@ -112,11 +112,11 @@ export class TurnosComponent implements OnInit {
     }
 
     scrollTop() {
-        this.inicioTurnosRef.nativeElement.scrollIntoView();
+        this.inicioTurnosRef.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
         this.scrolled = false;
     }
     scrollDown() {
-        this.finTurnosRef.nativeElement.scrollIntoView();
+        this.finTurnosRef.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
         this.scrolled = true;
     }
 }
