@@ -3,7 +3,7 @@ html {
 }
 
 
-.publicidad{
+.publicidad {
   display: flex;
   flex-flow: column;
   height: 100%;
@@ -18,24 +18,24 @@ html {
   background-color: #0F344A;
 }
 
-.texto{
+.texto {
   margin-top: 5%;
-    margin-bottom: 2%;
+  margin-bottom: 2%;
 }
 
-.mensajeSuccess{
-  color:#a5dc86
+.mensajeSuccess {
+  color: #a5dc86
 }
 
-.textoPasos{
+.textoPasos {
   font-size: 28px;
   margin-top: 17px;
   margin-bottom: 0px;
 }
 
-.colorPasos{
+.colorPasos {
   color: #2fbcea !important;
- 
+
 }
 
 .colorTextoPasos {
@@ -47,3 +47,14 @@ html {
   color: #9de0f6;
 }
 
+.logo {
+  width: 100%;
+  z-index: 9999 !important;
+  height: 100%;
+  margin-left: -15px;
+}
+
+.image {
+  width: 1500px;
+  height: 900px;
+}
