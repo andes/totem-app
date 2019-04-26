@@ -32,17 +32,9 @@ export class PublicidadComponent implements OnInit {
     ) { }
 
     ngOnInit() {
-        // this.route.queryParams.subscribe(params => {
-        //     if (params.textoTurno === 'false') {
-        //         this.mensajeSuccess = false;
-        //     } else {
-        //         this.mensajeSuccess = true;
-        //         this.timeoutHandle = setTimeout(() => {
-        //             this.router.navigate(['buscar']);
-
-        //         }, 4000);
-        //     }
-        // });
+        this.timeoutHandle = setTimeout(() => {
+            this.router.navigate(['buscar']);
+        }, 5000);
     }
 
     salir() {
