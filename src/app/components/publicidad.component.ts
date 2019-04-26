@@ -32,9 +32,9 @@ export class PublicidadComponent implements OnInit {
     ) { }
 
     ngOnInit() {
-        //     this.timeoutHandle = setTimeout(() => {
-        //         this.router.navigate(['buscar']);
-        //     }, 5000);
+        this.timeoutHandle = setTimeout(() => {
+            this.router.navigate(['buscar']);
+        }, 5000);
     }
 
     salir() {
