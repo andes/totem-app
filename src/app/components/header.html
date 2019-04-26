@@ -1,7 +1,6 @@
 <div class="contenedor border-primary">
-    <div *ngIf="heading" class="heading d-flex align-items-center ml-3 p-3">
-        <span class="principal">{{ heading.principal }}<span class="separador"></span></span>
-        <span class="secundario" [innerHTML]="heading.secundario"></span>
+    <div class="logo p-1">
+
     </div>
     <div *ngIf="paciente" class="paciente d-flex justify-content-end align-items-center p-3">
         <strong class="mr-1">{{ paciente?.nombre }} {{ paciente?.apellido }}<span class="separador"></span></strong>
@@ -11,6 +10,12 @@
         {{ fecha }}
     </div>
 </div>
-<div class="totem-nav d-flex justify-content-end my-2 mr-2">
-    <plex-button label="Volver" type="warning" size="lg" (click)="volver()"></plex-button>
+<div class="totem-nav my-2 mr-2">
+    <div *ngIf="heading" class="heading d-flex align-items-center ml-2 p-2">
+        <span class="principal">{{ heading.principal }}<span class="separador"></span></span>
+        <span class="secundario" [innerHTML]="heading.secundario"></span>
+    </div>
+    <div class="d-flex justify-content-end align-items-center">
+        <plex-button label="Volver" type="warning" size="lg" (click)="volver()"></plex-button>
+    </div>
 </div>

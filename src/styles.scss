@@ -68,6 +68,11 @@ plex-layout {
         &>div.row {
             padding: 0 !important;
             margin: 0 !important;
+
+            &>.col-12 {
+                margin: 0 !important;
+                padding: 0 !important;
+            }
         }
     }
 }
