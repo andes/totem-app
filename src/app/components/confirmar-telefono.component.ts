@@ -132,5 +132,26 @@ export class ConfirmarTelefonoComponent implements OnInit {
 
     }
 
+    getTelefono() {
+        if (this.telefono.length > 2 && this.telefono.substring(0, 2) === '11') {
+            return this.telefono.substring(2, this.telefono.length);
+
+        }
+        if (this.telefono.length > 3) {
+            return this.telefono.substring(3, this.telefono.length);
+        }
+        return null;
+    }
+
+    getCaracteristica() {
+        if (this.telefono.length) {
+            if (this.telefono.substring(0, 2) === '11') {
+                return this.telefono.substring(0, 2);
+            } else {
+                return this.telefono.substring(0, 3);
+            }
+        }
+    }
+
 }
 

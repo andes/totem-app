@@ -1,6 +1,7 @@
 {
   "name": "@andes/totem-app",
   "version": "1.0.0",
+  "productName": "Totem Andes app",
   "description": "Aplicación web para TOTEM de turnos ANDES",
   "main": "main.js",
   "angular-cli": {},
@@ -15,7 +16,7 @@
     "build:demo": "ng build --configuration=demo",
     "build:test": "ng build --configuration=test",
     "electron": "ng build --configuration=test --base-href ./ && electron .",
-    "pack": "electron-packager ."
+    "pack": "electron-packager . totem-app --overwrite --asar=true --platform=linux --arch=x64 --prune=true --out=release-builds"
   },
   "repository": {
     "type": "git",
