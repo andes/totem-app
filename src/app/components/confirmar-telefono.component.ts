@@ -33,6 +33,7 @@ export class ConfirmarTelefonoComponent implements OnInit {
     ngOnInit() {
         this.autoFocus++;
         this.paciente = this.pacienteService.getPacienteValor();
+        this.loadKeyboard();
         if (!this.paciente) {
             this.router.navigate(['buscar']);
             return;
@@ -47,7 +48,6 @@ export class ConfirmarTelefonoComponent implements OnInit {
             this.disableInput = false;
             this.loadConfirmar();
         }
-        this.loadKeyboard();
     }
 
     loadConfirmar() {
