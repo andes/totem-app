@@ -24,6 +24,7 @@ export class ConfirmarTelefonoComponent implements OnInit {
     public caracteristica = '';
     public disableInput = true;
     public telefonoExistente = false;
+    public disableButtons = false;
     constructor(
         private pacienteService: PacienteService,
         private router: Router,
@@ -39,7 +40,9 @@ export class ConfirmarTelefonoComponent implements OnInit {
             return;
         }
         if (this.paciente.id) {
+            this.disableButtons = true;
             this.pacienteService.getById(this.paciente.id).subscribe(result => {
+                this.disableButtons = false;
                 this.paciente = result;
                 this.loadConfirmar();
 
