@@ -237,3 +237,20 @@ hr {
 .simple-keyboard.hg-theme-default .hg-button.hg-standardBtn[data-skbtn="@"] {
     max-width: 60px;
 }
+.preloaderTelefono{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    z-index: 99;
+}
+
+.preloaderTelefono > DIV {
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+}

@@ -29,5 +29,10 @@ export class TurnosService {
         }
     }
 
+
+    getHistorial(params: any): Observable<any[]> {
+        return this.server.get(this.turnosUrl + '/historial', { params: params, showError: true });
+    }
+
 }
 

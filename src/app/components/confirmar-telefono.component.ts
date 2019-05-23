@@ -25,6 +25,8 @@ export class ConfirmarTelefonoComponent implements OnInit {
     public disableInput = true;
     public telefonoExistente = false;
     public disableButtons = false;
+    public loader = true;
+    public loaderConfirmar = false;
     constructor(
         private pacienteService: PacienteService,
         private router: Router,
@@ -45,7 +47,6 @@ export class ConfirmarTelefonoComponent implements OnInit {
                 this.disableButtons = false;
                 this.paciente = result;
                 this.loadConfirmar();
-
             });
         } else {
             this.disableInput = false;
@@ -63,6 +64,8 @@ export class ConfirmarTelefonoComponent implements OnInit {
                 this.indiceTelefono = index;
                 this.telefono = this.paciente.contacto[this.indiceTelefono].valor;
                 this.telefonoExistente = true;
+                this.loader = false;
+
             } else {
                 this.disableInput = false;
             }
@@ -109,6 +112,8 @@ export class ConfirmarTelefonoComponent implements OnInit {
     }
 
     confirmar() {
+        this.loaderConfirmar = true;
+        this.disableButtons = true;
         if (this.telefono.length === 0) {
             this.plex.info('info', 'Debe ingresar su número de celular', 'Atención');
         } else {
@@ -125,6 +130,8 @@ export class ConfirmarTelefonoComponent implements OnInit {
                     });
                 }
                 this.pacienteService.save(this.paciente).subscribe(resultado => {
+                this.loaderConfirmar = false;
+                this.disableButtons = false;
                     this.router.navigate(['prestaciones']);
                 });
 

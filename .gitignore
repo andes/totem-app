@@ -5,6 +5,7 @@ config.private.ts
 
 # compiled output
 /dist
+/release-builds
 /tmp
 /build
 /src/**/*.js

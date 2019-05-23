@@ -3,17 +3,32 @@
     <header>
       <header-component [heading]="heading"></header-component>
     </header>
+
+    <div id="preloader" class="preloaderTelefono" *ngIf='loader'>
+      <div class="loader">
+        <div class="ball-scale-multiple">
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      </div>
+    </div>
     <div class="row">
       <div class="col-2"></div>
       <div class="col-8">
-        <div class="row">
-          <div class="mb-2 pr-0"
+        <div class="row" *ngIf='prestaciones.length > 0 && !loader'>
+          <div class="mb-2 pr-0 "
             [ngClass]="{'col-6': prestaciones.length > 1 && prestaciones.length > 8, 'col-12': prestaciones.length <= 8}"
             *ngFor="let prestacion of prestaciones">
             <button class="btn btn-primary btn-prestacion w-100 h-100 my-3" (click)="selectPrestacion(prestacion)">
               <span class="text-capitalize" [outerHTML]="prestacion | prestacion"></span>
             </button>
           </div>
+        </div>
+        <div class="row" *ngIf='prestaciones.length === 0 && !loader'>
+            <button class="btn btn-warning  w-100 h-100 my-3" >
+              <span class="text-capitalize " >NO HAY TURNOS DISPONIBLES</span>
+            </button>
         </div>
       </div>
       <div class="col-2"></div>

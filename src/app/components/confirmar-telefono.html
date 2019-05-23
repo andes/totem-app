@@ -4,45 +4,63 @@
       <header-component [heading]="heading"></header-component>
     </header>
     <main>
+      <div id="preloader" class="preloaderTelefono" *ngIf='loader'>
+        <div class="loader">
+          <div class="ball-scale-multiple">
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        </div>
+      </div>
       <section>
-        <div class="row d-flex justify-content-center">
-          <div class="col-10 text-center ">
-            <span *ngIf="telefonoExistente">
-              <h2>Este es el número telefónico que figura en nuestros registros</h2>
-            </span>
-          </div>
-        </div>
-        <div class="row d-flex justify-content-center mt-2">
-          <div class="col-4 text-center celular">
-            <h1>
-              <span class="prefijo mr-2"> 0</span>
-              <span class="prefijoBorder mr-4 px-2">
-                <span *ngIf="telefono">{{getCaracteristica()}}</span>
-                <span *ngIf="!telefono">&nbsp;&nbsp;</span>
+        <div class='d-none' [ngClass]="{'d-block': loader === false}">
+          <div class="row d-flex justify-content-center">
+            <div class="col-10 text-center ">
+              <span *ngIf="telefonoExistente">
+                <h2>Este es el número telefónico que figura en nuestros registros</h2>
               </span>
-              <span class="prefijo mr-2">15-</span>
-              <span class="numeroBorder px-2">
-                <span *ngIf="getTelefono()">{{getTelefono()}}</span>
-                <span *ngIf="!getTelefono()">&nbsp;&nbsp;</span>
-              </span>
-            </h1>
+            </div>
           </div>
+          <div class="row d-flex justify-content-center mt-2">
+            <div class="col-4 text-center celular">
+              <h1>
+                <span class="prefijo mr-2"> 0</span>
+                <span class="prefijoBorder mr-4 px-2">
+                  <span *ngIf="telefono">{{getCaracteristica()}}</span>
+                  <span *ngIf="!telefono">&nbsp;&nbsp;</span>
+                </span>
+                <span class="prefijo mr-2">15-</span>
+                <span class="numeroBorder px-2">
+                  <span *ngIf="getTelefono()">{{getTelefono()}}</span>
+                  <span *ngIf="!getTelefono()">&nbsp;&nbsp;</span>
+                </span>
+              </h1>
+            </div>
+          </div>
+          <div [ngClass]="{'d-none': disableInput, 'row mt-2 d-flex justify-content-center': !disableInput}">
+            <div class=' col-6 container text-center'>
+              <div class="simple-keyboard"></div>
+            </div>
+          </div>
+          <div class="row mt-1 d-flex justify-content-center">
+            <div [ngClass]="{'d-none': !disableInput, ' col-3 d-flex justify-content-end':disableInput }">
+              <button [ngClass]="{'disabled': disableButtons }" class='btn btn-warning btnConfirm mt-1' (click)='corregir()'>Corregir</button>
+            </div>
+            <div [ngClass]="{'col-3 d-flex justify-content-start': disableInput, 'col-6 d-flex justify-content-center': !disableInput }">
+              <button [ngClass]="{'disabled': disableButtons }" class='btn btn-success btnConfirm mt-1' (click)='confirmar()'>Confirmar</button>
+            </div>
+          </div>
+          <div class='row d-flex justify-content-center mt-5 ' *ngIf='loaderConfirmar'>
+          <div class="loader">
+            <div class="ball-scale-multiple">
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+          </div>
+
         </div>
-        <div [ngClass]="{'d-none': disableInput, 'row mt-2 d-flex justify-content-center': !disableInput}">
-          <div class=' col-6 container text-center'>
-            <div class="simple-keyboard"></div>
-          </div>
-        </div>
-        <div class="row mt-1 d-flex justify-content-center">
-          <div [ngClass]="{'d-none': !disableInput, ' col-3 d-flex justify-content-end':disableInput }">
-            <button [ngClass]="{'disabled': disableButtons }" class='btn btn-warning btnConfirm mt-1'
-              (click)='corregir()'>Corregir</button>
-          </div>
-          <div
-            [ngClass]="{'col-3 d-flex justify-content-start': disableInput, 'col-6 d-flex justify-content-center': !disableInput }">
-            <button [ngClass]="{'disabled': disableButtons }" class='btn btn-success btnConfirm mt-1'
-              (click)='confirmar()'>Confirmar</button>
-          </div>
         </div>
       </section>
     </main>

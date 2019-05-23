@@ -61,6 +61,7 @@ export class TurnosComponent implements OnInit {
     parsearTurnos(agendas) {
         let agendasParseadas = agendas.map(agenda => {
             let turnos = agenda.bloques.turnos.filter(turno => turno.estado === 'disponible' && turno.horaInicio >= new Date());
+
             return {
                 idAgenda: agenda._id,
                 idBloque: agenda.bloques._id,
@@ -68,6 +69,7 @@ export class TurnosComponent implements OnInit {
                 profesional: agenda.profesionales && agenda.profesionales.length > 0 ? agenda.profesionales[0] : null,
                 prestacion: this.prestacionSeleccionada
             };
+
         });
         return agendasParseadas;
     }
@@ -81,7 +83,7 @@ export class TurnosComponent implements OnInit {
         this.heading = {
             principal: 'Confirmar Turno',
             secundario: '¡No olvides anotar los datos de tu Turno!'
-        }
+        };
 
         if (!this.paciente) {
             this.plex.info('danger', 'Paciente no encontrado', 'Error');
@@ -95,10 +97,21 @@ export class TurnosComponent implements OnInit {
 
     guardar() {
         this.disabled = true;
+
         this.turnosService.save(this.turnoSeleccionado, this.paciente, { showError: false }).subscribe((resultado) => {
-            this.router.navigate(['/publicidad'], { queryParams: { textoTurno: true } });
+            this.agendasService.getImpresion({ datosParaImprimir: JSON.stringify(this.turnoSeleccionado) }).subscribe((resultado) => {
+                this.router.navigate(['/publicidad'], { queryParams: { textoTurno: true } });
+            });
         }, (error) => {
-            this.router.navigate(['buscar']);
+            this.plex.confirm('No se pudo realizar la operacion, ¿Desea intentarlo nuevamente?').then(confirmacion => {
+                if (confirmacion) {
+                    this.router.navigate(['prestaciones']);
+
+                } else {
+                    this.router.navigate(['buscar']);
+                }
+            });
+
         });
     }
 
