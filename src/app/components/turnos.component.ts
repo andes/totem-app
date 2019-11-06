@@ -69,12 +69,12 @@ export class TurnosComponent implements OnInit {
   }
 
   parsearTurnos(agendas) {
-    let agendasParseadas = agendas.map(agenda => {
-      let turnos = agenda.bloques.turnos.filter(turno => turno.estado === 'disponible' && turno.horaInicio >= new Date());
+    let agendasParseadas = agendas.map(resultadoAgenda => {
+      let agenda = resultadoAgenda.resultado;
       return {
         idAgenda: agenda._id,
         idBloque: agenda.bloques._id,
-        turno: turnos[0],
+        turno: agenda.bloques.turnos,
         profesional: agenda.profesionales && agenda.profesionales.length > 0 ? agenda.profesionales[0] : null,
         prestacion: this.prestacionSeleccionada
       };
