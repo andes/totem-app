@@ -11,7 +11,6 @@ import { HttpModule } from '@angular/http';
 import { AuthModule } from '@andes/auth';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { ChartsModule } from 'ng2-charts';
-import { PrestacionesService } from './services/prestaciones.service';
 import { AgendasService } from './services/agendas.services';
 
 import { TurnosComponent } from './components/turnos.component';
@@ -19,6 +18,7 @@ import { registerLocaleData } from '@angular/common';
 import localeEs from '@angular/common/locales/es';
 import { ProfesionalPipe } from './pipes/profesional.pipe';
 import { TurnosService } from './services/turnos.service';
+import { InicioComponent } from './components/inicio.component';
 import { ScanPacienteComponent } from './components/scan-paciente.component';
 import { PacienteService } from './services/paciente.service';
 import { ConfirmarTelefonoComponent } from './components/confirmar-telefono.component';
@@ -47,6 +47,7 @@ registerLocaleData(localeEs, 'es');
   declarations: [
     AppComponent,
     TurnosComponent,
+    InicioComponent,
     SeleccionarPrestacionComponent,
     HeaderComponent,
     PublicidadComponent,
@@ -64,7 +65,6 @@ registerLocaleData(localeEs, 'es');
     Plex,
     Server,
     appRoutingProviders,
-    PrestacionesService,
     AgendasService,
     TurnosService,
     PacienteService
