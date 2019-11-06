@@ -4,12 +4,16 @@ import { Server } from '@andes/shared';
 
 @Injectable()
 export class AgendasService {
-    // URL to web api
-    private agendasUrl = '/modules/turnos/agendasDisponibles';
+  // URL to web api
+  private agendasUrl = '/modules/turnos/';
 
-    constructor(private server: Server) { }
+  constructor(private server: Server) { }
 
-    getAgendas(params): Observable<any> {
-        return this.server.get(this.agendasUrl, { params: params });
-    }
+  getAgendas(params): Observable<any> {
+    return this.server.get(this.agendasUrl + '/obtenerDisponibles', { params: params });
+  }
+
+  getPrestaciones(): Observable<any> {
+    return this.server.get(this.agendasUrl + '/obtenerPrestaciones');
+  }
 }
