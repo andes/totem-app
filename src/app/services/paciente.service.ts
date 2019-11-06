@@ -29,7 +29,6 @@ export class PacienteService {
     return this.pacienteCache.value;
   }
 
-
   save(paciente: any): Observable<any> {
     if (paciente.id) {
       return this.server.put(`${this.pacienteUrl}/${paciente.id}`, { 'paciente': paciente });
