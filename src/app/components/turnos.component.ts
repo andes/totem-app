@@ -100,7 +100,7 @@ export class TurnosComponent implements OnInit {
   }
 
   horaInicio(horaInicio) {
-    return moment(horaInicio).calendar();
+    return moment(horaInicio);
   }
 
   guardar() {
