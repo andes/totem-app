@@ -11,6 +11,10 @@
       <h2><strong> {{prestacionSeleccionada.term | uppercase }}</strong></h2>
 
     </div>
+    <div class="row">
+
+
+    </div>
     <div class="row" *ngIf="listadoTurnos.length > 6 && scrolled">
       <div class="nav-turnos col-12 d-flex align-items-center justify-content-center hover" (click)="scrollTop()">
         <i class="mdi mdi-chevron-up mdi-100px"></i>
@@ -19,9 +23,27 @@
     <div class="transition-up w-100 d-flex justify-content-center" *ngIf="scrolled">
       <div class="bg-info"></div>
     </div>
+    <br>
     <div class="row">
       <div class="col-3"></div>
-      <div class="col-6 turnos">
+      <div class="col-6 text-center cardTurno" *ngIf="tieneTurnos && turnoAsignado">
+        <h2 class="blue">Usted ya tiene un turno asignado</h2>
+        <div class="acheerre mt-4"></div>
+
+        <h3 class="mt-4"><span class="greyPrefix"></span>
+          <strong> {{turnoAsignado[0].horaInicio| date: "dd/MM/yyyy"}}</strong>
+        </h3>
+
+        <h3 class="mt-4 blue"><strong>{{turnoAsignado[0].horaInicio| date: " HH:mm "}} &nbsp;
+            hs.</strong></h3>
+
+        <span class='profesional mt-4' *ngIf='turnoAsignado[0].profesional'>
+          <span class="greyPrefix">Dr/a. </span>{{turnoAsignado[0].profesional.apellido}}
+          {{turnoAsignado[0].profesional.nombre}}</span>
+        <span class='profesional mt-4' *ngIf='!turnoAsignado[0].profesional'>Profesional no asignado</span>
+
+      </div>
+      <div class="col-6 turnos" *ngIf="!tieneTurnos">
         <div #inicioTurnos></div>
         <div class="row" *ngFor="let turno of listadoTurnos; let i = index">
           <div class="col-12 mb-2 pr-0">
