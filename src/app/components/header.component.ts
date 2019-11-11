@@ -35,7 +35,7 @@ export class HeaderComponent implements OnInit {
 
     ngOnInit() {
         this.paciente = this.pacienteService.getPacienteValor();
-        this.documento = this.paciente.documento.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1.');;
+        this.documento = this.paciente.documento.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1.');
     }
 
 

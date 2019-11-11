@@ -36,8 +36,6 @@ export class SeleccionarPrestacionComponent implements OnInit {
 
   selectPrestacion(prestacion) {
     this.router.navigate(['/turnos'], { queryParams: prestacion });
-    this.agendasService.getAgendas({ prestacion: prestacion.conceptId }).subscribe(agendas => {
-    });
   }
 
   salir() {

@@ -24,7 +24,7 @@ export class TurnosService {
       motivoConsulta: ''
     };
     if (turno.idAgenda) {
-      return this.server.patch(this.turnosUrl + '/turno/' + turno.turno._id + '/bloque/' + turno.idBloque + '/agenda/' + turno.idAgenda, datosTurno, options);
+      return this.server.patch(`${this.turnosUrl}/turno/${turno.turno._id}/bloque/${turno.idBloque}/agenda/${turno.idAgenda}`, datosTurno, options);
     }
   }
 
