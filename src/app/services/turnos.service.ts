@@ -28,5 +28,8 @@ export class TurnosService {
     }
   }
 
+  getProximos(params: any): Observable<any[]> {
+    return this.server.get(this.turnosUrl + '/search', { params: params, showError: true });
+  }
 }
 
