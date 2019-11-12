@@ -26,6 +26,8 @@ import { SeleccionarPrestacionComponent } from './components/seleccionar-prestac
 import { HeaderComponent } from './components/header.component';
 import { PublicidadComponent } from './components/publicidad.component';
 import { PrestacionPipe } from './pipes/prestacion.pipe';
+import { NgxPrintModule } from 'ngx-print';
+
 registerLocaleData(localeEs, 'es');
 
 @NgModule({
@@ -40,6 +42,7 @@ registerLocaleData(localeEs, 'es');
     ScrollingModule,
     ChartsModule,
     routing,
+    NgxPrintModule,
   ],
   declarations: [
     AppComponent,

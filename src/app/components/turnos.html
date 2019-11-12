@@ -1,103 +1,100 @@
 <plex-layout main="12">
-    <plex-layout-main *ngIf='!turnoSeleccionado'>
-        <header>
-            <header>
+  <plex-layout-main *ngIf='!turnoSeleccionado'>
+    <header>
+      <header>
 
-                <header-component [heading]="heading"></header-component>
-            </header>
-        </header>
-        <div class='text-center'>
-            <h3>Turnos Disponibles de </h3>
-            <h2><strong> {{prestacionSeleccionada.term | uppercase }}</strong></h2>
+        <header-component [heading]="heading"></header-component>
+      </header>
+    </header>
+    <div class='text-center'>
+      <h3>Turnos Disponibles de </h3>
+      <h2><strong> {{prestacionSeleccionada.term | uppercase }}</strong></h2>
 
+    </div>
+    <div class="row" *ngIf="listadoTurnos.length > 6 && scrolled">
+      <div class="nav-turnos col-12 d-flex align-items-center justify-content-center hover" (click)="scrollTop()">
+        <i class="mdi mdi-chevron-up mdi-100px"></i>
+      </div>
+    </div>
+    <div class="transition-up w-100 d-flex justify-content-center" *ngIf="scrolled">
+      <div class="bg-info"></div>
+    </div>
+    <div class="row">
+      <div class="col-3"></div>
+      <div class="col-6 turnos">
+        <div #inicioTurnos></div>
+        <div class="row" *ngFor="let turno of listadoTurnos; let i = index">
+          <div class="col-12 mb-2 pr-0">
+            <button class="btn btn-turno w-100 h-100 my-3 pt-0 d-flex justify-content-between" (click)="selectTurno(turno)">
+              <span class="text-left">
+                {{ horaInicio(turno.turno.horaInicio) }} hs. <br>
+                <small class="text-uppercase-first">Dr/a. </small>
+                <small class="text-capitalize text-sm" *ngIf="turno.profesional">
+                  {{ turno.profesional | profesional }}</small>
+              </span>
+              <span>
+                VER MÁS
+                <i class="mdi mdi-clock-outline mr-1"></i> {{ turno.turno.horaInicio | date: "HH:mm" }}
+                hs.<br>
+              </span>
+            </button>
+          </div>
+          <ng-template *ngIf="listadoTurnos.length - 1 === i">
+          </ng-template>
         </div>
-        <div class="row" *ngIf="listadoTurnos.length > 6 && scrolled">
-            <div class="nav-turnos col-12 d-flex align-items-center justify-content-center hover" (click)="scrollTop()">
-                <i class="mdi mdi-chevron-up mdi-100px"></i>
+        <div #finTurnos></div>
+      </div>
+      <div class="col-3"></div>
+    </div>
+    <div class="transition-down w-100 d-flex justify-content-center" *ngIf="listadoTurnos.length > 6 && !scrolled">
+      <div class="bg-info"></div>
+    </div>
+    <div class="row" *ngIf="listadoTurnos.length > 6 && !scrolled">
+      <div class="nav-turnos col-12 d-flex align-items-center justify-content-center hover" (click)="scrollDown()">
+        <i class="mdi mdi-chevron-down mdi-100px"></i>
+      </div>
+    </div>
+  </plex-layout-main>
+  <plex-layout-main *ngIf='turnoSeleccionado'>
+    <header>
+      <header>
+        <header-component [heading]="heading"></header-component>
+      </header>
+    </header>
+    <div class='container'>
+
+      <div class='row mt-4  d-flex justify-content-center'>
+        <div class='col-8 text-center cardTurno'>
+          <h1> <i class="mdi mdi-information-outline info-logo"></i></h1>
+          <h2 class="blue">Revise la infomación de su turno</h2>
+          <div id="print-section">
+            <div class="acheerre mt-4"></div>
+
+            <h1 class='mt-4'> <strong>{{turnoSeleccionado.prestacion.term | uppercase}}</strong> </h1>
+
+            <h3 class="mt-4"><span class="greyPrefix"> {{diaString}}</span>
+              <strong> {{turnoSeleccionado.turno.horaInicio| date: "dd/MM/yyyy"}}</strong>
+            </h3>
+
+            <h3 class="mt-4 blue"><strong>{{turnoSeleccionado.turno.horaInicio| date: " HH:mm "}} &nbsp;
+                hs.</strong></h3>
+
+            <span class='profesional mt-4' *ngIf='turnoSeleccionado.profesional'>
+              <span class="greyPrefix">Dr/a. </span>{{turnoSeleccionado.profesional.apellido}}
+              {{turnoSeleccionado.profesional.nombre}}</span>
+            <span class='profesional mt-4' *ngIf='!turnoSeleccionado.profesional'>Profesional no asignado</span>
+          </div>
+          <div class="row mt-4">
+            <div class="col-6">
+              <button class='btn btn-warning btnConfirm' [disabled]='disabled' (click)='corregir()'>Corregir</button>
             </div>
-        </div>
-        <div class="transition-up w-100 d-flex justify-content-center" *ngIf="scrolled">
-            <div class="bg-info"></div>
-        </div>
-        <div class="row">
-            <div class="col-3"></div>
-            <div class="col-6 turnos">
-                <div #inicioTurnos></div>
-                <div class="row" *ngFor="let turno of listadoTurnos; let i = index">
-                    <div class="col-12 mb-2 pr-0">
-                        <button class="btn btn-turno w-100 h-100 my-3 pt-0 d-flex justify-content-between"
-                            (click)="selectTurno(turno)">
-                            <span class="text-left">
-                                {{ horaInicio(turno.turno.horaInicio) }} hs. <br>
-                                <small class="text-uppercase-first">Dr/a. </small>
-                                <small class="text-capitalize text-sm" *ngIf="turno.profesional">
-                                    {{ turno.profesional | profesional }}</small>
-                            </span>
-                            <span>
-                                VER MÁS
-                                <i class="mdi mdi-clock-outline mr-1"></i> {{ turno.turno.horaInicio | date: "HH:mm" }}
-                                hs.<br>
-                            </span>
-                        </button>
-                    </div>
-                    <ng-template *ngIf="listadoTurnos.length - 1 === i">
-                    </ng-template>
-                </div>
-                <div #finTurnos></div>
+            <div class="col-6">
+              <button label="Confirmar" [disabled]='disabled' class='btn btn-success btnConfirm' printSectionId="print-section" [useExistingCss]="true" (click)='guardar()' ngxPrint>Confirmar</button>
             </div>
-            <div class="col-3"></div>
+          </div>
         </div>
-        <div class="transition-down w-100 d-flex justify-content-center" *ngIf="listadoTurnos.length > 6 && !scrolled">
-            <div class="bg-info"></div>
-        </div>
-        <div class="row" *ngIf="listadoTurnos.length > 6 && !scrolled">
-            <div class="nav-turnos col-12 d-flex align-items-center justify-content-center hover"
-                (click)="scrollDown()">
-                <i class="mdi mdi-chevron-down mdi-100px"></i>
-            </div>
-        </div>
-    </plex-layout-main>
-    <plex-layout-main *ngIf='turnoSeleccionado'>
-        <header>
-            <header>
-                <header-component [heading]="heading"></header-component>
-            </header>
-        </header>
-        <div class='container'>
-
-            <div class='row mt-4  d-flex justify-content-center'>
-                <div class='col-8 text-center cardTurno'>
-                    <h1> <i class="mdi mdi-information-outline info-logo"></i></h1>
-                    <h2 class="blue">Revise la infomación de su turno</h2>
-                    <div class="acheerre mt-4"></div>
-
-                    <h1 class='mt-4'> <strong>{{turnoSeleccionado.prestacion.term | uppercase}}</strong> </h1>
-
-                    <h3 class="mt-4"><span class="greyPrefix"> {{diaString}}</span>
-                        <strong> {{turnoSeleccionado.turno.horaInicio| date: "dd/MM/yyyy"}}</strong>
-                    </h3>
-
-                    <h3 class="mt-4 blue"><strong>{{turnoSeleccionado.turno.horaInicio| date: " HH:mm "}} &nbsp;
-                            hs.</strong></h3>
-
-                    <span class='profesional mt-4' *ngIf='turnoSeleccionado.profesional'>
-                        <span class="greyPrefix">Dr/a. </span>{{turnoSeleccionado.profesional.apellido}}
-                        {{turnoSeleccionado.profesional.nombre}}</span>
-                    <span class='profesional mt-4' *ngIf='!turnoSeleccionado.profesional'>Profesional no asignado</span>
-
-                    <div class="row mt-4">
-                        <div class="col-6">
-                            <button class='btn btn-warning btnConfirm' [disabled]='disabled'
-                                (click)='corregir()'>Corregir</button>
-                        </div>
-                        <div class="col-6">
-                            <button label="Confirmar" [disabled]='disabled' class='btn btn-success btnConfirm'
-                                (click)='guardar()'>Confirmar</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </plex-layout-main>
+      </div>
+    </div>
+  </plex-layout-main>
 
 </plex-layout>
