@@ -106,6 +106,7 @@ export class TurnosComponent implements OnInit {
   guardar() {
     this.disabled = true;
     this.turnosService.save(this.turnoSeleccionado, this.paciente, { showError: false }).subscribe((resultado) => {
+      window.print();
       this.router.navigate(['/publicidad'], { queryParams: { textoTurno: true } });
     }, (error) => {
       this.router.navigate(['buscar']);

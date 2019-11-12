@@ -1,94 +1,94 @@
 .cardTurno {
-    padding: 2% 5% 3% 5%;
-    box-shadow: 5px 3px 20px #0000009e;
+  padding: 2% 5% 3% 5%;
+  box-shadow: 5px 3px 20px #0000009e;
 }
 
 .prestacion {
-    color: #00a8e0;
-    font-weight: 500;
+  color: #00a8e0;
+  font-weight: 500;
 }
 
 .profesional {
-    color: #000000;
-    font-size: 2rem;
-    font-weight: 600;
+  color: #000000;
+  font-size: 2rem;
+  font-weight: 600;
 }
 
 .btnConfirmTurno {
-    width: 100%;
-    padding: 25px;
-    font-size: 25px;
+  width: 100%;
+  padding: 25px;
+  font-size: 25px;
 }
 
 .btnTurnos {
-    color: white;
-    background-color: #002738 !important;
-    border: #00a8e0;
-    font-size: 25px;
+  color: white;
+  background-color: #002738 !important;
+  border: #00a8e0;
+  font-size: 25px;
 }
 
 .turnos {
-    min-height: 106px;
-    max-height: 468px;
-    overflow: hidden;
+  min-height: 106px;
+  max-height: 468px;
+  overflow: hidden;
 
 }
 
 .transition-up {
-    position: relative;
+  position: relative;
 
-    div {
-        height: 50px;
-        width: 750px;
-        margin-left: 8px;
-        position: absolute;
-        top: 0px;
-        background-color: rgba(194, 242, 255, 1);
-        background: linear-gradient(to bottom, rgba(255, 255, 255, 1) 0%, rgba(194, 242, 255, 1) 100%);
-        border: 2px solid #00a8e0;
-        border-bottom: 0;
-        border-top: 0;
-        flex: 0 0 50%;
-        max-width: 50%;
-        margin-left: 8px;
-        width: 100%;
-        z-index: 1;
-    }
+  div {
+      height: 50px;
+      width: 750px;
+      margin-left: 8px;
+      position: absolute;
+      top: 0px;
+      background-color: rgba(194, 242, 255, 1);
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 1) 0%, rgba(194, 242, 255, 1) 100%);
+      border: 2px solid #00a8e0;
+      border-bottom: 0;
+      border-top: 0;
+      flex: 0 0 50%;
+      max-width: 50%;
+      margin-left: 8px;
+      width: 100%;
+      z-index: 1;
+  }
 }
 
 .transition-down {
-    position: relative;
+  position: relative;
 
-    div {
-        height: 35px;
-        position: absolute;
-        bottom: 0px;
-        background-color: #c2f2ff;
-        background: linear-gradient(to bottom, #c2f2ff 0%, white 100%);
-        border: 2px solid #00a8e0;
-        border-top: 0;
-        border-bottom: 0;
-        flex: 0 0 50%;
-        max-width: 50%;
-        margin-left: 8px;
-        width: 100%;
-    }
+  div {
+      height: 35px;
+      position: absolute;
+      bottom: 0px;
+      background-color: #c2f2ff;
+      background: linear-gradient(to bottom, #c2f2ff 0%, white 100%);
+      border: 2px solid #00a8e0;
+      border-top: 0;
+      border-bottom: 0;
+      flex: 0 0 50%;
+      max-width: 50%;
+      margin-left: 8px;
+      width: 100%;
+  }
 }
 
 .nav-turnos {
-    .mdi-100px {
-        font-size: 100px;
-        line-height: 55px;
-        background: #00a8e0;
-        width: 80px;
-        height: 80px;
-        display: flex;
-        align-items: center;
-        border-radius: 55px;
-        color: white;
-        justify-content: center;
-        margin: 5px 0;
-    }
+  .mdi-100px {
+      font-size: 100px;
+      line-height: 55px;
+      background: #00a8e0;
+      width: 80px;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      border-radius: 55px;
+      color: white;
+      justify-content: center;
+      margin: 5px 0;
+  }
 }
 
 .btn-turno {
@@ -119,31 +119,67 @@
 }
 
 .text-uppercase-first {
-    text-transform: lowercase;
+  text-transform: lowercase;
 
-    &::first-letter {
-        text-transform: uppercase;
-    }
+  &::first-letter {
+      text-transform: uppercase;
+  }
 }
 
 .info-logo {
-    color: #00a8e0;
-    font-size: 76px
+  color: #00a8e0;
+  font-size: 76px
 }
 
 .acheerre {
-    text-align: center;
-    border-bottom: 2px solid #00a8e0;
-    width: 6%;
-    margin-left: 47%;
+  text-align: center;
+  border-bottom: 2px solid #00a8e0;
+  width: 6%;
+  margin-left: 47%;
 }
 
 .greyPrefix {
-    color: grey;
-    font-size: 2rem;
-    font-weight: 600;
+  color: grey;
+  font-size: 2rem;
+  font-weight: 600;
 }
 
 .blue {
-    color: #00a8e0;
+  color: #00a8e0;
+}
+
+@media print {
+  .oculto-impresion,
+  .oculto-impresion * {
+      display: none !important;
+  }
+  h1{
+      font-size: 16px;
+      color: #000000;
+  }
+  h3{
+      font-size: 14px;
+      color: #000000;
+      span{
+      font-size: 12px;
+      color: #000000;
+      }
+  }
+  .blue{
+    color: #000000;
+  }
+  .greyPrefix{
+    font-size: 12px;
+  }
+  .profesional{
+      font-size: 12px;
+      color: #000000;
+  }
+  .cardTurno{
+      padding:0;
+  }
+  @page {
+    size: auto;
+    margin: 0;
+         }
 }
