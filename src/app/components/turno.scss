@@ -147,3 +147,25 @@
 .blue {
     color: #00a8e0;
 }
+
+@media print {
+    .oculto-impresion,
+    .oculto-impresion * {
+        display: none !important;
+    }
+    h1{
+        font-size: 16px;
+    }
+    h3{
+        font-size: 14px;
+        span{
+        font-size: 12px;
+        }
+    }
+    .profesional{
+        font-size: 12px;
+    }
+    .cardTurno{
+        padding:0;
+    }
+}

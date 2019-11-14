@@ -2,7 +2,6 @@
   <plex-layout-main *ngIf='!turnoSeleccionado'>
     <header>
       <header>
-
         <header-component [heading]="heading"></header-component>
       </header>
     </header>
@@ -74,7 +73,7 @@
     </div>
   </plex-layout-main>
   <plex-layout-main *ngIf='turnoSeleccionado'>
-    <header>
+    <header class="oculto-impresion">
       <header>
         <header-component [heading]="heading"></header-component>
       </header>
@@ -83,8 +82,8 @@
 
       <div class='row mt-4  d-flex justify-content-center'>
         <div class='col-8 text-center cardTurno'>
-          <h1> <i class="mdi mdi-information-outline info-logo"></i></h1>
-          <h2 class="blue">Revise la infomación de su turno</h2>
+          <h1> <i class="mdi mdi-information-outline info-logo oculto-impresion"></i></h1>
+          <h2 class="blue oculto-impresion">Revise la infomación de su turno</h2>
           <div id="print-section">
             <div class="acheerre mt-4"></div>
 
@@ -104,10 +103,10 @@
           </div>
           <div class="row mt-4">
             <div class="col-6">
-              <button class='btn btn-warning btnConfirm' [disabled]='disabled' (click)='corregir()'>Corregir</button>
+              <button class='btn btn-warning btnConfirm oculto-impresion' [disabled]='disabled' (click)='corregir()'>Corregir</button>
             </div>
             <div class="col-6">
-              <button label="Confirmar" [disabled]='disabled' class='btn btn-success btnConfirm' printSectionId="print-section" [useExistingCss]="true" (click)='guardar()' ngxPrint>Confirmar</button>
+              <button label="Confirmar" [disabled]='disabled' class='btn btn-success btnConfirm oculto-impresion'  (click)='guardar()' >Confirmar</button>
             </div>
           </div>
         </div>
