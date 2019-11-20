@@ -26,6 +26,7 @@ import { SeleccionarPrestacionComponent } from './components/seleccionar-prestac
 import { HeaderComponent } from './components/header.component';
 import { PublicidadComponent } from './components/publicidad.component';
 import { PrestacionPipe } from './pipes/prestacion.pipe';
+import { ErrorComponent } from './components/error.component';
 registerLocaleData(localeEs, 'es');
 
 @NgModule({
@@ -51,6 +52,7 @@ registerLocaleData(localeEs, 'es');
     PrestacionPipe,
     ScanPacienteComponent,
     ConfirmarTelefonoComponent,
+    ErrorComponent,
   ],
   bootstrap: [AppComponent],
   providers: [
