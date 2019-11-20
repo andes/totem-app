@@ -31,10 +31,11 @@
         <div class="acheerre mt-4"></div>
 
         <h3 class="mt-4"><span class="greyPrefix"></span>
-          <strong> {{turnoAsignado[0].horaInicio| date: "dd/MM/yyyy"}}</strong>
+          <strong>
+            {{ horaInicio(turnoAsignado[0].turno.horaInicio) | date: "dd 'de' MMMM 'del' yyyy" }}</strong>
         </h3>
 
-        <h3 class="mt-4 blue"><strong>{{turnoAsignado[0].horaInicio| date: " HH:mm "}} &nbsp;
+        <h3 class="mt-4 blue"><strong>{{turnoAsignado[0].turno.horaInicio| date: " HH:mm "}} &nbsp;
             hs.</strong></h3>
 
         <span class='profesional mt-4' *ngIf='turnoAsignado[0].profesionales[0]'>
@@ -47,9 +48,10 @@
         <div #inicioTurnos></div>
         <div class="row" *ngFor="let turno of listadoTurnos; let i = index">
           <div class="col-12 mb-2 pr-0">
-            <button class="btn btn-turno w-100 h-100 my-3 pt-0 d-flex justify-content-between" (click)="selectTurno(turno)">
+            <button class="btn btn-turno w-100 h-100 my-3 pt-0 d-flex justify-content-between"
+                    (click)="selectTurno(turno)">
               <span class="text-left">
-                {{ horaInicio(turno.turno.horaInicio) | date: "dd 'de' MMMM 'del' yyyy" }}<br>
+                {{ horaInicio(turno.horaInicio) | date: "dd 'de' MMMM 'del' yyyy" }}<br>
                 <small class="text-capitalize text-sm" *ngIf="turno.profesional">
                   Dr/a. {{ turno.profesional | profesional }}</small>
                 <small class="text-capitalize text-sm" *ngIf="!turno.profesional">
@@ -110,7 +112,8 @@
               <button class='btn btn-warning btnConfirm' [disabled]='disabled' (click)='corregir()'>Corregir</button>
             </div>
             <div class="col-6">
-              <button label="Confirmar" [disabled]='disabled' class='btn btn-success btnConfirm' (click)='guardar()'>Confirmar</button>
+              <button label="Confirmar" [disabled]='disabled' class='btn btn-success btnConfirm'
+                      (click)='guardar()'>Confirmar</button>
             </div>
           </div>
         </div>

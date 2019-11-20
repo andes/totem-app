@@ -5,7 +5,7 @@ import { Component, HostListener } from '@angular/core';
 import { Plex } from '@andes/plex';
 import { Server } from '@andes/shared';
 import { Auth } from '@andes/auth';
-import { ANDES_KEY } from '../config.private';
+import { ANDES_KEY } from '../../config.private';
 import { Subject } from 'rxjs';
 import { Router } from '@angular/router';
 
