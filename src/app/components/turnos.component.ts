@@ -4,6 +4,7 @@ import { AgendasService } from '../services/agendas.services';
 import { Plex } from '@andes/plex';
 import { TurnosService } from '../services/turnos.service';
 import { PacienteService } from '../services/paciente.service';
+import { ConstantPool } from '@angular/compiler';
 @Component({
   templateUrl: 'turnos.html',
   styleUrls: ['turno.scss']
@@ -76,7 +77,9 @@ export class TurnosComponent implements OnInit {
         idBloque: agenda.bloques._id,
         turno: agenda.bloques.turnos,
         profesional: agenda.profesionales && agenda.profesionales.length > 0 ? agenda.profesionales[0] : null,
-        prestacion: this.prestacionSeleccionada
+        prestacion: this.prestacionSeleccionada,
+        espacioFisico: agenda.espacioFisico,
+        organizacion: agenda.organizacion
       };
     });
     return agendasParseadas;
