@@ -13,15 +13,15 @@
           </div>
         </div>
         <div class="row d-flex justify-content-center mt-2">
-          <div class="col-4 text-center celular">
+          <div class="col-8 text-center celular">
             <h1>
               <span class="prefijo mr-2"> 0</span>
-              <span class="prefijoBorder mr-4 px-2">
+              <span class="numeroBorder mr-4 px-5">
                 <span *ngIf="telefono">{{getCaracteristica()}}</span>
                 <span *ngIf="!telefono">&nbsp;&nbsp;</span>
               </span>
               <span class="prefijo mr-2">15-</span>
-              <span class="numeroBorder px-2">
+              <span class="numeroBorder px-5">
                 <span *ngIf="getTelefono()">{{getTelefono()}}</span>
                 <span *ngIf="!getTelefono()">&nbsp;&nbsp;</span>
               </span>
@@ -33,15 +33,12 @@
             <div class="simple-keyboard"></div>
           </div>
         </div>
-        <div class="row mt-1 d-flex justify-content-center">
+        <div class="row mt-3 d-flex justify-content-center">
           <div [ngClass]="{'d-none': !disableInput, ' col-3 d-flex justify-content-end':disableInput }">
-            <button [ngClass]="{'disabled': disableButtons }" class='btn btn-warning btnConfirm mt-1'
-              (click)='corregir()'>Corregir</button>
+            <button [ngClass]="{'disabled': disableButtons }" class='btn btn-warning btnCorregir mt-1' (click)='corregir()'>Corregir</button>
           </div>
-          <div
-            [ngClass]="{'col-3 d-flex justify-content-start': disableInput, 'col-6 d-flex justify-content-center': !disableInput }">
-            <button [ngClass]="{'disabled': disableButtons }" class='btn btn-success btnConfirm mt-1'
-              (click)='confirmar()'>Confirmar</button>
+          <div [ngClass]="{'col-3 d-flex justify-content-start': disableInput, 'col-6 d-flex justify-content-center': !disableInput }">
+            <button [ngClass]="{'disabled': disableButtons }" class='btn btn-success btnConfirm mt-1' (click)='confirmar()'>Confirmar</button>
           </div>
         </div>
       </section>
