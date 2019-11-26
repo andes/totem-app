@@ -1,7 +1,6 @@
   <div class="hidden">
     <form>
-      <plex-text [(ngModel)]="scan" (change)="onScan()" name="buscador" placeholder="Escanee un documento digital"
-        [autoFocus]="autoFocus">
+    <plex-text [(ngModel)]="scan" (change)="onScan($event.value)" name="buscador" placeholder="Escanee un documento digital" [autoFocus]="autoFocus">
       </plex-text>
     </form>
   </div>
