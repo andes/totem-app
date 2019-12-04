@@ -1,0 +1,14 @@
+<plex-layout style="margin-top: -15px !important;">
+  <plex-layout-main>
+    <ul class="list-group">
+      <div class="row">
+        <div class="col-12">
+          <button class="boton color-rosa" *ngFor="let org of organizaciones" (click)=seleccionar(org)>
+            {{org.nombre}}
+          </button>
+        </div>
+      </div>
+
+    </ul>
+  </plex-layout-main>
+</plex-layout>
