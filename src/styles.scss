@@ -17,7 +17,7 @@ $invert: #002738;
 $calificador: #660520;
 $laboratorio: #a0a0a0;
 $registro: #8bc43f; // elemento de registro
-// definimos esta lista para poder acceder mediante la funcion map-get() ya que en sass no se puede hacer 
+// definimos esta lista para poder acceder mediante la funcion map-get() ya que en sass no se puede hacer
 // la interpolacion del string a una variable directamente
 $plex-tabs-color-extend: (problema: $problema,
 calificador: $calificador,
@@ -57,6 +57,7 @@ plex-app {
 
 .plex-box {
     padding: 0 !important;
+    box-shadow: 0 1px 1px white;
 }
 
 .plex-box-content {

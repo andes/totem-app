@@ -1,0 +1,13 @@
+<div class="row d-flex justify-content-center" style="padding:60px">
+  <div class="col-10 text-center ">
+    <h2>Bienvenidos al totem!</h2>
+    <h4 class="text-center"> Ingrese su código de activación para sincronizar la pantalla. </h4>
+
+    <input type="text" placeholder="Código activación" [(ngModel)]="codigo" class="prefijoBorder">
+
+  </div>
+</div>
+
+<div class="text-center">
+  <button class="btn btn-warning btnConfirm mt-1" (click)="ingresar()" style=" width: 25%;"> Ingresar </button>
+</div>

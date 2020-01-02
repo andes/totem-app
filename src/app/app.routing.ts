@@ -20,6 +20,7 @@ import { ConfirmarTelefonoComponent } from './components/confirmar-telefono.comp
 import { SeleccionarPrestacionComponent } from './components/seleccionar-prestacion.component';
 import { PublicidadComponent } from './components/publicidad.component';
 import { ErrorComponent } from './components/error.component';
+import { StartComponent } from './components/start/start.component';
 
 
 // import { HomeComponent } from './modules/estadisticas/components/home.component';
@@ -32,6 +33,7 @@ const appRoutes: Routes = [
   { path: 'confirmar-telefono', component: ConfirmarTelefonoComponent },
   { path: 'publicidad', component: PublicidadComponent },
 
+  { path: 'start', component: StartComponent },
   // dejar siempre al último porque no encuentra las url después de esta
   { path: '**', redirectTo: 'buscar' }
 ];

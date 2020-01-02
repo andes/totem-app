@@ -1,3 +1,4 @@
+import { AuthService } from './services/auth.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, LOCALE_ID } from '@angular/core';
 import { AppComponent } from './app.component';
@@ -12,7 +13,6 @@ import { AuthModule } from '@andes/auth';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { ChartsModule } from 'ng2-charts';
 import { AgendasService } from './services/agendas.services';
-
 import { TurnosComponent } from './components/turnos.component';
 import { registerLocaleData } from '@angular/common';
 import localeEs from '@angular/common/locales/es';
@@ -27,6 +27,8 @@ import { HeaderComponent } from './components/header.component';
 import { PublicidadComponent } from './components/publicidad.component';
 import { PrestacionPipe } from './pipes/prestacion.pipe';
 import { ErrorComponent } from './components/error.component';
+import { StartComponent } from './components/start/start.component';
+import { ConfiguracionService } from './services/configuracion/configuracionPantalla.service';
 registerLocaleData(localeEs, 'es');
 
 @NgModule({
@@ -40,7 +42,7 @@ registerLocaleData(localeEs, 'es');
     AuthModule,
     ScrollingModule,
     ChartsModule,
-    routing,
+    routing
   ],
   declarations: [
     AppComponent,
@@ -54,6 +56,7 @@ registerLocaleData(localeEs, 'es');
     ScanPacienteComponent,
     ConfirmarTelefonoComponent,
     ErrorComponent,
+    StartComponent
   ],
   bootstrap: [AppComponent],
   providers: [
@@ -65,6 +68,8 @@ registerLocaleData(localeEs, 'es');
     Server,
     appRoutingProviders,
     AgendasService,
+    AuthService,
+    ConfiguracionService,
     TurnosService,
     PacienteService
   ],
