@@ -37,7 +37,6 @@ export class PacienteService {
     }
   }
 
-
   patch(id: String, cambios: any, options: any = {}): Observable<any> {
     return this.server.patch(`${this.pacienteUrl}/${id}`, cambios);
   }
