@@ -19,19 +19,21 @@ import { ScanPacienteComponent } from './components/scan-paciente.component';
 import { ConfirmarTelefonoComponent } from './components/confirmar-telefono.component';
 import { SeleccionarPrestacionComponent } from './components/seleccionar-prestacion.component';
 import { PublicidadComponent } from './components/publicidad.component';
+import { ErrorComponent } from './components/error.component';
 
 
 // import { HomeComponent } from './modules/estadisticas/components/home.component';
 
 const appRoutes: Routes = [
-    { path: 'prestaciones', component: SeleccionarPrestacionComponent },
-    { path: 'turnos', component: TurnosComponent },
-    { path: 'buscar', component: ScanPacienteComponent },
-    { path: 'confirmar-telefono', component: ConfirmarTelefonoComponent },
-    { path: 'publicidad', component: PublicidadComponent },
+  { path: 'prestaciones', component: SeleccionarPrestacionComponent },
+  { path: 'turnos', component: TurnosComponent },
+  { path: 'buscar', component: ScanPacienteComponent },
+  { path: 'error', component: ErrorComponent },
+  { path: 'confirmar-telefono', component: ConfirmarTelefonoComponent },
+  { path: 'publicidad', component: PublicidadComponent },
 
-    // dejar siempre al último porque no encuentra las url después de esta
-    { path: '**', redirectTo: 'buscar' }
+  // dejar siempre al último porque no encuentra las url después de esta
+  { path: '**', redirectTo: 'buscar' }
 ];
 
 export const appRoutingProviders: any[] = [];

@@ -17,6 +17,8 @@ export class TurnosComponent implements OnInit {
   private paciente;
   public prestacionSeleccionada;
   public agendas = [];
+  public tieneTurnos;
+  public turnoAsignado;
   public listadoTurnos = [];
   public confirmarTurno = false;
   public turnoSeleccionado;
@@ -48,12 +50,20 @@ export class TurnosComponent implements OnInit {
       this.prestacionSeleccionada = params;
       if (this.prestacionSeleccionada && this.prestacionSeleccionada.conceptId) {
         this.heading.secundario += ` <b>${this.prestacionSeleccionada.term}</b>`;
-        this.agendasService.getAgendas({ prestacion: this.prestacionSeleccionada.conceptId }).subscribe((agendas) => {
-          this.agendas = agendas;
-          this.listadoTurnos = this.parsearTurnos(agendas);
-        }, (error) => {
-          this.plex.info('danger', error, 'Error');
+        this.pacienteService.getTurnos(this.paciente.id, { turnosProximos: true, conceptId: this.prestacionSeleccionada.conceptId, organizacion: true }).subscribe(turnos => {
+          this.turnoAsignado = turnos[0];
+          console.log(this.turnoAsignado);
+          this.tieneTurnos = (turnos[0].length > 0);
+          if (!this.tieneTurnos) {
+            this.agendasService.getAgendas({ prestacion: this.prestacionSeleccionada.conceptId }).subscribe((agendas) => {
+              this.agendas = agendas;
+              this.listadoTurnos = this.parsearTurnos(agendas);
+            }, (error) => {
+              this.plex.info('danger', error, 'Error');
+            });
+          }
         });
+
       }
     });
   }

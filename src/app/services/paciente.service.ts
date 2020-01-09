@@ -48,4 +48,8 @@ export class PacienteService {
   getById(id: String): Observable<any> {
     return this.server.get(`${this.pacienteUrl}/${id}`, null);
   }
+
+  getTurnos(id: String, params: any): Observable<any[]> {
+    return this.server.get(`${this.pacienteUrl}/${id}/turnos`, { params: params, showError: true });
+  }
 }

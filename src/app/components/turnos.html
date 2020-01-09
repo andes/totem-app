@@ -7,8 +7,12 @@
       </header>
     </header>
     <div class='text-center'>
-      <h3>Próximo turno disponible de </h3>
+      <h3>Turnos Disponibles de </h3>
       <h2><strong> {{prestacionSeleccionada.term | uppercase }}</strong></h2>
+
+    </div>
+    <div class="row">
+
 
     </div>
     <div class="row" *ngIf="listadoTurnos.length > 6 && scrolled">
@@ -19,15 +23,35 @@
     <div class="transition-up w-100 d-flex justify-content-center" *ngIf="scrolled">
       <div class="bg-info"></div>
     </div>
+    <br>
     <div class="row">
       <div class="col-3"></div>
-      <div class="col-6 turnos">
+      <div class="col-6 text-center cardTurno" *ngIf="tieneTurnos && turnoAsignado">
+        <h2 class="blue">Usted ya tiene un turno asignado</h2>
+        <div class="acheerre mt-4"></div>
+
+        <h3 class="mt-4"><span class="greyPrefix"></span>
+          <strong>
+            {{ horaInicio(turnoAsignado[0].turno.horaInicio) | date: "dd 'de' MMMM 'del' yyyy" }}</strong>
+        </h3>
+
+        <h3 class="mt-4 blue"><strong>{{turnoAsignado[0].turno.horaInicio| date: " HH:mm "}} &nbsp;
+            hs.</strong></h3>
+
+        <span class='profesional mt-4' *ngIf='turnoAsignado[0].profesionales[0]'>
+          <span class="greyPrefix">Dr/a. </span>{{turnoAsignado[0].profesionales[0].apellido}}
+          {{turnoAsignado[0].profesionales[0].nombre}}</span>
+        <span class='profesional mt-4' *ngIf='!turnoAsignado[0].profesionales[0]'>Profesional no asignado</span>
+
+      </div>
+      <div class="col-6 turnos" *ngIf="!tieneTurnos">
         <div #inicioTurnos></div>
         <div class="row" *ngFor="let turno of listadoTurnos; let i = index">
           <div class="col-12 mb-2 pr-0">
-            <button class="btn btn-turno w-100 h-100 my-3 pt-0 d-flex justify-content-between" (click)="selectTurno(turno)">
+            <button class="btn btn-turno w-100 h-100 my-3 pt-0 d-flex justify-content-between"
+                    (click)="selectTurno(turno)">
               <span class="text-left">
-                {{ horaInicio(turno.turno.horaInicio) | date: "dd 'de' MMMM 'del' yyyy" }}<br>
+                {{ horaInicio(turno.horaInicio) | date: "dd 'de' MMMM 'del' yyyy" }}<br>
                 <small class="text-capitalize text-sm" *ngIf="turno.profesional">
                   Dr/a. {{ turno.profesional | profesional }}</small>
                 <small class="text-capitalize text-sm" *ngIf="!turno.profesional">
@@ -88,7 +112,8 @@
               <button class='btn btn-warning btnConfirm' [disabled]='disabled' (click)='corregir()'>Corregir</button>
             </div>
             <div class="col-6">
-              <button label="Confirmar" [disabled]='disabled' class='btn btn-success btnConfirm' (click)='guardar()'>Confirmar</button>
+              <button label="Confirmar" [disabled]='disabled' class='btn btn-success btnConfirm'
+                      (click)='guardar()'>Confirmar</button>
             </div>
           </div>
         </div>
