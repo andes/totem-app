@@ -15,14 +15,15 @@ html {
 }
 
 main {
-    height: 650px;
+    padding-top: 2%;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
 
     section {
-        width: 1500px;
+        width: 100%;
     }
 }
 
@@ -31,22 +32,17 @@ main {
 }
 
 .prefijo {
-    color: #00a8e0;
+    color: #818181;
 }
 
 .numeroBorder {
-    border: 2px solid #00a8e0;
-    display: inline-block;
-    min-width: 180px;
-    color: #000000;
+  border: 2px solid #d9dadb;
+  display: inline-block;
+  min-width: 120px;
+  padding: 1%;
+  color: #000000;
 }
 
-.prefijoBorder {
-    border: 2px solid #00a8e0;
-    display: inline-block;
-    min-width: 90px;
-    color: #000000;
-}
 
 .colorPaciente {
     color: #7b398d;
@@ -76,7 +72,18 @@ hr {
 
 .btnConfirm {
     width: 100%;
-    font-size: 32px
+    font-size: 32px;
+    padding:2%;
+    background: #1387ae !important;
+    border-color: #1387ae !important;
+}
+
+.btnCorregir {
+  width: 100%;
+    font-size: 32px;
+    padding:2%;
+    background:   #db3560 !important;
+    border-color: #db3560 !important;
 }
 
 .datosSecundarios:nth-of-type(1) {
@@ -91,15 +98,15 @@ hr {
 }
 
 /*!
- * 
+ *
  *   simple-keyboard v2.20.3 (Non-minified build)
  *   https://github.com/hodgef/simple-keyboard
- * 
+ *
  *   Copyright (c) Francisco Hodge (https://github.com/hodgef)
- * 
+ *
  *   This source code is licensed under the MIT license found in the
  *   LICENSE file in the root directory of this source tree.
- *   
+ *
  */
 /* body,
  html {
@@ -195,8 +202,8 @@ hr {
 }
 
 .simple-keyboard.hg-theme-default.hg-layout-numeric .hg-button {
-    width: 33.3%;
-    height: 60px;
+    width: 20%;
+    height: 50px;
     -webkit-align-items: center;
     align-items: center;
     display: -webkit-flex;

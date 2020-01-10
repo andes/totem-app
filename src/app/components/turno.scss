@@ -10,7 +10,7 @@
 
 .profesional {
   color: #000000;
-  font-size: 2rem;
+  font-size: 1.25rem;
   font-weight: 600;
 }
 
@@ -92,11 +92,11 @@
 }
 
 .btn-turno {
-  background: #543663;
-  color: white;
-  border: 2px solid #a55285;
-  font-size: 1.75rem;
-  text-transform: lowercase;
+background: #db3560;
+color: white;
+border: 2px solid #db3560;
+font-size: 1.75rem;
+text-transform: lowercase;
 
     >span {
         height: 40px;
@@ -128,7 +128,7 @@
 
 .info-logo {
   color: #00a8e0;
-  font-size: 76px
+  font-size: 50px;
 }
 
 .acheerre {
@@ -140,8 +140,9 @@
 
 .greyPrefix {
   color: grey;
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: 600;
+    font-weight: 600;
 }
 
 .blue {
@@ -183,3 +184,63 @@
     margin: 0;
          }
 }
+
+@media print {
+  .oculto-impresion,
+  .oculto-impresion * {
+      display: none !important;
+  }
+  h1{
+      font-size: 16px;
+      color: #000000;
+  }
+  h3{
+      font-size: 14px;
+      color: #000000;
+      span{
+      font-size: 12px;
+      color: #000000;
+      }
+  }
+  .blue{
+    color: #000000;
+  }
+  .greyPrefix{
+    font-size: 12px;
+  }
+  .profesional{
+      font-size: 12px;
+      color: #000000;
+  }
+  .cardTurno{
+      padding:0;
+  }
+  @page {
+    size: auto;
+    margin: 0;
+         }
+}
+
+@media print {
+    .oculto-impresion,
+    .oculto-impresion * {
+        display: none !important;
+    }
+    h1{
+        font-size: 16px;
+    }
+    h3{
+        font-size: 14px;
+        span{
+        font-size: 12px;
+        }
+    }
+    .profesional{
+        font-size: 12px;
+    }
+    .cardTurno{
+        padding:0;
+    }
+}
+
+@page { size: auto;  margin: 0mm; }

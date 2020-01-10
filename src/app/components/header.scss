@@ -16,6 +16,9 @@ hr {
 
 .btnBack {
     padding: 14% 50px;
+    color: #fff;
+    background: #1387ae !important;
+    border-color: #1387ae !important;
 }
 
 header {
@@ -86,12 +89,12 @@ header {
 
     .principal {
         // height: 40px;
-        font-size: 2.5rem;
+        font-size: 2.0rem;
     }
 
     .separador {
         padding-right: 10px;
-        border-right: 2px solid black;
+        border-right: 1px solid black;
         width: 2px;
         height: 25px;
         display: inline-block;

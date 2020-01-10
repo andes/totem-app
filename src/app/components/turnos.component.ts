@@ -51,7 +51,7 @@ export class TurnosComponent implements OnInit {
       this.prestacionSeleccionada = params;
       if (this.prestacionSeleccionada && this.prestacionSeleccionada.conceptId) {
         this.heading.secundario += ` <b>${this.prestacionSeleccionada.term}</b>`;
-        this.pacienteService.getTurnos(this.paciente.id, { turnosProximos: true, conceptId: this.prestacionSeleccionada.conceptId, organizacion: true }).subscribe(turnos => {
+        this.pacienteService.getTurnos(this.paciente.id, { desde: moment(new Date()).startOf('day').toDate(), conceptId: this.prestacionSeleccionada.conceptId, organizacion: true }).subscribe(turnos => {
           this.turnoAsignado = turnos[0];
           console.log(this.turnoAsignado);
           this.tieneTurnos = (turnos[0].length > 0);

@@ -98,8 +98,10 @@
 
             <h3 class="mt-4 blue"><strong>{{turnoSeleccionado.turno.horaInicio| date: " HH:mm "}} &nbsp;
                 hs.</strong></h3>
-            <h3 class="mt-4 blue" *ngIf='turnoSeleccionado.espacioFisico'><strong>{{turnoSeleccionado.espacioFisico.nombre}}</strong></h3>
-            <h3 class="mt-4 blue" *ngIf='turnoSeleccionado.organizacion'><strong>{{turnoSeleccionado.organizacion.nombre}}</strong></h3>
+            <h3 class="mt-4 blue" *ngIf='turnoSeleccionado.espacioFisico'>
+              <strong>{{turnoSeleccionado.espacioFisico.nombre}}</strong></h3>
+            <h3 class="mt-4 blue" *ngIf='turnoSeleccionado.organizacion'>
+              <strong>{{turnoSeleccionado.organizacion.nombre}}</strong></h3>
             <span class='profesional mt-4' *ngIf='turnoSeleccionado.profesional'>
               <span class="greyPrefix">Dr/a. </span>{{turnoSeleccionado.profesional.apellido}}
               {{turnoSeleccionado.profesional.nombre}}</span>
