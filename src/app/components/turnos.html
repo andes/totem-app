@@ -11,10 +11,6 @@
       <h2><strong> {{prestacionSeleccionada.term | uppercase }}</strong></h2>
 
     </div>
-    <div class="row">
-
-
-    </div>
     <div class="row" *ngIf="listadoTurnos.length > 6 && scrolled">
       <div class="nav-turnos col-12 d-flex align-items-center justify-content-center hover" (click)="scrollTop()">
         <i class="mdi mdi-chevron-up mdi-100px"></i>
@@ -80,7 +76,7 @@
     </div>
   </plex-layout-main>
   <plex-layout-main *ngIf='turnoSeleccionado'>
-    <header>
+    <header class="oculto-impresion">
       <header>
         <header-component [heading]="heading"></header-component>
       </header>
@@ -89,25 +85,27 @@
 
       <div class='row mt-4  d-flex justify-content-center'>
         <div class='col-8 text-center cardTurno'>
-          <h1> <i class="mdi mdi-information-outline info-logo"></i></h1>
-          <h2 class="blue">Revise la infomación de su turno</h2>
-          <div class="acheerre mt-4"></div>
+          <h1 oculto-impresion> <i class="mdi mdi-information-outline info-logo oculto-impresion"></i></h1>
+          <h2 class="blue oculto-impresion">Revise la infomación de su turno</h2>
+          <div id="print-section">
+            <div class="acheerre mt-4"></div>
 
-          <h1 class='mt-4'> <strong>{{turnoSeleccionado.prestacion.term | uppercase}}</strong> </h1>
+            <h1 class='mt-4'> <strong>{{turnoSeleccionado.prestacion.term | uppercase}}</strong> </h1>
 
-          <h3 class="mt-4"><span class="greyPrefix"> {{diaString}}</span>
-            <strong> {{turnoSeleccionado.turno.horaInicio| date: "dd/MM/yyyy"}}</strong>
-          </h3>
+            <h3 class="mt-4"><span class="greyPrefix"> {{diaString}}</span>
+              <strong> {{turnoSeleccionado.turno.horaInicio| date: "dd/MM/yyyy"}}</strong>
+            </h3>
 
-          <h3 class="mt-4 blue"><strong>{{turnoSeleccionado.turno.horaInicio| date: " HH:mm "}} &nbsp;
-              hs.</strong></h3>
-
-          <span class='profesional mt-4' *ngIf='turnoSeleccionado.profesional'>
-            <span class="greyPrefix">Dr/a. </span>{{turnoSeleccionado.profesional.apellido}}
-            {{turnoSeleccionado.profesional.nombre}}</span>
-          <span class='profesional mt-4' *ngIf='!turnoSeleccionado.profesional'>Profesional no asignado</span>
-
-          <div class="row mt-4">
+            <h3 class="mt-4 blue"><strong>{{turnoSeleccionado.turno.horaInicio| date: " HH:mm "}} &nbsp;
+                hs.</strong></h3>
+            <h3 class="mt-4 blue" *ngIf='turnoSeleccionado.espacioFisico'><strong>{{turnoSeleccionado.espacioFisico.nombre}}</strong></h3>
+            <h3 class="mt-4 blue" *ngIf='turnoSeleccionado.organizacion'><strong>{{turnoSeleccionado.organizacion.nombre}}</strong></h3>
+            <span class='profesional mt-4' *ngIf='turnoSeleccionado.profesional'>
+              <span class="greyPrefix">Dr/a. </span>{{turnoSeleccionado.profesional.apellido}}
+              {{turnoSeleccionado.profesional.nombre}}</span>
+            <span class='profesional mt-4' *ngIf='!turnoSeleccionado.profesional'>Profesional no asignado</span>
+          </div>
+          <div class="row mt-4 oculto-impresion">
             <div class="col-6">
               <button class='btn btn-warning btnConfirm' [disabled]='disabled' (click)='corregir()'>Corregir</button>
             </div>
