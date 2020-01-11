@@ -15,7 +15,7 @@ export class TurnosComponent implements OnInit {
     principal: `Seleccione un día y horario`,
     secundario: `Horarios disponibles para la `
   };
-  private paciente;
+  public paciente;
   public prestacionSeleccionada;
   public agendas = [];
   public tieneTurnos;
@@ -54,7 +54,7 @@ export class TurnosComponent implements OnInit {
         this.pacienteService.getTurnos(this.paciente.id, { desde: moment(new Date()).startOf('day').toDate(), conceptId: this.prestacionSeleccionada.conceptId, organizacion: true }).subscribe(turnos => {
           this.turnoAsignado = turnos[0];
           console.log(this.turnoAsignado);
-          this.tieneTurnos = (turnos[0].length > 0);
+          this.tieneTurnos = (turnos.length > 0);
           if (!this.tieneTurnos) {
             this.agendasService.getAgendas({ prestacion: this.prestacionSeleccionada.conceptId }).subscribe((agendas) => {
               this.agendas = agendas;

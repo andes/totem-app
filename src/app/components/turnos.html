@@ -24,20 +24,22 @@
       <div class="col-3"></div>
       <div class="col-6 text-center cardTurno" *ngIf="tieneTurnos && turnoAsignado">
         <h2 class="blue">Usted ya tiene un turno asignado</h2>
-        <div class="acheerre mt-4"></div>
-
+        <h2 class="mt-2">
+          <strong>
+            {{ turnoAsignado.turno.tipoPrestacion.term | uppercase }}</strong>
+        </h2>
         <h3 class="mt-4"><span class="greyPrefix"></span>
           <strong>
-            {{ horaInicio(turnoAsignado[0].turno.horaInicio) | date: "dd 'de' MMMM 'del' yyyy" }}</strong>
+            {{ horaInicio(turnoAsignado.turno.horaInicio) | date: "dd 'de' MMMM 'del' yyyy" }}</strong>
         </h3>
 
-        <h3 class="mt-4 blue"><strong>{{turnoAsignado[0].turno.horaInicio| date: " HH:mm "}} &nbsp;
+        <h3 class="mt-4 blue"><strong>{{turnoAsignado.turno.horaInicio| date: " HH:mm "}} &nbsp;
             hs.</strong></h3>
 
-        <span class='profesional mt-4' *ngIf='turnoAsignado[0].profesionales[0]'>
-          <span class="greyPrefix">Dr/a. </span>{{turnoAsignado[0].profesionales[0].apellido}}
-          {{turnoAsignado[0].profesionales[0].nombre}}</span>
-        <span class='profesional mt-4' *ngIf='!turnoAsignado[0].profesionales[0]'>Profesional no asignado</span>
+        <span class='profesional mt-4' *ngIf='turnoAsignado.profesionales[0]'>
+          <span class="greyPrefix">Dr/a. </span>{{turnoAsignado.profesionales[0].apellido}}
+          {{turnoAsignado.profesionales[0].nombre}}</span>
+        <span class='profesional mt-4' *ngIf='!turnoAsignado.profesionales[0]'>Profesional no asignado</span>
 
       </div>
       <div class="col-6 turnos" *ngIf="!tieneTurnos">
@@ -90,8 +92,10 @@
           <div id="print-section">
             <div class="acheerre mt-4"></div>
 
-            <h1 class='mt-4'> <strong>{{turnoSeleccionado.prestacion.term | uppercase}}</strong> </h1>
-
+            <h1 class='mt-4'>
+              <strong>{{turnoSeleccionado.prestacion.term | uppercase}}</strong> </h1>
+            <h3 class="mt-4"><small>{{paciente.apellido}},
+                {{paciente.nombre}}</small></h3>
             <h3 class="mt-4"><span class="greyPrefix"> {{diaString}}</span>
               <strong> {{turnoSeleccionado.turno.horaInicio| date: "dd/MM/yyyy"}}</strong>
             </h3>
