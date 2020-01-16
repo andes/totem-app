@@ -1,20 +1,22 @@
 <plex-layout>
   <plex-layout-main>
-    <header-component [heading]=""></header-component>
     <main>
       <section>
         <div class="row">
           <div class="container">
-            <div class='row mt-4  d-flex justify-content-center'>
-              <div class='col-8 text-center cardTurno'>
+            <div class='row mt-4 d-flex justify-content-center'>
+              <div class='col-8 text-center cardTurno mt-4'>
                 <h1> <i class="mdi mdi-information-outline info-logo"></i></h1>
                 <h2 class="blue">Paciente no encontrado</h2>
                 <div class="acheerre mt-4"></div>
 
                 <span class='profesional mt-4'>
-                  <span class="greyPrefix">No se encuentra registrado como paciente. <br>Puede acercarse a ventanilla para validar su dni.</span>
+                  <span class="greyPrefix">No se encuentra registrado como paciente. <br>Puede acercarse a ventanilla
+                    para validar su dni.</span>
                 </span>
-                <div class="row mt-4">
+                <div class="text-center">
+                  <button class="btn btn-volver mt-4" (click)="volver()" style="font-size: 1.5rem; width: 25%;"> Volver
+                  </button>
                 </div>
               </div>
             </div>

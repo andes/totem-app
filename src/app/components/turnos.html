@@ -49,7 +49,7 @@
             <button class="btn btn-turno w-100 h-100 my-3 pt-0 d-flex justify-content-between"
                     (click)="selectTurno(turno)">
               <span class="text-left">
-                {{ horaInicio(turno.horaInicio) | date: "dd 'de' MMMM 'del' yyyy" }}<br>
+                {{ turno.turno.horaInicio | date: "dd 'de' MMMM 'del' yyyy" }}<br>
                 <small class="text-capitalize text-sm" *ngIf="turno.profesional">
                   Dr/a. {{ turno.profesional | profesional }}</small>
                 <small class="text-capitalize text-sm" *ngIf="!turno.profesional">

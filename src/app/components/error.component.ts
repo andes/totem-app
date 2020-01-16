@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   templateUrl: 'error.html',
@@ -11,9 +12,13 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class ErrorComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
+  }
+
+  volver() {
+    this.router.navigate(['buscar']);
   }
 
 }

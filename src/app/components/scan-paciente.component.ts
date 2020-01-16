@@ -67,7 +67,7 @@ export class ScanPacienteComponent implements OnInit {
         console.log(this.scan);
         let pacienteEscaneado = this.parseData(formatoDocumento);
         this.buscarPaciente(pacienteEscaneado);
-      }, 300);
+      }, 3000);
     }
   }
 
@@ -104,7 +104,7 @@ export class ScanPacienteComponent implements OnInit {
         } else {
           delete pacienteEscaneado.type;
           this.pacienteService.setPaciente(pacienteEscaneado);
-          this.router.navigate(['confirmar-telefono']);
+          this.router.navigate(['error']);
         }
       },
       () => {
