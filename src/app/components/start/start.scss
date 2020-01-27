@@ -1,0 +1,66 @@
+.botoncito {
+  font-size: 48px;
+  color: white;
+  background: #424242;
+}
+
+nav{
+  visibility: hidden !important;
+}
+.navbar-inverse {
+  display: none !important;
+}
+
+.plex-box {
+  box-shadow: 0 0px 0px white !important;
+}
+
+body {
+  height: 100% !important;
+  padding-top: 0px !important;
+}
+
+html {
+  margin: unset !important;
+  padding-top: 0 !important;
+
+
+}
+
+main {
+  height: 650px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+
+  section {
+      width: 1500px;
+  }
+}
+.text-center {
+  text-align: center;
+}
+
+.codigo-input {
+  margin: 0% 20%;
+}
+
+
+.prefijoBorder {
+  display: inline-block;
+  min-width: 90px;
+  color: #000000;
+  font-size: 30px;
+  text-align: center;
+  border: 2px solid #00a8e0;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.btnConfirm {
+  padding: 2%;
+  background: #1387ae !important;
+  border-color: #1387ae !important;
+}
+

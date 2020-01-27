@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { DocumentoEscaneados } from './documento-scaneado.const';
 import { PacienteService } from '../services/paciente.service';
 import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
+import { ConfiguracionService } from '../services/configuracion/configuracionPantalla.service';
 
 @Component({
   selector: 'scan-paciente',
@@ -11,52 +13,66 @@ import { Router } from '@angular/router';
 export class ScanPacienteComponent implements OnInit {
   public scan: string;
   public autoFocus = 0;
+  private timeoutHandle;
   constructor(
+    public auth: AuthService,
     private pacienteService: PacienteService,
-    private router: Router
+    private router: Router,
+    private pantallaService: ConfiguracionService
   ) { }
 
   ngOnInit() {
-    this.pacienteService.clearPaciente();
-    this.autoFocus++;
-  } private timeoutHandle: number;
+    this.pantallaService.detalle(this.auth.id).subscribe((pantalla) => {
+      console.log(pantalla);
+      if (pantalla) {
+        this.pacienteService.clearPaciente();
+        this.autoFocus++;
+      } else {
+        this.auth.setToken(null);
+        this.router.navigate(['/start']);
+      }
+    }, (e) => {
+      if (e.status === 401) {
+        this.auth.setToken(null);
+        this.router.navigate(['/start']);
+      }
+    });
+  }
 
   focus() {
     this.autoFocus++;
   }
 
-  onScan(searchText: string) {
-    if (this.timeoutHandle) {
-      window.clearTimeout(this.timeoutHandle);
-    }
+  onScan() {
+    if (this.scan) {
+      this.timeoutHandle = window.setTimeout(() => {
 
-    this.timeoutHandle = window.setTimeout(() => {
+        this.timeoutHandle = null;
+        let formatoDocumento;
+        let re = /\"/gi;
+        let re2 = /\-/gi;
 
-      this.timeoutHandle = null;
-      let formatoDocumento;
-      let re = /\"/gi;
-      let re2 = /\-/gi;
-
-      searchText = searchText.toString().replace(re, '@');
-      searchText = searchText.replace(re2, '/');
-      for (let key in DocumentoEscaneados) {
-        if (DocumentoEscaneados[key].regEx.test(searchText)) {
-          formatoDocumento = DocumentoEscaneados[key];
+        this.scan = this.scan.toString().replace(re, '@');
+        this.scan = this.scan.replace(re2, '/');
+        for (let key in DocumentoEscaneados) {
+          if (DocumentoEscaneados[key].regEx.test(this.scan)) {
+            formatoDocumento = DocumentoEscaneados[key];
+          }
         }
-      }
-      if (!formatoDocumento) {
-        searchText = '';
-        return;
-      }
+        if (!formatoDocumento) {
+          this.scan = '';
+          return;
+        }
 
-      console.log(searchText);
-      let pacienteEscaneado = this.parseData(formatoDocumento, searchText);
-      this.buscarPaciente(pacienteEscaneado);
-    }, 300);
+        console.log(this.scan);
+        let pacienteEscaneado = this.parseData(formatoDocumento);
+        this.buscarPaciente(pacienteEscaneado);
+      }, 3000);
+    }
   }
 
-  private parseData(formatoDocumento: any, scanDocumento: string) {
-    let scanParseado = scanDocumento.match(formatoDocumento.regEx);
+  private parseData(formatoDocumento: any) {
+    let scanParseado = this.scan.match(formatoDocumento.regEx);
     let sexo: string;
     if (formatoDocumento.grupoSexo) {
       sexo = (scanParseado[formatoDocumento.grupoSexo].toUpperCase() === 'F') ? 'femenino' : 'masculino';
@@ -71,7 +87,7 @@ export class ScanPacienteComponent implements OnInit {
       documento: scanParseado[formatoDocumento.grupoNumeroDocumento].replace(/\D/g, ''),
       apellido: scanParseado[formatoDocumento.grupoApellido],
       nombre: scanParseado[formatoDocumento.grupoNombre],
-      scan: scanDocumento,
+      scan: this.scan,
       estado: 'validado',
       genero: sexo
     };
@@ -96,3 +112,5 @@ export class ScanPacienteComponent implements OnInit {
       });
   }
 }
+
+

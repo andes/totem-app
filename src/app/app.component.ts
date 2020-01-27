@@ -8,6 +8,9 @@ import { Auth } from '@andes/auth';
 import { ANDES_KEY } from '../../config.private';
 import { Subject } from 'rxjs';
 import { Router } from '@angular/router';
+import { OrganizacionService } from './services/organizacion.service';
+import { ConfiguracionService } from './services/configuracion/configuracionPantalla.service';
+import { AuthService } from './services/auth.service';
 
 // import { RxSocket } from 'rx-socket.io-client';
 
@@ -40,19 +43,29 @@ export class AppComponent {
   userActivity;
   userInactive: Subject<any> = new Subject();
 
-  constructor(public plex: Plex, public server: Server, private auth: Auth, private router: Router, ) {
+  constructor(public plex: Plex, public server: Server, public pantallaService: ConfiguracionService, private auth: Auth, private router: Router, public authService: AuthService, ) {
     // Configura server. Debería hacerse desde un provider (http://stackoverflow.com/questions/39033835/angularjs2-preload-server-configuration-before-the-application-starts)
     server.setBaseURL(environment.API);
     window.sessionStorage.setItem('jwt', ANDES_KEY);
 
-    // Inicializa la vista
-    this.plex.updateTitle('ANDES | Apps Neuquinas de Salud');
-
     // Inicializa el chequeo de conectividad
     this.initStatusCheck();
+    this.pantallaService.detalle(this.authService.id).subscribe((pantalla) => {
+      console.log(pantalla);
+      if (pantalla) {
+        this.userInactive.subscribe(() => this.router.navigate(['/buscar'], { queryParams: { textoTurno: false } }));
+      } else {
+        this.authService.setToken(null);
+        this.router.navigate(['/start']);
+      }
+    }, (e) => {
+      if (e.status === 401) {
+        this.authService.setToken(null);
+        this.router.navigate(['/start']);
+      }
+    });
     this.setTimeout();
-    this.userInactive.subscribe(() => this.router.navigate(['/buscar'], { queryParams: { textoTurno: false } }));
-
+    this.userInactive.subscribe(() => this.router.navigate(['/inicio'], { queryParams: { textoTurno: false } }));
   }
 
   setTimeout() {
