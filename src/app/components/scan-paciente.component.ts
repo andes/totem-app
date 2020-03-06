@@ -63,8 +63,6 @@ export class ScanPacienteComponent implements OnInit {
           this.scan = '';
           return;
         }
-
-        console.log(this.scan);
         let pacienteEscaneado = this.parseData(formatoDocumento);
         this.buscarPaciente(pacienteEscaneado);
       }, 3000);
