@@ -15,7 +15,6 @@ export class AuthService {
   setToken(value) {
     localStorage.setItem('token', value);
     this.token = value;
-    //let date = this.jwtHelper.getTokenExpirationDate(this.token);
     try {
       // Guarda el token para futura referencia
       window.sessionStorage.setItem('jwt', this.token);
