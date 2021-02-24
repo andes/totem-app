@@ -5,7 +5,8 @@ import { BehaviorSubject } from 'rxjs';
 
 @Injectable()
 export class PacienteService {
-  private pacienteUrl = '/core/mpi/pacientes';  // URL to web api
+  private pacienteUrl = '/core-v2/mpi/pacientes';  // URL to web api
+  private pacienteOld = '/core/mpi/pacientes';  // URL to web api
   private pacienteCache = new BehaviorSubject<any>(null);
   constructor(private server: Server) { }
 
@@ -15,7 +16,7 @@ export class PacienteService {
    * @memberof PacienteService
    */
   get(params: any): Observable<any[]> {
-    return this.server.get(this.pacienteUrl, { params: params, showError: true });
+    return this.server.get(this.pacienteUrl, { params });
   }
 
   setPaciente(paciente: any) {
@@ -31,13 +32,13 @@ export class PacienteService {
 
   save(paciente: any): Observable<any> {
     if (paciente.id) {
-      return this.server.put(`${this.pacienteUrl}/${paciente.id}`, { 'paciente': paciente });
+      return this.patch(paciente.id, paciente);
     } else {
-      return this.server.post(this.pacienteUrl, { 'paciente': paciente });
+      return this.server.post(this.pacienteUrl, paciente);
     }
   }
 
-  patch(id: String, cambios: any, options: any = {}): Observable<any> {
+  patch(id: String, cambios: any): Observable<any> {
     return this.server.patch(`${this.pacienteUrl}/${id}`, cambios);
   }
 
@@ -50,6 +51,6 @@ export class PacienteService {
   }
 
   getTurnos(id: String, params: any): Observable<any[]> {
-    return this.server.get(`${this.pacienteUrl}/${id}/turnos`, { params: params, showError: true });
+    return this.server.get(`${this.pacienteOld}/${id}/turnos`, { params: params, showError: true });
   }
 }
