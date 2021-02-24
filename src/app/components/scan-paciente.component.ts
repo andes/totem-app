@@ -86,15 +86,18 @@ export class ScanPacienteComponent implements OnInit {
       apellido: scanParseado[formatoDocumento.grupoApellido],
       nombre: scanParseado[formatoDocumento.grupoNombre],
       scan: this.scan,
-      estado: 'validado',
-      genero: sexo
+      estado: 'validado'
     };
   }
 
   private buscarPaciente(pacienteEscaneado) {
-    let queryObject = pacienteEscaneado;
-    queryObject.type = 'simplequery';
-    this.pacienteService.get(pacienteEscaneado).subscribe(
+    this.pacienteService.get({
+      documento: pacienteEscaneado.documento,
+      sexo: pacienteEscaneado.sexo,
+      apellido: pacienteEscaneado.apellido,
+      nombre: pacienteEscaneado.nombre,
+      activo: true
+    }).subscribe(
       resultado => {
         if (resultado && resultado.length) {
           this.pacienteService.setPaciente(resultado[0]);

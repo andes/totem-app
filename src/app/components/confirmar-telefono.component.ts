@@ -124,7 +124,7 @@ export class ConfirmarTelefonoComponent implements OnInit {
                         'ultimaActualizacion': new Date()
                     });
                 }
-                this.pacienteService.save(this.paciente).subscribe(resultado => {
+                this.pacienteService.save(this.paciente).subscribe(() => {
                     this.router.navigate(['prestaciones']);
                 });
 
